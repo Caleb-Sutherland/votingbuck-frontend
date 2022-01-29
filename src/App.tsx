@@ -1,12 +1,26 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Main from "./pages/Main";
+import OrganizationMain from "./pages/OrganizationMain";
+import IndividualMain from "./pages/IndividualMain";
+import Header from "./components/Header";
+import Organization from "./pages/Organization";
+import Individual from "./pages/Individual";
 
 function App() {
+
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/organizations/:orgId" element={<Organization />} />
+        <Route path="/organizations" element={<OrganizationMain />}/>
+        <Route path="/individuals/:indId" element={<Individual />} />
+        <Route path="/individuals" element={<IndividualMain />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

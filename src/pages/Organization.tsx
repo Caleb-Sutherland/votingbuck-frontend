@@ -36,10 +36,11 @@ export default function Organization() {
   console.log(data);
   return (
     <div>
-      <div>
-        <h1>Random Organization</h1>
+      <div className="ml-16 mt-16 mb-8">
+        <h1 className="text-3xl font-bold">Random Organization</h1>
+        <span>Corporation</span>
       </div>
-      <div>Corporation</div>
+      
 
       <div className="container mx-auto h-screen w-full overflow-auto">
         <div className="h-2/6 w-full p-4 flex space-x-4 border-b border-b-black-300">

@@ -33,7 +33,7 @@ export default function TestPieChart(props: any) {
         data: props.data?.map((item: any) => {
           return item.total_amount;
         }),
-        backgroundColor: "#c79ee6",
+        backgroundColor: ["#c79ee6", "#bc48d9", "#74208a", "#c36cd9", "#9c25ba", "#ad1bd1", "#a24bb8"],
       },
     ],
   };
@@ -42,7 +42,7 @@ export default function TestPieChart(props: any) {
     responsive: true,
     plugins: {
       legend: {
-        position: "top" as const,
+        position: "right" as const,
       },
       title: {
         display: true,
@@ -51,5 +51,5 @@ export default function TestPieChart(props: any) {
     },
   };
 
-  return <Pie options={options} data={datasets} />;
+  return <div className="max-h-full max-w-full"><Pie options={options} data={datasets}/></div>;
 }

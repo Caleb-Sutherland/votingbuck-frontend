@@ -4,10 +4,20 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+import { createStore, applyMiddleware, Store } from "redux";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
+import periodReducer from "./store/reducers/periodReducer";
+
+// Initialize the store (Note: if multiple different reducers are wanted, must use combineReducers)
+const store: Store<DataState, Action> & {
+  dispatch: DispatchType;
+} = createStore(periodReducer, applyMiddleware(thunk));
+
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById("root")
 );
 

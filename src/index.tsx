@@ -3,11 +3,34 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { composeWithDevTools } from "redux-devtools-extension";
+
+import {
+  createStore,
+  applyMiddleware,
+  Store,
+  combineReducers,
+  Action,
+} from "redux";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
+import organizationReducer from "./store/reducers/organizationReducer";
+import politicianReducer from "./store/reducers/politicianReducer";
+
+const rootReducer = combineReducers({
+  organizations: organizationReducer,
+  politicians: politicianReducer,
+});
+
+// Initialize the store
+const store: Store<DataState, Action> & {
+  dispatch: DispatchType;
+} = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById("root")
 );
 

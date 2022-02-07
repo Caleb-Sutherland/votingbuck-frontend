@@ -4,9 +4,6 @@ services:
   4470_frontend_container:
     container_name: "4470-frontend-container"
     build: .
-    volumes:
-      - '.:/app'
-      - '/app/node_modules'
     ports:
       - 3000:3000
     environment:

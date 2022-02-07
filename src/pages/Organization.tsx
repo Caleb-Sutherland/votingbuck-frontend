@@ -6,7 +6,7 @@ import { data as tempData } from "../components/TempData";
 
 import { useSelector, useDispatch } from "react-redux";
 import { Dispatch } from "redux";
-import { addPeriod } from "../store/actions/periodActionCreators";
+import { addOrganizationPeriod } from "../store/actions/organizationActionCreators";
 
 // Define an interface for the data that we expect to read in
 interface test {
@@ -29,26 +29,23 @@ export default function Organization() {
   // Master period control
   const default_period = "2018-2020";
   const [current_period, setCurrentPeriod] = useState(default_period);
+  const org_id = 1; // Needs to be a prop passed to the page or taken from url
 
   // Setup the redux store
   const dispatch: Dispatch<any> = useDispatch();
-  const data: Record<string, IPeriod> = useSelector(
-    (state: DataState) => state.periods
+
+  // Enter the periods data into the redux store
+  dispatch(addOrganizationPeriod(org_id, current_period));
+
+  // Access the redux store
+  const organizations: Record<number, IOrganization> = useSelector(
+    (state: DataState) => state.organizations
   );
 
-  // Load up the current period's data
-  dispatch(addPeriod(current_period));
-
-  useEffect(() => {
-    // If we are looking at a different organization then clear the redux store
-
-    
-    
-  }, [current_period]);
-
-  
-
-  if (data[current_period] !== undefined) {
+  if (
+    organizations[org_id] !== undefined &&
+    organizations[org_id].periods[current_period] !== undefined
+  ) {
     return (
       <div>
         <div className="ml-16 mt-16 mb-8">
@@ -57,7 +54,7 @@ export default function Organization() {
         </div>
         <div className="container mx-auto h-screen w-full overflow-auto">
           <div className="h-2/6 w-full p-4 flex space-x-4 border-b border-b-black-300">
-            {data[default_period].orgInfo.name}
+            {organizations[org_id].name}
           </div>
         </div>
       </div>

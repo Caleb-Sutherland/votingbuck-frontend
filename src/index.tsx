@@ -3,16 +3,29 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-import { createStore, applyMiddleware, Store } from "redux";
+import {
+  createStore,
+  applyMiddleware,
+  Store,
+  combineReducers,
+  Action,
+} from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
-import periodReducer from "./store/reducers/periodReducer";
+import organizationReducer from "./store/reducers/organizationReducer";
+import politicianReducer from "./store/reducers/politicianReducer";
 
-// Initialize the store (Note: if multiple different reducers are wanted, must use combineReducers)
+const rootReducer = combineReducers({
+  organizations: organizationReducer,
+  politicians: politicianReducer,
+});
+
+// Initialize the store
 const store: Store<DataState, Action> & {
   dispatch: DispatchType;
-} = createStore(periodReducer, applyMiddleware(thunk));
+} = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <Provider store={store}>

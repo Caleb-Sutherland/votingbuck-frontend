@@ -1,10 +1,4 @@
-/* Interfaces that are part of a Period*/
-interface IOrganization {
-  id: number;
-  name: string;
-  industry: string;
-}
-
+/* Organization types*/
 interface IDonation {
   month_start_date: string;
   amount_donated: number;
@@ -15,26 +9,58 @@ interface IDonator {
   total_amount: number;
 }
 
-// All data in the store will be indexed by a Period
-interface IPeriod {
+// Stores on period's worth of data for an organization
+interface IOrganizationPeriod {
   id: string;
-  orgInfo: IOrganization;
   donationsByMonth: IDonation[];
   topDonators: IDonator[];
 }
 
-// State type to use in the redux store, stores a hashmap (indexed by a period id and points to a Period)
-type DataState = {
-  periods: Record<string, IPeriod>;
-};
-
-// Format to follow when performing an action on a Period
-interface PeriodAction {
-  type: string;
-  period: Period | null;
+// Organization that stores a set of Records (key: period, value: period_data)
+interface IOrganization {
+  id: number;
+  name: string;
+  industry: string;
+  periods: Record<string, IOrganizationPeriod>;
 }
 
-// Type alias declared so that the store can accept any type of action defined here (PeriodAction | ActionB | ActionC...)
-type Action = PeriodAction;
+// Format to follow when performing an action on an organization period
+interface OrganizationAction {
+  type: string;
+  organization: IOrganization;
+  period: IOrganizationPeriod;
+}
+
+/* Politician types */
+// Period for politicians
+interface IPoliticianPeriod {
+  id: string;
+}
+
+// Politician that stores set of Records (key: period, value: period_data)
+interface IPolitician {
+  id: number;
+  name: string;
+  party: string;
+  periods: Record<string, IPoliticianPeriod>;
+}
+
+// Format to follow when performing an action on a Period
+interface PoliticianAction {
+  type: string;
+  politician: IPolitician;
+  period: IPoliticianPeriod
+}
+
+
+/* Shared types */
+// Type alias declared so that the store can accept any type of action defined here
+type actionTypes = OrganizationAction | PoliticianAction;
+
+// State type to use in the redux store, stores a hashmap (indexed by a period id and points to a Period)
+type DataState = {
+  organizations: Record<number, IOrganization>;
+  politicians: Record<string, IPolitician>;
+};
 
 type DispatchType = (args: Action) => Action;

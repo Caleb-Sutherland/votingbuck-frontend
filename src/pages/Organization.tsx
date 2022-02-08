@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useCallback } from "react";
-import TestChart from "../components/TestChart";
-import TestPieChart from "../components/TestPieChart";
-import Tile from "../components/Tile";
+import React, { useState } from "react";
 import { data as tempData } from "../components/TempData";
 
 import { useSelector, useDispatch } from "react-redux";
 import { Dispatch } from "redux";
 import { addOrganizationPeriod } from "../store/actions/organizationActionCreators";
+
+import TopDonatorsGraph from "../components/organization_charts/TopDonatorsGraph";
+import DonationsOverPeriod from "../components/organization_charts/DonationsOverPeriod";
 
 // Define an interface for the data that we expect to read in
 interface test {
@@ -52,9 +52,11 @@ export default function Organization() {
           <h1 className="text-3xl font-bold">Random Organization</h1>
           <span>Corporation</span>
         </div>
-        <div className="container mx-auto h-screen w-full overflow-auto">
-          <div className="h-2/6 w-full p-4 flex space-x-4 border-b border-b-black-300">
-            {organizations[org_id].name}
+        <div className="pl-14 pr-14 h-screen w-full overflow-auto">
+          <div className="grid grid-cols-12 grid-rows-4 gap-1 h-full">
+            <div className="col-start-1 col-end-5 row-span-1"><TopDonatorsGraph orgId={org_id} globalPeriod={current_period}/></div>
+            <div className="col-start-5 col-end-9 row-span-1"><DonationsOverPeriod orgId={org_id} globalPeriod={current_period}/></div>
+            
           </div>
         </div>
       </div>

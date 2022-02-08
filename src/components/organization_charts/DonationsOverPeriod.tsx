@@ -1,0 +1,64 @@
+import React, { useState } from "react";
+
+import { useSelector, useDispatch } from "react-redux";
+import { Dispatch } from "redux";
+import { addOrganizationPeriod } from "../../store/actions/organizationActionCreators";
+import {
+  BarChart,
+  Bar,
+  Cell,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  Label,
+  LabelList,
+} from "recharts";
+
+export default function DonationsOverPeriod(props: any) {
+  const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
+
+  // Access the redux store
+  const organizations: Record<number, IOrganization> = useSelector(
+    (state: DataState) => state.organizations
+  );
+
+  const data = organizations[props.orgId].periods[localPeriod].donationsByMonth;
+  const formattedData = data.map((item: any) => {
+      return 
+  })
+
+   const test = 5;
+  return (
+    <div className="h-full w-full">
+      <div className="w-full flex justify-center">
+        <span>Donations Over Period</span>
+      </div>
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart
+          width={500}
+          height={300}
+          data={data}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="month_start_date" tick={false} />
+          <YAxis />
+          <Tooltip
+            formatter={(value: string, field: string, props: any) => {
+              console.log(props);
+            }}
+          />
+          <Bar dataKey="amount_donated" fill="#34eba1"></Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  );
+}

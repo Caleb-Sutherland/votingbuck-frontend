@@ -26,11 +26,34 @@ export default function DonationsOverPeriod(props: any) {
   );
 
   const data = organizations[props.orgId].periods[localPeriod].donationsByMonth;
-  const formattedData = data.map((item: any) => {
-      return 
-  })
 
-   const test = 5;
+  const months: Record<number, string> = {
+    0: "January",
+    1: "February",
+    2: "March",
+    3: "April",
+    4: "May",
+    5: "June",
+    6: "July",
+    7: "August",
+    8: "September",
+    9: "October",
+    10: "November",
+    11: "December",
+  };
+
+  const formattedData = data.map((item: IDonation): IDonation => {
+    const date: Date = new Date(item.month_start_date);
+
+    const month: string = months[date.getMonth()];
+    const year: string = date.getFullYear().toString();
+
+    return {
+      month_start_date: year + ", " + month,
+      amount_donated: item.amount_donated,
+    };
+  });
+
   return (
     <div className="h-full w-full">
       <div className="w-full flex justify-center">
@@ -40,7 +63,7 @@ export default function DonationsOverPeriod(props: any) {
         <BarChart
           width={500}
           height={300}
-          data={data}
+          data={formattedData}
           margin={{
             top: 5,
             right: 30,
@@ -53,7 +76,7 @@ export default function DonationsOverPeriod(props: any) {
           <YAxis />
           <Tooltip
             formatter={(value: string, field: string, props: any) => {
-              console.log(props);
+              return [value, "Amount donated: "];
             }}
           />
           <Bar dataKey="amount_donated" fill="#34eba1"></Bar>

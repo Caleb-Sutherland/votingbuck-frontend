@@ -143,4 +143,34 @@ export const data = {
     { contributor: "Scott Martinez", total_amount: 103309.08 },
     { contributor: "Robert Chavez", total_amount: 99126.98 },
   ],
+  donationsByParty: [
+    {
+      "party": "Democratic Party",
+      "total_amount": 7977151.74
+    },
+    {
+      "party": "Independent",
+      "total_amount": 5378718.11
+    },
+    {
+      "party": "Nonpartisan",
+      "total_amount": 3854701.74
+    },
+    {
+      "party": "Republican Party",
+      "total_amount": 2956052.25
+    },
+    {
+      "party": "Libertarian Party",
+      "total_amount": 992406.85
+    },
+    {
+      "party": "Unaffiliated",
+      "total_amount": 949654.05
+    },
+    {
+      "party": "Green Party",
+      "total_amount": 425253.7
+    },
+  ]
 };

@@ -37,6 +37,7 @@ export function getOrganizationPeriod(
         id: period_id,
         donationsByMonth: data.donationsByMonth,
         topDonators: data.topDonators,
+        donationsByParty: data.donationsByParty
       },
     };
 

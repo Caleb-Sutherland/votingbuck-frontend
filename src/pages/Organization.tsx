@@ -7,6 +7,7 @@ import { addOrganizationPeriod } from "../store/actions/organizationActionCreato
 
 import TopDonatorsGraph from "../components/organization_charts/TopDonatorsGraph";
 import DonationsOverPeriod from "../components/organization_charts/DonationsOverPeriod";
+import DonationsByParty from "../components/organization_charts/DonationsByParty";
 
 // Define an interface for the data that we expect to read in
 interface test {
@@ -49,14 +50,26 @@ export default function Organization() {
     return (
       <div>
         <div className="ml-16 mt-16 mb-8">
-          <h1 className="text-3xl font-bold">Random Organization</h1>
+          <h1 className="text-3xl font-bold">{organizations[org_id].name}</h1>
           <span>Corporation</span>
         </div>
         <div className="pl-14 pr-14 h-screen w-full overflow-auto">
           <div className="grid grid-cols-12 grid-rows-4 gap-1 h-full">
-            <div className="col-start-1 col-end-5 row-span-1"><TopDonatorsGraph orgId={org_id} globalPeriod={current_period}/></div>
-            <div className="col-start-5 col-end-9 row-span-1"><DonationsOverPeriod orgId={org_id} globalPeriod={current_period}/></div>
-            
+            <div className="col-start-1 col-end-5 row-span-1">
+              <TopDonatorsGraph orgId={org_id} globalPeriod={current_period} />
+            </div>
+            <div className="col-start-5 col-end-9 row-span-1">
+              <DonationsOverPeriod
+                orgId={org_id}
+                globalPeriod={current_period}
+              />
+            </div>
+            <div className="col-start-9 col-end-12 row-span-1">
+              <DonationsByParty
+                orgId={org_id}
+                globalPeriod={current_period}
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -1,12 +1,21 @@
 /* Organization types*/
+
+// Donations made by an organization
 interface IDonation {
   month_start_date: string;
   amount_donated: number;
 }
 
+// A donator from the organization
 interface IDonator {
   contributor: string;
   total_amount: number;
+}
+
+// Donations from organization to political party
+interface IPartyDonation {
+  party: string
+  total_amount: number
 }
 
 // Stores on period's worth of data for an organization
@@ -14,6 +23,7 @@ interface IOrganizationPeriod {
   id: string;
   donationsByMonth: IDonation[];
   topDonators: IDonator[];
+  donationsByParty: IPartyDonation[];
 }
 
 // Organization that stores a set of Records (key: period, value: period_data)

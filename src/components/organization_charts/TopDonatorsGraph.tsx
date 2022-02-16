@@ -1,19 +1,14 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
-import { useSelector, useDispatch } from "react-redux";
-import { Dispatch } from "redux";
-import { addOrganizationPeriod } from "../../store/actions/organizationActionCreators";
 import {
   BarChart,
   Bar,
-  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
-  Label,
   LabelList,
 } from "recharts";
 
@@ -49,7 +44,7 @@ export default function TopDonatorsGraph(props: any) {
           <XAxis dataKey="contributor" tick={false} />
           <YAxis />
           <Tooltip
-            formatter={(value: string, field: string) => {
+            formatter={(value: string) => {
               return [value, "Amount donated:"];
             }}
           />

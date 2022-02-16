@@ -1,21 +1,6 @@
 import React, { useState } from "react";
-
-import { useSelector, useDispatch } from "react-redux";
-import { Dispatch } from "redux";
-import { addOrganizationPeriod } from "../../store/actions/organizationActionCreators";
-import {
-  PieChart,
-  Pie,
-  Cell,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-  Label,
-  LabelList,
-} from "recharts";
+import { useSelector } from "react-redux";
+import { PieChart, Pie, Tooltip, ResponsiveContainer } from "recharts";
 
 export default function DonationsByParty(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);

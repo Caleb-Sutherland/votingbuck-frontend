@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { data as tempData } from "../components/TempData";
 
 import { useSelector, useDispatch } from "react-redux";
 import { Dispatch } from "redux";
@@ -8,23 +7,6 @@ import { addOrganizationPeriod } from "../store/actions/organizationActionCreato
 import TopDonatorsGraph from "../components/organization_charts/TopDonatorsGraph";
 import DonationsOverPeriod from "../components/organization_charts/DonationsOverPeriod";
 import DonationsByParty from "../components/organization_charts/DonationsByParty";
-
-// Define an interface for the data that we expect to read in
-interface test {
-  orgInfo: {
-    id: number;
-    name: string;
-    industry: string;
-  };
-  donationsByMonth: {
-    month_start_date: string;
-    amount_donated: number;
-  }[];
-  topDonators: {
-    contributor: string;
-    total_amount: number;
-  }[];
-}
 
 export default function Organization() {
   // Master period control
@@ -65,10 +47,7 @@ export default function Organization() {
               />
             </div>
             <div className="col-start-9 col-end-12 row-span-1">
-              <DonationsByParty
-                orgId={org_id}
-                globalPeriod={current_period}
-              />
+              <DonationsByParty orgId={org_id} globalPeriod={current_period} />
             </div>
           </div>
         </div>

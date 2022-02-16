@@ -1,20 +1,15 @@
 import React, { useState } from "react";
 
-import { useSelector, useDispatch } from "react-redux";
-import { Dispatch } from "redux";
-import { addOrganizationPeriod } from "../../store/actions/organizationActionCreators";
+import { useSelector } from "react-redux";
+
 import {
   BarChart,
   Bar,
-  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
-  Label,
-  LabelList,
 } from "recharts";
 
 export default function DonationsOverPeriod(props: any) {

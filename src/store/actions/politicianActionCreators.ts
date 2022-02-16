@@ -3,10 +3,7 @@ import { poliData } from "../../components/TempData";
 
 /* Period action creators */
 // Add a period to the store
-export function addPoliticianPeriod(
-  politician_id: number,
-  period_id: string
-) {
+export function addPoliticianPeriod(politician_id: number, period_id: string) {
   // Must retrieve the organization/period data from the database
   return getPoliticianPeriod(politician_id, period_id);
 }
@@ -23,10 +20,7 @@ export function addPoliticianPeriod(
 // }
 
 // Helper function to retrieve organization/period data from the backend
-export function getPoliticianPeriod(
-politician_id: number,
-  period_id: string
-) {
+export function getPoliticianPeriod(politician_id: number, period_id: string) {
   return async (dispatch: DispatchType) => {
     // Get real data from database here
 
@@ -42,7 +36,7 @@ politician_id: number,
 
     // Construct the action
     const action: PoliticianAction = {
-      type: actionTypes.ADD_ORGANIZATION_PERIOD,
+      type: actionTypes.ADD_POLITICIAN_PERIOD,
       politician: politician,
       period: politician.periods.period_id,
     };

@@ -45,12 +45,20 @@ interface OrganizationAction {
 // Period for politicians
 interface IPoliticianPeriod {
   id: string;
+  donationsByMonth: IDonation[];
+  topDonators: IDonationFromOrganization[];
+}
+
+interface IDonationFromOrganization {
+  name: string;
+  total_amount: number;
 }
 
 // Politician that stores set of Records (key: period, value: period_data)
 interface IPolitician {
   id: number;
   name: string;
+  ideology: number;
   party: string;
   periods: Record<string, IPoliticianPeriod>;
 }

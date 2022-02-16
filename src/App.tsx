@@ -3,10 +3,10 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./pages/Main";
 import OrganizationMain from "./pages/OrganizationMain";
-import IndividualMain from "./pages/IndividualMain";
+import PoliticianMain from "./pages/PoliticianMain";
 import Header from "./components/Header";
 import Organization from "./pages/Organization";
-import Individual from "./pages/Individual";
+import Politician from "./pages/Politician";
 
 function App() {
 
@@ -17,8 +17,8 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/organizations/:orgId" element={<Organization />} />
         <Route path="/organizations" element={<OrganizationMain />}/>
-        <Route path="/individuals/:indId" element={<Individual />} />
-        <Route path="/individuals" element={<IndividualMain />} />
+        <Route path="/individuals/:indId" element={<Politician />} />
+        <Route path="/individuals" element={<PoliticianMain />} />
       </Routes>
     </BrowserRouter>
   );

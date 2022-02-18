@@ -1,4 +1,4 @@
-export const orgData = {
+export const corpData = {
   orgInfo: { id: 1, name: "Exxon Mobil", industry: "school" },
   donationsByMonth: [
     { month_start_date: "2010-01-01T00:00:00.000Z", amount_donated: 364728.89 },

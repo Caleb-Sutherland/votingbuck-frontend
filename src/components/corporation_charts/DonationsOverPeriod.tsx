@@ -16,11 +16,11 @@ export default function DonationsOverPeriod(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
 
   // Access the redux store
-  const organizations: Record<number, IOrganization> = useSelector(
-    (state: DataState) => state.organizations
+  const corporation: Record<number, ICorporation> = useSelector(
+    (state: DataState) => state.corporations
   );
 
-  const data = organizations[props.orgId].periods[localPeriod].donationsByMonth;
+  const data = corporation[props.corpId].periods[localPeriod].donationsByMonth;
 
   const months: Record<number, string> = {
     0: "January",
@@ -37,17 +37,19 @@ export default function DonationsOverPeriod(props: any) {
     11: "December",
   };
 
-  const formattedData = data.map((item: IDonation): IDonation => {
-    const date: Date = new Date(item.month_start_date);
+  const formattedData = data.map(
+    (item: ICorporationDonation): ICorporationDonation => {
+      const date: Date = new Date(item.month_start_date);
 
-    const month: string = months[date.getMonth()];
-    const year: string = date.getFullYear().toString();
+      const month: string = months[date.getMonth()];
+      const year: string = date.getFullYear().toString();
 
-    return {
-      month_start_date: year + ", " + month,
-      amount_donated: item.amount_donated,
-    };
-  });
+      return {
+        month_start_date: year + ", " + month,
+        amount_donated: item.amount_donated,
+      };
+    }
+  );
 
   return (
     <div className="h-full w-full">

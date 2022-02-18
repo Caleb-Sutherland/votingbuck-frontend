@@ -37,7 +37,7 @@ export default function DonationsRecievedOverPeriod(props: any) {
     11: "December",
   };
 
-  const formattedData = data.map((item: IDonation): IDonation => {
+  const formattedData = data.map((item: IPoliticianDonation): IPoliticianDonation => {
     const date: Date = new Date(item.month_start_date);
 
     const month: string = months[date.getMonth()];

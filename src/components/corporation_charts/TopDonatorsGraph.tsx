@@ -16,12 +16,12 @@ export default function TopDonatorsGraph(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
 
   // Access the redux store
-  const organizations: Record<number, IOrganization> = useSelector(
-    (state: DataState) => state.organizations
+  const corporation: Record<number, ICorporation> = useSelector(
+    (state: DataState) => state.corporations
   );
 
   // Data for feed the graph
-  const data = organizations[props.orgId].periods[localPeriod].topDonators;
+  const data = corporation[props.corpId].periods[localPeriod].topDonators;
 
   return (
     <div className="h-full w-full">

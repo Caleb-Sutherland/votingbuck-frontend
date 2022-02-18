@@ -45,4 +45,5 @@ export const initialState: DataState = {
     },
   },
   politicians: {},
+  universities: {},
 };

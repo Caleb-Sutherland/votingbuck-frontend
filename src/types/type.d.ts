@@ -78,14 +78,50 @@ interface PoliticianAction {
 
 /* University Types */
 
+interface IUniversityDonation {
+  month_start_date: string;
+  amount_donated: number;
+}
+
+interface IUniversityEmployeeDonation {
+  contributor: string;
+  total_amount: number;
+}
+
+interface IUniversityDonationToParty {
+  party: string;
+  total_amount: number;
+}
+
+interface IUniversityPeriod {
+  id: string;
+  donationsByMonth: IUniversityDonation[];
+  topDonators: IUniversityEmployeeDonation[];
+  donationsByParty: IUniversityDonationToParty[];
+}
+
+interface IUniversity {
+  id: number;
+  name: string;
+  industry: string = "School";
+  periods: Record<string, IUniversityPeriod>;
+}
+
+interface UniversityAction {
+  type: string;
+  university: ICorporation;
+  period: ICorporationPeriod;
+}
+
 /* Shared types */
 // Type alias declared so that the store can accept any type of action defined here
-type actionTypes = CorporationAction | PoliticianAction;
+type actionTypes = CorporationAction | PoliticianAction | UniversityAction;
 
 // State type to use in the redux store, stores a hashmap (indexed by a period id and points to a Period)
 type DataState = {
   corporations: Record<number, ICorporation>;
   politicians: Record<string, IPolitician>;
+  universities: Record<string, IUniversity>;
 };
 
 type DispatchType = (args: Action) => Action;

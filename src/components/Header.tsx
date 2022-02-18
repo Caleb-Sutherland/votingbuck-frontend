@@ -13,6 +13,9 @@ export default function Header() {
           <Link className="ml-12 text-xl font-medium text-opacity-75" to="politicians">
             Politicians
           </Link>
+          <Link className="ml-12 text-xl font-medium text-opacity-75" to="universities">
+            Universities
+          </Link>
         </div>
       </div>
     </header>

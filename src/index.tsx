@@ -16,10 +16,12 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import corporationReducer from "./store/reducers/corporationReducer";
 import politicianReducer from "./store/reducers/politicianReducer";
+import universityReducer from "./store/reducers/universityReducer";
 
 const rootReducer = combineReducers({
   corporations: corporationReducer,
   politicians: politicianReducer,
+  universities: universityReducer,
 });
 
 // Initialize the store

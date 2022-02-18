@@ -12,15 +12,15 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-export default function DonationsOverPeriod(props: any) {
+export default function DonationsRecievedOverPeriod(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
 
   // Access the redux store
-  const organizations: Record<number, IOrganization> = useSelector(
-    (state: DataState) => state.organizations
+  const politicians: Record<number, IPolitician> = useSelector(
+    (state: DataState) => state.politicians
   );
 
-  const data = organizations[props.orgId].periods[localPeriod].donationsByMonth;
+  const data = politicians[props.poliId].periods[localPeriod].donationsByMonth;
 
   const months: Record<number, string> = {
     0: "January",
@@ -37,7 +37,7 @@ export default function DonationsOverPeriod(props: any) {
     11: "December",
   };
 
-  const formattedData = data.map((item: IDonation): IDonation => {
+  const formattedData = data.map((item: IPoliticianDonation): IPoliticianDonation => {
     const date: Date = new Date(item.month_start_date);
 
     const month: string = months[date.getMonth()];

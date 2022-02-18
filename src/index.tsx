@@ -14,12 +14,14 @@ import {
 } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
-import organizationReducer from "./store/reducers/organizationReducer";
+import corporationReducer from "./store/reducers/corporationReducer";
 import politicianReducer from "./store/reducers/politicianReducer";
+import universityReducer from "./store/reducers/universityReducer";
 
 const rootReducer = combineReducers({
-  organizations: organizationReducer,
+  corporations: corporationReducer,
   politicians: politicianReducer,
+  universities: universityReducer,
 });
 
 // Initialize the store

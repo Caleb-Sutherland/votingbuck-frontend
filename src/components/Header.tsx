@@ -7,11 +7,14 @@ export default function Header() {
       <div className="pl-12 text-white flex item-center">
         <Link className="text-3xl font-bold" to="/">Website</Link>
         <div className="ml-12 pl-12 flex items-center">
-          <Link className="ml-12 text-xl font-medium text-opacity-75" to="organizations">
-            Organizations
+          <Link className="ml-12 text-xl font-medium text-opacity-75" to="corporates">
+            Corporates
           </Link>
-          <Link className="ml-12 text-xl font-medium text-opacity-75" to="individuals">
-            Individuals
+          <Link className="ml-12 text-xl font-medium text-opacity-75" to="politicians">
+            Politicians
+          </Link>
+          <Link className="ml-12 text-xl font-medium text-opacity-75" to="universities">
+            Universities
           </Link>
         </div>
       </div>

@@ -6,13 +6,13 @@ export default function DonationsByParty(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
 
   // Access the redux store
-  const organizations: Record<number, IOrganization> = useSelector(
-    (state: DataState) => state.organizations
+  const corporations: Record<number, ICorporation> = useSelector(
+    (state: DataState) => state.corporations
   );
 
-  const data = organizations[props.orgId].periods[localPeriod].donationsByParty;
+  const data = corporations[props.corpId].periods[localPeriod].donationsByParty;
 
-  const formattedData = data.map((item: IPartyDonation): any => {
+  const formattedData = data.map((item: ICorporateDonationToParty): any => {
     return { name: item.party, value: item.total_amount };
   });
 

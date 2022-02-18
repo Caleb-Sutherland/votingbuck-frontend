@@ -1,8 +1,8 @@
 export const initialState: DataState = {
-  organizations: {
+  corporations: {
     [-1]: {
       id: -1,
-      name: "Test Organization",
+      name: "Test Corporation",
       industry: "school",
       periods: {
         "2018-2020": {
@@ -45,4 +45,5 @@ export const initialState: DataState = {
     },
   },
   politicians: {},
+  universities: {},
 };

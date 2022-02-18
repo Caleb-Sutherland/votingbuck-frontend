@@ -1,56 +1,70 @@
-/* Organization types*/
+/* Corporate types*/
 
 // Donations made by an organization
-interface IDonation {
+interface ICorporationDonation {
   month_start_date: string;
   amount_donated: number;
 }
 
 // A donator from the organization
-interface IDonator {
+interface ICorporationEmployeeDonation {
   contributor: string;
   total_amount: number;
 }
 
 // Donations from organization to political party
-interface IPartyDonation {
-  party: string
-  total_amount: number
+interface ICorporateDonationToParty {
+  party: string;
+  total_amount: number;
 }
 
 // Stores on period's worth of data for an organization
-interface IOrganizationPeriod {
+interface ICorporationPeriod {
   id: string;
-  donationsByMonth: IDonation[];
-  topDonators: IDonator[];
-  donationsByParty: IPartyDonation[];
+  donationsByMonth: ICorporationDonation[];
+  topDonators: ICorporationEmployeeDonation[];
+  donationsByParty: ICorporateDonationToParty[];
 }
 
 // Organization that stores a set of Records (key: period, value: period_data)
-interface IOrganization {
+interface ICorporation {
   id: number;
   name: string;
   industry: string;
-  periods: Record<string, IOrganizationPeriod>;
+  periods: Record<string, ICorporationPeriod>;
 }
 
 // Format to follow when performing an action on an organization period
-interface OrganizationAction {
+interface CorporationAction {
   type: string;
-  organization: IOrganization;
-  period: IOrganizationPeriod;
+  corporation: ICorporation;
+  period: ICorporationPeriod;
 }
 
 /* Politician types */
 // Period for politicians
+
+interface IPoliticianDonation {
+  month_start_date: string;
+  amount_donated: number;
+}
+
 interface IPoliticianPeriod {
   id: string;
+  donationsByMonth: IDonation[];
+  topDonators: IDonationFromOrganization[];
+}
+
+interface IDonationFromOrganization {
+  name: string;
+  total_amount: number;
 }
 
 // Politician that stores set of Records (key: period, value: period_data)
 interface IPolitician {
   id: number;
   name: string;
+  ideology: number;
   party: string;
   periods: Record<string, IPoliticianPeriod>;
 }
@@ -59,18 +73,55 @@ interface IPolitician {
 interface PoliticianAction {
   type: string;
   politician: IPolitician;
-  period: IPoliticianPeriod
+  period: IPoliticianPeriod;
 }
 
+/* University Types */
+
+interface IUniversityDonation {
+  month_start_date: string;
+  amount_donated: number;
+}
+
+interface IUniversityEmployeeDonation {
+  contributor: string;
+  total_amount: number;
+}
+
+interface IUniversityDonationToParty {
+  party: string;
+  total_amount: number;
+}
+
+interface IUniversityPeriod {
+  id: string;
+  donationsByMonth: IUniversityDonation[];
+  topDonators: IUniversityEmployeeDonation[];
+  donationsByParty: IUniversityDonationToParty[];
+}
+
+interface IUniversity {
+  id: number;
+  name: string;
+  industry: string = "School";
+  periods: Record<string, IUniversityPeriod>;
+}
+
+interface UniversityAction {
+  type: string;
+  university: ICorporation;
+  period: ICorporationPeriod;
+}
 
 /* Shared types */
 // Type alias declared so that the store can accept any type of action defined here
-type actionTypes = OrganizationAction | PoliticianAction;
+type actionTypes = CorporationAction | PoliticianAction | UniversityAction;
 
 // State type to use in the redux store, stores a hashmap (indexed by a period id and points to a Period)
 type DataState = {
-  organizations: Record<number, IOrganization>;
+  corporations: Record<number, ICorporation>;
   politicians: Record<string, IPolitician>;
+  universities: Record<string, IUniversity>;
 };
 
 type DispatchType = (args: Action) => Action;

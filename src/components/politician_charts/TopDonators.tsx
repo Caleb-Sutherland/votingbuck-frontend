@@ -12,16 +12,16 @@ import {
   LabelList,
 } from "recharts";
 
-export default function TopDonatorsGraph(props: any) {
+export default function TopDonators(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
 
   // Access the redux store
-  const organizations: Record<number, IOrganization> = useSelector(
-    (state: DataState) => state.organizations
+  const politicians: Record<number, IPolitician> = useSelector(
+    (state: DataState) => state.politicians
   );
 
   // Data for feed the graph
-  const data = organizations[props.orgId].periods[localPeriod].topDonators;
+  const data = politicians[props.poliId].periods[localPeriod].topDonators;
 
   return (
     <div className="h-full w-full">
@@ -41,7 +41,7 @@ export default function TopDonatorsGraph(props: any) {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="contributor" tick={false} />
+          <XAxis dataKey="name" tick={false} />
           <YAxis />
           <Tooltip
             formatter={(value: string) => {
@@ -50,7 +50,7 @@ export default function TopDonatorsGraph(props: any) {
           />
           <Bar dataKey="total_amount" fill="#34eba1">
             <LabelList
-              dataKey="contributor"
+              dataKey="name"
               formatter={(name: string): string => {
                 const names: string[] = name.split(" ");
                 if (names.length > 1) {

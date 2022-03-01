@@ -18,12 +18,21 @@ interface ICorporateDonationToParty {
   total_amount: number;
 }
 
+// Top recipients that a corporation donates to
+interface ITopRecipient {
+  name: string;
+  party: string;
+  dollars_received: number;
+  donations_received: number;
+}
+
 // Stores on period's worth of data for an organization
 interface ICorporationPeriod {
   id: string;
   donationsByMonth: ICorporationDonation[];
   topDonators: ICorporationEmployeeDonation[];
   donationsByParty: ICorporateDonationToParty[];
+  topRecipients: ITopRecipient[];
 }
 
 // Organization that stores a set of Records (key: period, value: period_data)
@@ -109,8 +118,8 @@ interface IUniversity {
 
 interface UniversityAction {
   type: string;
-  university: ICorporation;
-  period: ICorporationPeriod;
+  university: IUniversity;
+  period: IUniversityPeriod;
 }
 
 /* Shared types */

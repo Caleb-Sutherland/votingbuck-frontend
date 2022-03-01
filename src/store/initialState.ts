@@ -21,7 +21,8 @@ export const initialState: DataState = {
             { contributor: "William Mendoza", total_amount: 162192.21 },
             { contributor: "Walter Hernandez", total_amount: 138196.64 },
           ],
-          donationsByParty: []
+          donationsByParty: [],
+          topRecipients: []
         },
         "2016-2018": {
           id: "2016-2018",
@@ -39,7 +40,8 @@ export const initialState: DataState = {
             { contributor: "William Mendoza", total_amount: 162192.21 },
             { contributor: "Walter Hernandez", total_amount: 138196.64 },
           ],
-          donationsByParty: []
+          donationsByParty: [],
+          topRecipients: []
         },
       },
     },

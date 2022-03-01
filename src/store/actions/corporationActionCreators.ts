@@ -27,6 +27,7 @@ export function getCorporationPeriod(
         donationsByMonth: corpData.donationsByMonth,
         topDonators: corpData.topDonators,
         donationsByParty: corpData.donationsByParty,
+        topRecipients: corpData.topRecipients
       },
     };
 

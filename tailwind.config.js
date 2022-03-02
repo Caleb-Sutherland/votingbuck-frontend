@@ -5,6 +5,12 @@ module.exports = {
       primary: "#0015BC",
       secondary: "#FF0000",
       other: "#22c74e",
+      white: "white",
+      black: "black",
+      selectBg: "white",
+      selectBorder: "#e3edfc",
+      selectBorderActive: "#6b96db"
+
     },
     extend: {},
   },

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 import { Dispatch } from "redux";
@@ -7,7 +7,7 @@ import { addCorporationPeriod } from "../store/actions/corporationActionCreators
 import TopDonatorsGraph from "../components/corporation_charts/TopDonatorsGraph";
 import DonationsOverPeriod from "../components/corporation_charts/DonationsOverPeriod";
 import DonationsByParty from "../components/corporation_charts/DonationsByParty";
-import TopRecipients from "../components/corporation_charts/TopRecipients";
+import TopRecipientsByDollar from "../components/corporation_charts/TopRecipientsByDollar";
 
 export default function Corporation() {
   // Master period control
@@ -18,8 +18,18 @@ export default function Corporation() {
   // Setup the redux store
   const dispatch: Dispatch<any> = useDispatch();
 
-  // Enter the periods data into the redux store
-  dispatch(addCorporationPeriod(corp_id, current_period));
+  const testCall = async () => {
+    const res = await fetch(
+      "http://ec2-3-144-157-84.us-east-2.compute.amazonaws.com/organizations/1"
+    );
+    const data = await res.json();
+    console.log(data);
+  };
+  useEffect(() => {
+    testCall();
+    // Enter the periods data into the redux store
+    dispatch(addCorporationPeriod(corp_id, current_period));
+  }, [dispatch]);
 
   // Access the redux store
   const corporations: Record<number, ICorporation> = useSelector(
@@ -32,27 +42,66 @@ export default function Corporation() {
   ) {
     return (
       <div>
-        <div className="ml-16 mt-16 mb-8">
-          <h1 className="text-3xl font-bold">{corporations[corp_id].name}</h1>
-          <span>Corporation</span>
+        <div className="flex flex-col justify-content-center content-center lg:ml-16 lg:mt-16 mb-8">
+          <h1 className="text-3xl mt-8 font-bold text-center lg:text-left lg:mt-0">
+            {corporations[corp_id].name}
+          </h1>
+          <span className="text-center lg:text-left">Corporation</span>
         </div>
-        <div className="pl-14 pr-14 h-screen w-full overflow-auto">
-          <div className="grid grid-cols-12 grid-rows-3 gap-x-1 gap-y-8 h-full">
-            <div className="col-start-1 col-end-5 row-span-1">
-              <TopDonatorsGraph corpId={corp_id} globalPeriod={current_period} />
-            </div>
-            <div className="col-start-5 col-end-9 row-span-1">
-              <DonationsOverPeriod
-                corpId={corp_id}
-                globalPeriod={current_period}
-              />
-            </div>
-            <div className="col-start-9 col-end-12 row-span-1">
-              <DonationsByParty corpId={corp_id} globalPeriod={current_period} />
-            </div>
-            <div className="col-start-1 col-end-5 row-start-2 row-end-3">
-              <TopRecipients corpId={corp_id} globalPeriod={current_period} />
-            </div>
+        <div className="flex flex-col w-full lg:overflow-auto lg:pl-14 lg:pr-14 lg:h-screen lg:grid lg:grid-cols-12 lg:grid-rows-3 lg:gap-x-12 lg:gap-y-16 lg:mb-16">
+          <div className="mb-4 flex justify-content-center content-center rounded overflow-hidden shadow-md lg:mb-0 col-start-1 col-end-5 row-start-1 lg:col-start-1 lg:col-end-5 lg:row-start-1">
+            <TopRecipientsByDollar
+              corpId={corp_id}
+              globalPeriod={current_period}
+            />
+          </div>
+          <div className="mb-4 flex justify-content-center content-center rounded overflow-hidden shadow-md lg:mb-0 lg:col-start-5 lg:col-end-9 lg:row-start-1">
+            <TopRecipientsByDollar
+              corpId={corp_id}
+              globalPeriod={current_period}
+            />
+          </div>
+          <div className="mb-4 flex justify-content-center content-center rounded overflow-hidden shadow-md lg:mb-0 lg:col-start-9 lg:col-end-13 lg:row-start-1">
+            <TopRecipientsByDollar
+              corpId={corp_id}
+              globalPeriod={current_period}
+            />
+          </div>
+          <div className="mb-4 flex justify-content-center content-center rounded overflow-hidden shadow-md lg:mb-0 lg:col-start-1 lg:col-end-5 lg:row-start-2">
+            <TopRecipientsByDollar
+              corpId={corp_id}
+              globalPeriod={current_period}
+            />
+          </div>
+          <div className="mb-4 flex justify-content-center content-center rounded overflow-hidden shadow-md lg:mb-0 lg:col-start-5 lg:col-end-9 lg:row-start-2">
+            <TopRecipientsByDollar
+              corpId={corp_id}
+              globalPeriod={current_period}
+            />
+          </div>
+          <div className="mb-4 flex justify-content-center content-center rounded overflow-hidden shadow-md lg:mb-0 lg:col-start-9 lg:col-end-13 lg:row-start-2">
+            <TopRecipientsByDollar
+              corpId={corp_id}
+              globalPeriod={current_period}
+            />
+          </div>
+          <div className="mb-4 flex justify-content-center content-center rounded overflow-hidden shadow-md lg:mb-0 lg:col-start-1 lg:col-end-5 lg:row-start-3">
+            <TopRecipientsByDollar
+              corpId={corp_id}
+              globalPeriod={current_period}
+            />
+          </div>
+          <div className="mb-4 flex justify-content-center content-center rounded overflow-hidden shadow-md lg:mb-0 lg:col-start-5 lg:col-end-9 lg:row-start-3">
+            <TopRecipientsByDollar
+              corpId={corp_id}
+              globalPeriod={current_period}
+            />
+          </div>
+          <div className="mb-4 flex justify-content-center content-center rounded overflow-hidden shadow-md lg:mb-0 lg:col-start-9 lg:col-end-13 lg:row-start-3">
+            <TopRecipientsByDollar
+              corpId={corp_id}
+              globalPeriod={current_period}
+            />
           </div>
         </div>
       </div>

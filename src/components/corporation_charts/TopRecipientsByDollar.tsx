@@ -87,11 +87,11 @@ export default function TopRecipientsByDollar(props: any) {
 
     return (
       <div className="h-full w-full">
-        <div className="w-full grid grid-cols-3 mb-3">
-          <span className="col-start-1 flex justify-center">
+        <div className="w-full grid grid-cols-12 mb-3">
+          <span className="col-start-1 col-end-6 flex justify-center">
             Top Recipients ($)
           </span>
-          <div className="col-start-3 col-end-3 flex justify-center">
+          <div className="col-start-10 col-end-13 flex justify-center">
             <TileSelectBox
               onChange={setLocalPeriod}
               periods={["2016-2018", "2018-2020", "2020-2022"]}

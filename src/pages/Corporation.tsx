@@ -8,25 +8,18 @@ import TopDonatorsGraph from "../components/corporation_charts/TopDonatorsGraph"
 import DonationsOverPeriod from "../components/corporation_charts/DonationsOverPeriod";
 import DonationsByParty from "../components/corporation_charts/DonationsByParty";
 import TopRecipientsByDollar from "../components/corporation_charts/TopRecipientsByDollar";
+import TopRecipientsByDonation from "../components/corporation_charts/TopRecipientsByDonation";
 
 export default function Corporation() {
   // Master period control
-  const default_period = "2018-2020";
+  const default_period = "2019-2020";
   const [current_period, setCurrentPeriod] = useState(default_period);
   const corp_id = 1; // Needs to be a prop passed to the page or taken from url
 
   // Setup the redux store
   const dispatch: Dispatch<any> = useDispatch();
 
-  const testCall = async () => {
-    const res = await fetch(
-      "http://ec2-3-144-157-84.us-east-2.compute.amazonaws.com/organizations/1"
-    );
-    const data = await res.json();
-    console.log(data);
-  };
   useEffect(() => {
-    testCall();
     // Enter the periods data into the redux store
     dispatch(addCorporationPeriod(corp_id, current_period));
   }, [dispatch]);
@@ -40,7 +33,7 @@ export default function Corporation() {
     corporations[corp_id] !== undefined &&
     corporations[corp_id].periods[current_period] !== undefined
   ) {
-    const tailwindTileStyles = "pl-3 pr-3 pt-2 pb-2 mb-4 flex justify-content-center content-center rounded overflow-hidden shadow-md lg:mb-0 lg:pl-1 lg:pr-1 lg:pt-1 lg:pb-1 " + " ";
+    const tailwindTileStyles = "pl-3 pr-3 pt-2 pb-2 mb-4 flex justify-content-center content-center rounded overflow-hidden shadow-md lg:mb-0 lg:pt-2 lg:pb-2 " + " ";
     return (
       <div>
         <div className="flex flex-col justify-content-center content-center lg:ml-16 lg:mt-16 mb-8">
@@ -69,19 +62,19 @@ export default function Corporation() {
             />
           </div>
           <div className={tailwindTileStyles + "lg:col-start-1 lg:col-end-5 lg:row-start-2"}>
-            <TopRecipientsByDollar
+            <TopRecipientsByDonation
               corpId={corp_id}
               globalPeriod={current_period}
             />
           </div>
           <div className={tailwindTileStyles + "lg:col-start-5 lg:col-end-9 lg:row-start-2"}>
-            <TopRecipientsByDollar
+            <TopRecipientsByDonation
               corpId={corp_id}
               globalPeriod={current_period}
             />
           </div>
           <div className={tailwindTileStyles + "lg:col-start-9 lg:col-end-13 lg:row-start-2"}>
-            <TopRecipientsByDollar
+            <TopRecipientsByDonation
               corpId={corp_id}
               globalPeriod={current_period}
             />

@@ -17,17 +17,29 @@ export function getCorporationPeriod(
   period_id: string
 ) {
   return async (dispatch: DispatchType) => {
-    // Get real data from database here
+    
+    
+    // Get the correct range of years from the period_id
+    const period_dates: string[] = period_id.split("-");
+    period_dates[0] = (parseInt(period_dates[0]) - 1).toString() + "-11-03";
+    period_dates[1] = period_dates[1] + "-11-03";
+
+    // Fetch data from the backend
+    const res = await fetch(
+      `http://localhost:3000/organizations/${corporation_id}?start_date=${period_dates[0]}&end_date=${period_dates[1]}`
+    );
+    const data = await res.json();
 
     // Using the temp data for now, construct an organization
-    const corporation: ICorporation = { ...corpData.orgInfo, periods: {} };
+    const corporation: ICorporation = { ...data.orgInfo, periods: {} };
     corporation.periods = {
       period_id: {
         id: period_id,
-        donationsByMonth: corpData.donationsByMonth,
-        topDonators: corpData.topDonators,
-        donationsByParty: corpData.donationsByParty,
-        topRecipients: corpData.topRecipients
+        donationsByMonth: data.donationsByMonth,
+        topDonators: data.topDonators,
+        donationsByParty: data.donationsByParty,
+        topRecipientsDollar: data.topRecipientsDollar,
+        topRecipientsDonation: data.topRecipientsDonation
       },
     };
 

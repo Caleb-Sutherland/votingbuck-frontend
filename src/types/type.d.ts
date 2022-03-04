@@ -18,11 +18,19 @@ interface ICorporateDonationToParty {
   total_amount: number;
 }
 
-// Top recipients that a corporation donates to
-interface ITopRecipient {
+// Top recipients that a corporation donates to in dollars
+interface ITopRecipientDollar {
+  id: number;
   name: string;
   party: string;
-  dollars_received: number;
+  amount_received: number;
+}
+
+// Top recipients that a corporation donates to
+interface ITopRecipientDonation {
+  id: number;
+  name: string;
+  party: string;
   donations_received: number;
 }
 
@@ -32,7 +40,8 @@ interface ICorporationPeriod {
   donationsByMonth: ICorporationDonation[];
   topDonators: ICorporationEmployeeDonation[];
   donationsByParty: ICorporateDonationToParty[];
-  topRecipients: ITopRecipient[];
+  topRecipientsDollar: ITopRecipientDollar[];
+  topRecipientsDonation: ITopRecipientDonation[];
 }
 
 // Organization that stores a set of Records (key: period, value: period_data)

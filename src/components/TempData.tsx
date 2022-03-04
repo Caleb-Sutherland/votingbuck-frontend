@@ -175,36 +175,36 @@ export const corpData = {
   ],
   topRecipients: [
     {
+      id: 1,
       name: "Saundas",
       party: "democratic",
-      dollars_received: 4024.50,
-      donations_received: 30
+      amount_received: 4024.5,
     },
     {
+      id: 2,
       name: "Biden",
       party: "democratic",
-      dollars_received: 500.50,
-      donations_received: 30
+      amount_received: 500.5,
     },
     {
+      id: 3,
       name: "Cortee",
       party: "republican",
-      dollars_received: 4024.50,
-      donations_received: 30
+      amount_received: 4024.5,
     },
     {
+      id: 4,
       name: "Coelho",
       party: "individual",
-      dollars_received: 3000.50,
-      donations_received: 30
+      amount_received: 3000.5,
     },
     {
+      id: 5,
       name: "Hillier",
       party: "republican",
-      dollars_received: 5000.50,
-      donations_received: 30
+      amount_received: 5000.5,
     },
-  ]
+  ],
 };
 
 export const poliData = {

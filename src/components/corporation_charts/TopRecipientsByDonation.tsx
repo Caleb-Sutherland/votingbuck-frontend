@@ -16,7 +16,7 @@ import { graph_colors } from "../../graph_colors";
 import TileSelectBox from "../TileSelectBox";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
 
-export default function TopRecipientsByDollar(props: any) {
+export default function TopRecipientsByDonation(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
 
   // Set up dispatch to be able to add local periods
@@ -57,8 +57,9 @@ export default function TopRecipientsByDollar(props: any) {
     if (!active) {
       return null;
     }
+    console.log(payload);
     const data = payload[0].payload;
-    
+    console.log(data);
     let fill;
     if (data.party == "democratic") {
       fill = graph_colors.democratic;
@@ -67,7 +68,7 @@ export default function TopRecipientsByDollar(props: any) {
     } else {
       fill = graph_colors.other;
     }
-    return <div className="bg-other p-4 text-white opacity-90 rounded-2xl" style={{backgroundColor: fill}}>Dollars Received: {data.amount_received}</div>;
+    return <div className="bg-other p-4 text-white opacity-90 rounded-2xl" style={{backgroundColor: fill}}>Dollars Received: {data.donations_received}</div>;
   };
 
   // Ensure that this periods data has been successfully loaded into the redux store
@@ -75,11 +76,11 @@ export default function TopRecipientsByDollar(props: any) {
     // Data to feed the graph
     const data = corporation[props.corpId].periods[
       localPeriod
-    ].topRecipientsDollar.sort((a: ITopRecipientDollar, b: ITopRecipientDollar): number => {
-      if (a.amount_received < b.amount_received) {
+    ].topRecipientsDonation.sort((a: ITopRecipientDonation, b: ITopRecipientDonation): number => {
+      if (a.donations_received < b.donations_received) {
         return 1;
       }
-      if (a.amount_received > b.amount_received) {
+      if (a.donations_received > b.donations_received) {
         return -1;
       }
       return 0;
@@ -89,7 +90,7 @@ export default function TopRecipientsByDollar(props: any) {
       <div className="h-full w-full">
         <div className="w-full grid grid-cols-12 mb-3">
           <span className="col-start-1 col-end-6 flex justify-center">
-            Top Recipients ($)
+            Top Recipients (# of Donations)
           </span>
           <div className="col-start-10 col-end-13 flex justify-center">
             <TileSelectBox
@@ -111,7 +112,7 @@ export default function TopRecipientsByDollar(props: any) {
             <XAxis type="number" hide />
             <YAxis type="category" width={150} dataKey="name" />
             <Tooltip content={CustomTooltip} />
-            <Bar dataKey="amount_received" shape={CustomBar} />
+            <Bar dataKey="donations_received" shape={CustomBar} />
           </BarChart>
         </ResponsiveContainer>
       </div>

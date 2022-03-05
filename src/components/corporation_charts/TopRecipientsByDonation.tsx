@@ -57,9 +57,9 @@ export default function TopRecipientsByDonation(props: any) {
     if (!active) {
       return null;
     }
-    console.log(payload);
+
     const data = payload[0].payload;
-    console.log(data);
+
     let fill;
     if (data.party == "democratic") {
       fill = graph_colors.democratic;
@@ -68,7 +68,14 @@ export default function TopRecipientsByDonation(props: any) {
     } else {
       fill = graph_colors.independent;
     }
-    return <div className="bg-other p-4 text-white opacity-90 rounded-2xl" style={{backgroundColor: fill}}>Dollars Received: {data.donations_received}</div>;
+    return (
+      <div
+        className="bg-other p-4 text-white opacity-90 rounded-2xl"
+        style={{ backgroundColor: fill }}
+      >
+        Donations Received: {data.donations_received}
+      </div>
+    );
   };
 
   // Ensure that this periods data has been successfully loaded into the redux store
@@ -76,15 +83,17 @@ export default function TopRecipientsByDonation(props: any) {
     // Data to feed the graph
     const data = corporation[props.corpId].periods[
       localPeriod
-    ].topRecipientsDonation.sort((a: ITopRecipientDonation, b: ITopRecipientDonation): number => {
-      if (a.donations_received < b.donations_received) {
-        return 1;
+    ].topRecipientsDonation.sort(
+      (a: ITopRecipientDonation, b: ITopRecipientDonation): number => {
+        if (a.donations_received < b.donations_received) {
+          return 1;
+        }
+        if (a.donations_received > b.donations_received) {
+          return -1;
+        }
+        return 0;
       }
-      if (a.donations_received > b.donations_received) {
-        return -1;
-      }
-      return 0;
-    });
+    );
 
     return (
       <div className="h-full w-full">
@@ -118,6 +127,21 @@ export default function TopRecipientsByDonation(props: any) {
       </div>
     );
   } else {
-    return <div>Loading... (Data for this period may not exist!)</div>;
+    return (
+      <div className="h-full w-full">
+        <div className="w-full grid grid-cols-12 mb-3">
+          <span className="col-start-1 col-end-6 flex justify-center">
+            Top Recipients (# of Donations)
+          </span>
+          <div className="col-start-10 col-end-13 flex justify-center">
+            <TileSelectBox
+              onChange={setLocalPeriod}
+              periods={["2017-2018", "2019-2020", "2021-2022"]}
+              defaultValue={localPeriod}
+            />
+          </div>
+        </div>
+      </div>
+    );
   }
 }

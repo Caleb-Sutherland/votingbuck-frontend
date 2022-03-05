@@ -45,7 +45,7 @@ export default function TopRecipientsByDonation(props: any) {
     } else if (props.party == "republican") {
       fill = graph_colors.republican;
     } else {
-      fill = graph_colors.other;
+      fill = graph_colors.independent;
     }
 
     //use explicit fill here, or use the additional css class and make a css selector to update fill there
@@ -66,7 +66,7 @@ export default function TopRecipientsByDonation(props: any) {
     } else if (data.party == "republican") {
       fill = graph_colors.republican;
     } else {
-      fill = graph_colors.other;
+      fill = graph_colors.independent;
     }
     return <div className="bg-other p-4 text-white opacity-90 rounded-2xl" style={{backgroundColor: fill}}>Dollars Received: {data.donations_received}</div>;
   };

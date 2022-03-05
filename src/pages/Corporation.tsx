@@ -6,9 +6,9 @@ import { addCorporationPeriod } from "../store/actions/corporationActionCreators
 
 import TopDonatorsGraph from "../components/corporation_charts/TopDonatorsGraph";
 import DonationsOverPeriod from "../components/corporation_charts/DonationsOverPeriod";
-import DonationsByParty from "../components/corporation_charts/DonationsByParty";
 import TopRecipientsByDollar from "../components/corporation_charts/TopRecipientsByDollar";
 import TopRecipientsByDonation from "../components/corporation_charts/TopRecipientsByDonation";
+import ContributionShareByParty from "../components/corporation_charts/ContributionShareByParty";
 
 export default function Corporation() {
   // Master period control
@@ -56,7 +56,7 @@ export default function Corporation() {
             />
           </div>
           <div className={tailwindTileStyles + "lg:col-start-9 lg:col-end-13 lg:row-start-1"}>
-            <TopRecipientsByDollar
+            <ContributionShareByParty
               corpId={corp_id}
               globalPeriod={current_period}
             />

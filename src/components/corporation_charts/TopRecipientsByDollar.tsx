@@ -15,6 +15,7 @@ import {
 import { graph_colors } from "../../graph_colors";
 import TileSelectBox from "../TileSelectBox";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
+import * as format from "../../helper/formatting";
 
 export default function TopRecipientsByDollar(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -45,7 +46,7 @@ export default function TopRecipientsByDollar(props: any) {
     } else if (props.party == "republican") {
       fill = graph_colors.republican;
     } else {
-      fill = graph_colors.other;
+      fill = graph_colors.independent;
     }
 
     //use explicit fill here, or use the additional css class and make a css selector to update fill there
@@ -65,9 +66,9 @@ export default function TopRecipientsByDollar(props: any) {
     } else if (data.party == "republican") {
       fill = graph_colors.republican;
     } else {
-      fill = graph_colors.other;
+      fill = graph_colors.independent;
     }
-    return <div className="bg-other p-4 text-white opacity-90 rounded-2xl" style={{backgroundColor: fill}}>Dollars Received: {data.amount_received}</div>;
+    return <div className="bg-other p-4 text-white opacity-90 rounded-2xl" style={{backgroundColor: fill}}>Dollars Received: {format.formatNumber(data.amount_received)}</div>;
   };
 
   // Ensure that this periods data has been successfully loaded into the redux store

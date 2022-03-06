@@ -39,7 +39,8 @@ export function getCorporationPeriod(
         topDonators: data.topDonators,
         donationsByParty: data.donationsByParty,
         topRecipientsDollar: data.topRecipientsDollar,
-        topRecipientsDonation: data.topRecipientsDonation
+        topRecipientsDonation: data.topRecipientsDonation,
+        ideologyDistribution: data.ideologyDistribution
       },
     };
 

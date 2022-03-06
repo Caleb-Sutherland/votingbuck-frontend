@@ -34,6 +34,12 @@ interface ITopRecipientDonation {
   donations_received: number;
 }
 
+// Ideology score based on who a company donated to
+interface IIdeologyScore {
+  ideology: number;
+  dollars_donated: number;
+}
+
 // Stores on period's worth of data for an organization
 interface ICorporationPeriod {
   id: string;
@@ -42,6 +48,7 @@ interface ICorporationPeriod {
   donationsByParty: ICorporateDonationToParty[];
   topRecipientsDollar: ITopRecipientDollar[];
   topRecipientsDonation: ITopRecipientDonation[];
+  ideologyDistribution: IIdeologyScore[];
 }
 
 // Organization that stores a set of Records (key: period, value: period_data)
@@ -58,6 +65,7 @@ interface CorporationAction {
   corporation: ICorporation;
   period: ICorporationPeriod;
 }
+
 
 /* Politician types */
 // Period for politicians

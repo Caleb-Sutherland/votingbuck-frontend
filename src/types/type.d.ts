@@ -40,6 +40,11 @@ interface IIdeologyScore {
   dollars_donated: number;
 }
 
+interface ITotalContributionsDollar {
+  dollars_donated: number;
+  date: string;
+}
+
 // Stores on period's worth of data for an organization
 interface ICorporationPeriod {
   id: string;
@@ -49,6 +54,7 @@ interface ICorporationPeriod {
   topRecipientsDollar: ITopRecipientDollar[];
   topRecipientsDonation: ITopRecipientDonation[];
   ideologyDistribution: IIdeologyScore[];
+  totalContributionsDollar: ITotalContributionsDollar[];
 }
 
 // Organization that stores a set of Records (key: period, value: period_data)

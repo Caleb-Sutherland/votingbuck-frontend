@@ -108,8 +108,8 @@ export default function ContributionShareByParty(props: any) {
           className="bg-other p-4 text-white opacity-90 rounded-2xl"
           style={{ backgroundColor: fill }}
         >
-          {format.capitalizeWord(data.name)} Party: $
-          {format.formatNumber(data.value)}
+          <div>{format.capitalizeWord(data.name)} Party</div>
+          <div>Received: ${format.formatNumber(data.value)}</div>
         </div>
       );
     };

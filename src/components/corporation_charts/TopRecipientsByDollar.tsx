@@ -73,7 +73,7 @@ export default function TopRecipientsByDollar(props: any) {
         className="bg-other p-4 text-white opacity-90 rounded-2xl"
         style={{ backgroundColor: fill }}
       >
-        Dollars Received: {format.formatNumber(data.amount_received)}
+        Received: ${format.formatNumber(data.amount_received)}
       </div>
     );
   };

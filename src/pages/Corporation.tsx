@@ -8,6 +8,7 @@ import TopRecipientsByDollar from "../components/corporation_charts/TopRecipient
 import TopRecipientsByDonation from "../components/corporation_charts/TopRecipientsByDonation";
 import ContributionShareByParty from "../components/corporation_charts/ContributionShareByParty";
 import ImputedIdeology from "../components/corporation_charts/ImputedIdeology";
+import TotalContributionsByDollar from "../components/corporation_charts/TotalContributionsByDollar";
 
 export default function Corporation() {
   // Master period control
@@ -87,7 +88,7 @@ export default function Corporation() {
               tailwindTileStyles + "lg:col-start-5 lg:col-end-9 lg:row-start-2"
             }
           >
-            <TopRecipientsByDonation
+            <TotalContributionsByDollar
               corpId={corp_id}
               globalPeriod={current_period}
             />

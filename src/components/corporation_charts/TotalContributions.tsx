@@ -117,10 +117,7 @@ export default function TotalContributions(props: any) {
             <span>{data.date_range}</span>
           </div>
           <div>
-            <span>
-              Number of donations:{" "}
-              {data.number_of_donations}
-            </span>
+            <span>Number of donations: {data.number_of_donations}</span>
           </div>
         </div>
       );
@@ -129,8 +126,8 @@ export default function TotalContributions(props: any) {
     return (
       <div className="h-full w-full">
         <div className="w-full grid grid-cols-12 mb-3">
-          <span className="col-start-1 col-end-6 flex justify-center">
-            Total Donations
+          <span className="col-start-1 col-end-8 flex justify-start">
+            Total Donations (# of Donations)
           </span>
         </div>
         <ResponsiveContainer width="100%">
@@ -159,7 +156,7 @@ export default function TotalContributions(props: any) {
       <div className="h-full w-full">
         <div className="w-full grid grid-cols-12 mb-3">
           <span className="col-start-1 col-end-6 flex justify-center">
-            Total Donations
+            Total Donations (# of Donations)
           </span>
         </div>
       </div>

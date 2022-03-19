@@ -9,8 +9,10 @@ module.exports = {
       black: "black",
       selectBg: "white",
       selectBorder: "#e3edfc",
-      selectBorderActive: "#6b96db"
-
+      selectBorderActive: "#6b96db",
+      blue: "#2563EB",
+      red: "#EF4444",
+      lightGreyText: "#4B5563",
     },
     extend: {},
   },

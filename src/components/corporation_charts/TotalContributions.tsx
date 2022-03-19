@@ -20,7 +20,7 @@ import TileSelectBox from "../TileSelectBox";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
 import * as format from "../../helper/formatting";
 
-export default function TotalContributionsByDollar(props: any) {
+export default function TotalContributions(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
 
   // Set up dispatch to be able to add local periods
@@ -60,7 +60,7 @@ export default function TotalContributionsByDollar(props: any) {
       }
     );
 
-    // Iterate over donations and group then into intervals by month
+    // Iterate over donations and group then into intervals of 3 months
     let start: Date = new Date(Date.parse(data[0].date));
     const end: Date = new Date(Date.parse(data[0].date));
     const month_group_number = 6;
@@ -72,7 +72,7 @@ export default function TotalContributionsByDollar(props: any) {
       const current_date = new Date(Date.parse(data[i].date));
       if (current_date.getTime() <= end.getTime()) {
         // Date is within our current interval, so add its donations to the current total
-        total_donations += data[i].dollars_donated;
+        total_donations += 1;
       } else {
         // The interval has been passed, so add the current total donations, then start the next interval
         smoothed_data.push({
@@ -80,12 +80,12 @@ export default function TotalContributionsByDollar(props: any) {
             start.toDateString().split(" ").slice(1).join(" ") +
             " - " +
             end.toDateString().split(" ").slice(1).join(" "),
-          dollars_donated: total_donations,
+          number_of_donations: total_donations,
         });
         start = new Date(end.getTime());
         start.setDate(start.getDate() + 1);
         end.setMonth(end.getMonth() + month_group_number);
-        total_donations = data[i].dollars_donated;
+        total_donations = 1;
       }
     }
 
@@ -97,7 +97,7 @@ export default function TotalContributionsByDollar(props: any) {
           start.toDateString().split(" ").slice(1).join(" ") +
           " - " +
           temp.toDateString().split(" ").slice(1).join(" "),
-        dollars_donated: total_donations,
+        number_of_donations: total_donations,
       });
     }
 
@@ -117,7 +117,10 @@ export default function TotalContributionsByDollar(props: any) {
             <span>{data.date_range}</span>
           </div>
           <div>
-            <span>Donated: ${format.formatNumber(data.dollars_donated)}</span>
+            <span>
+              Number of donations:{" "}
+              {data.number_of_donations}
+            </span>
           </div>
         </div>
       );
@@ -127,7 +130,7 @@ export default function TotalContributionsByDollar(props: any) {
       <div className="h-full w-full">
         <div className="w-full grid grid-cols-12 mb-3">
           <span className="col-start-1 col-end-6 flex justify-center">
-            Total Donations ($)
+            Total Donations
           </span>
         </div>
         <ResponsiveContainer width="100%">
@@ -139,11 +142,11 @@ export default function TotalContributionsByDollar(props: any) {
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="ideology" ticks={[-1, 0, 1]} />
-            <YAxis dataKey="dollars_donated" />
+            <YAxis dataKey="number_of_donations" />
             <Tooltip content={CustomTooltip} />
             <Line
               type="monotone"
-              dataKey="dollars_donated"
+              dataKey="number_of_donations"
               stroke="#8884d8"
               dot={false}
             />
@@ -156,7 +159,7 @@ export default function TotalContributionsByDollar(props: any) {
       <div className="h-full w-full">
         <div className="w-full grid grid-cols-12 mb-3">
           <span className="col-start-1 col-end-6 flex justify-center">
-          Total Donations ($) 
+            Total Donations
           </span>
         </div>
       </div>

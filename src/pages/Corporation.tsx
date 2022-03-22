@@ -11,6 +11,7 @@ import ImputedIdeology from "../components/corporation_charts/ImputedIdeology";
 import TotalContributionsByDollar from "../components/corporation_charts/TotalContributionsByDollar";
 import TotalContributions from "../components/corporation_charts/TotalContributions";
 import CompanyInfo from "../components/corporation_charts/CompanyInfo";
+import RegisteredVoters from "../components/corporation_charts/RegisteredVoters";
 
 export default function Corporation() {
   // Master period control
@@ -54,7 +55,7 @@ export default function Corporation() {
               tailwindTileStyles + "lg:col-start-7 lg:col-end-10 lg:row-start-1"
             }
           >
-            <ContributionShareByParty
+            <RegisteredVoters
               corpId={corp_id}
               globalPeriod={current_period}
             />

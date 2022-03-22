@@ -40,9 +40,17 @@ interface IIdeologyScore {
   dollars_donated: number;
 }
 
+// Total contributions a corporation donates in dollars
 interface ITotalContributionsDollar {
   dollars_donated: number;
   date: string;
+}
+
+// Registered voters on board of directors at a company
+interface IRegisteredVoters {
+  [democratic: string]: number;
+  [republican: string]: number;
+  [independent: string]: number;
 }
 
 // Stores on period's worth of data for an organization
@@ -55,6 +63,7 @@ interface ICorporationPeriod {
   topRecipientsDonation: ITopRecipientDonation[];
   ideologyDistribution: IIdeologyScore[];
   totalContributionsDollar: ITotalContributionsDollar[];
+  registeredVoters: IRegisteredVoters[];
 }
 
 // Organization that stores a set of Records (key: period, value: period_data)

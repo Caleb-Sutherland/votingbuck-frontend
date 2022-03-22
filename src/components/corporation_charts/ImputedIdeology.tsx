@@ -83,7 +83,6 @@ export default function ImputedIdeology(props: any) {
     const group_size = 21; // Must be odd number
     let mid_ideology;
     let average_amount;
-    console.log(formattedData);
     for (let i = 0; i <= formattedData.length - group_size; i++) {
       // Get the group
       const group = [];
@@ -105,7 +104,6 @@ export default function ImputedIdeology(props: any) {
       smoothed_data.push({ideology: mid_ideology, dollars_donated: average_amount});
     }
 
-    console.log(smoothed_data);
     // Custom tooltip style for each bar
     const CustomTooltip = ({ active, payload }: any) => {
       if (!active) {

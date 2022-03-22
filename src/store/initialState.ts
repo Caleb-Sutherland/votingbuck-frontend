@@ -25,7 +25,8 @@ export const initialState: DataState = {
           topRecipientsDollar: [],
           topRecipientsDonation: [],
           ideologyDistribution: [],
-          totalContributionsDollar: []
+          totalContributionsDollar: [],
+          registeredVoters: [{ democratic: 0, republican: 0, independent: 0 }],
         },
       },
     },

@@ -14,7 +14,7 @@ import * as format from "../../helper/formatting";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
 import TileSelectBox from "../TileSelectBox";
 
-export default function ContributionShareByParty(props: any) {
+export default function RegisteredVoters(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
 
   // Set up dispatch to be able to add local periods
@@ -36,20 +36,31 @@ export default function ContributionShareByParty(props: any) {
   );
 
   if (localPeriod in corporation[props.corpId].periods) {
-    const data =
-      corporation[props.corpId].periods[localPeriod].donationsByParty;
+    const data: IRegisteredVoters[] =
+      corporation[props.corpId].periods[localPeriod].registeredVoters;
 
-    const formattedData = data.map((item: ICorporateDonationToParty): any => {
-      let fill_color;
-      if (item.party === "democratic") {
-        fill_color = graph_colors.democratic;
-      } else if (item.party == "republican") {
-        fill_color = graph_colors.republican;
+    const formattedData: { name: string; value: number; fill: string }[] = [];
+    for (const key in data[0]) {
+      if (key === "republican") {
+        formattedData.push({
+          name: key,
+          value: data[0][key],
+          fill: graph_colors.republican,
+        });
+      } else if (key === "democratic") {
+        formattedData.push({
+          name: key,
+          value: data[0][key],
+          fill: graph_colors.democratic,
+        });
       } else {
-        fill_color = graph_colors.independent;
+        formattedData.push({
+          name: key,
+          value: data[0][key],
+          fill: graph_colors.independent,
+        });
       }
-      return { name: item.party, value: item.total_amount, fill: fill_color };
-    });
+    }
 
     // Custom label positioning and content
     const renderCustomLabel = (entry: any) => {
@@ -128,7 +139,7 @@ export default function ContributionShareByParty(props: any) {
       <div className="h-full w-full pb-4">
         <div className="w-full grid grid-cols-12">
           <span className="col-start-1 col-end-6 flex justify-center">
-            Donations By Party ($)
+            Registered Voters
           </span>
           <div className="col-start-10 col-end-13 flex justify-center">
             <TileSelectBox
@@ -162,7 +173,7 @@ export default function ContributionShareByParty(props: any) {
       <div className="h-full w-full">
         <div className="w-full grid grid-cols-12">
           <span className="col-start-1 col-end-6 flex justify-center">
-            Donations By Party ($)
+            Registered Voters
           </span>
           <div className="col-start-10 col-end-13 flex justify-center">
             <TileSelectBox

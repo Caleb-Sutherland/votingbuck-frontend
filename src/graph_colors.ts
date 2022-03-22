@@ -1,5 +1,5 @@
 export const graph_colors = {
-  democratic: "#0015BC",
-  republican: "#FF0000",
-  independent: "#fed000",
+  democratic: "#2563EB",
+  republican: "#EF4444",
+  independent: "#fdfc0a",
 };

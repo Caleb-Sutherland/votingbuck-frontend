@@ -1,5 +1,4 @@
 import * as actionTypes from "./actionTypes";
-import { corpData } from "../../components/TempData";
 
 /* Period action creators */
 // Add a period to the store

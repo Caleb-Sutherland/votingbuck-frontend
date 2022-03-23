@@ -36,92 +36,76 @@ export default function Corporation() {
     corporations[corp_id] !== undefined &&
     corporations[corp_id].periods[current_period] !== undefined
   ) {
+    const tailwindGridRow =
+      "flex flex-col w-full lg:h-1/3 lg:overflow-auto lg:h-screen lg:grid lg:grid-cols-12 lg:gap-x-8 lg:mb-8 lg:pb-1 lg:pt-1" +
+      " ";
     const tailwindTileStyles =
-      "pl-3 pr-3 pt-2 pb-2 mb-4 flex justify-content-center content-center rounded overflow-hidden shadow-lg lg:mb-0 lg:pt-2 lg:pb-2 " +
+      "h-full w-full pl-3 pr-3 pt-2 pb-2 mb-4 flex justify-content-center content-center rounded overflow-hidden shadow-lg lg:mb-0 lg:pt-2 lg:pb-2" +
       " ";
     return (
       <div>
-        <div className="flex flex-col w-full lg:overflow-auto lg:h-screen lg:pl-14 lg:pr-14 lg:grid lg:grid-cols-12 lg:grid-rows-3 lg:gap-x-8 lg:gap-y-8 lg:mb-16 lg:mt-8">
-          <div
-            className={
-              tailwindTileStyles +
-              "lg:col-start-1 lg:col-end-7 lg:row-start-1"
-            }
-          >
-            <CompanyInfo corpId={corp_id} globalPeriod={current_period} name={corporations[corp_id].name} industry={"Corporation"} />
+        <div className="h-screen mt-16 lg:pl-16 lg:pr-16 lg:mb-16">
+          <div className={tailwindGridRow}>
+            <div className={tailwindTileStyles + "lg:col-start-1 lg:col-end-7"}>
+              <CompanyInfo
+                corpId={corp_id}
+                globalPeriod={current_period}
+                name={corporations[corp_id].name}
+                industry={"Corporation"}
+              />
+            </div>
+            <div
+              className={tailwindTileStyles + "lg:col-start-7 lg:col-end-10"}
+            >
+              <RegisteredVoters
+                corpId={corp_id}
+                globalPeriod={current_period}
+              />
+            </div>
+            <div
+              className={tailwindTileStyles + "lg:col-start-10 lg:col-end-13"}
+            >
+              <ContributionShareByParty
+                corpId={corp_id}
+                globalPeriod={current_period}
+              />
+            </div>
           </div>
-          <div
-            className={
-              tailwindTileStyles + "lg:col-start-7 lg:col-end-10 lg:row-start-1"
-            }
-          >
-            <RegisteredVoters
-              corpId={corp_id}
-              globalPeriod={current_period}
-            />
+          <div className={tailwindGridRow}>
+            <div className={tailwindTileStyles + "lg:col-start-1 lg:col-end-5"}>
+              <ImputedIdeology corpId={corp_id} globalPeriod={current_period} />
+            </div>
+            <div className={tailwindTileStyles + "lg:col-start-5 lg:col-end-9"}>
+              <TotalContributionsByDollar
+                corpId={corp_id}
+                globalPeriod={current_period}
+              />
+            </div>
+            <div
+              className={tailwindTileStyles + "lg:col-start-9 lg:col-end-13"}
+            >
+              <TotalContributions
+                corpId={corp_id}
+                globalPeriod={current_period}
+              />
+            </div>
           </div>
-          <div
-            className={
-              tailwindTileStyles + "lg:col-start-10 lg:col-end-13 lg:row-start-1"
-            }
-          >
-            <ContributionShareByParty
-              corpId={corp_id}
-              globalPeriod={current_period}
-            />
-          </div>
-          <div
-            className={
-              tailwindTileStyles + "lg:col-start-1 lg:col-end-5 lg:row-start-2"
-            }
-          >
-            <ImputedIdeology corpId={corp_id} globalPeriod={current_period} />
-          </div>
-          <div
-            className={
-              tailwindTileStyles + "lg:col-start-5 lg:col-end-9 lg:row-start-2"
-            }
-          >
-            <TotalContributionsByDollar
-              corpId={corp_id}
-              globalPeriod={current_period}
-            />
-          </div>
-          <div
-            className={
-              tailwindTileStyles + "lg:col-start-9 lg:col-end-13 lg:row-start-2"
-            }
-          >
-            <TotalContributions
-              corpId={corp_id}
-              globalPeriod={current_period}
-            />
-          </div>
-          <div
-            className={
-              tailwindTileStyles + "lg:col-start-1 lg:col-end-5 lg:row-start-3"
-            }
-          >
-            <TopRecipientsByDollar
-              corpId={corp_id}
-              globalPeriod={current_period}
-            />
-          </div>
-          <div
-            className={
-              tailwindTileStyles + "lg:col-start-5 lg:col-end-9 lg:row-start-3"
-            }
-          >
-            <TopRecipientsByDonation
-              corpId={corp_id}
-              globalPeriod={current_period}
-            />
-          </div>
-          <div
-            className={
-              tailwindTileStyles + "lg:col-start-9 lg:col-end-13 lg:row-start-3"
-            }
-          >
+          <div className={tailwindGridRow}>
+            <div className={tailwindTileStyles + "lg:col-start-1 lg:col-end-5"}>
+              <TopRecipientsByDollar
+                corpId={corp_id}
+                globalPeriod={current_period}
+              />
+            </div>
+            <div className={tailwindTileStyles + "lg:col-start-5 lg:col-end-9"}>
+              <TopRecipientsByDonation
+                corpId={corp_id}
+                globalPeriod={current_period}
+              />
+            </div>
+            <div
+              className={tailwindTileStyles + "lg:col-start-9 lg:col-end-13"}
+            ></div>
           </div>
         </div>
       </div>

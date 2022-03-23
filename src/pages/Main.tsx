@@ -46,7 +46,7 @@ export default function Main() {
                 enable: true,
                 outMode: "bounce",
                 random: false,
-                speed: 0.1,
+                speed: 0.3,
                 straight: false,
               },
               number: {

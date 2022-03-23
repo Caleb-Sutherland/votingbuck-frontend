@@ -73,7 +73,7 @@ export default function Main() {
         <div className="absolute flex flex-col space-y-24 py-48 px-20 inset-y-0 left-0 w-full">
           <div className="flex flex-col space-y-5 max-w-5xl m-auto">
             <p className="text-4xl sm:text-5xl font-medium text-center text-white">View political donation information for organizations and political figures.</p>  
-            <p className="text-2xl sm:text-3xl font-light text-center text-white leading-loose">Research and discover political associations through donation information.</p>
+            <p className="text-2xl sm:text-3xl font-light text-center text-white">Research and discover political associations through donation information.</p>
             <div className="flex flex-row space-x-2 justify-center">
               <input type="text" placeholder="Organization or Individual" className="w-72 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring shadow-lg rounded-lg"/>
             </div>
@@ -173,7 +173,7 @@ export default function Main() {
         </div>
         <div className="flex flex-col space-y-5 max-w-5xl m-auto">
           <p className="text-4xl sm:text-5xl font-medium text-center">About Voting Buck</p>  
-          <p className="text-2xl sm:text-3xl font-light text-center leading-10">Voting Buck's mission is to make political data available to everyone. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
+          <p className="text-2xl sm:text-3xl font-light text-center leading-10">Voting Buck&apos;s mission is to make political data available to everyone. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
         </div>
         <div className="-m-5 flex flex-row flex-wrap justify-center">
           <div className="m-8 w-80 relative flex flex-col">

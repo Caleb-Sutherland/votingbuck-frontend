@@ -86,8 +86,8 @@ export default function RegisteredVoters(props: any) {
         text_color = " white";
         label = "D";
       } else {
-        text_color = " black";
-        label = "I";
+        text_color = " white";
+        label = "O";
       }
 
       return (
@@ -129,8 +129,12 @@ export default function RegisteredVoters(props: any) {
           className={"bg-other p-4 opacity-90 rounded-2xl" + text_color}
           style={{ backgroundColor: fill }}
         >
-          <div>{format.capitalizeWord(data.name)} Party</div>
-          <div>Received: ${format.formatNumber(data.value)}</div>
+          <div>
+            {data.name !== "independent"
+              ? format.capitalizeWord(data.name) + " Party"
+              : "Other Parties"}
+            : {data.value} Voters
+          </div>
         </div>
       );
     };

@@ -41,7 +41,7 @@ export default function Corporation() {
       " ";
     return (
       <div>
-        <div className="flex flex-col w-full lg:overflow-auto lg:pl-14 lg:pr-14 lg:h-screen lg:grid lg:grid-cols-12 lg:grid-rows-3 lg:gap-x-8 lg:gap-y-8 lg:mb-16 lg:mt-8">
+        <div className="flex flex-col w-full lg:overflow-auto lg:h-screen lg:pl-14 lg:pr-14 lg:grid lg:grid-cols-12 lg:grid-rows-3 lg:gap-x-8 lg:gap-y-8 lg:mb-16 lg:mt-8">
           <div
             className={
               tailwindTileStyles +

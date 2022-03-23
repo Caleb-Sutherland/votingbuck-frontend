@@ -61,16 +61,21 @@ export default function TopRecipientsByDonation(props: any) {
     const data = payload[0].payload;
 
     let fill;
+    let text_color;
     if (data.party == "democratic") {
       fill = graph_colors.democratic;
+      text_color = " text-white";
     } else if (data.party == "republican") {
       fill = graph_colors.republican;
+      text_color = " text-white";
     } else {
       fill = graph_colors.independent;
+      text_color = " text-black";
     }
+
     return (
       <div
-        className="bg-other p-4 text-white opacity-90 rounded-2xl"
+        className={"bg-other p-4 opacity-90 rounded-2xl" + text_color}
         style={{ backgroundColor: fill }}
       >
         Donations Received: {data.donations_received}

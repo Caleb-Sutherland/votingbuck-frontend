@@ -22,8 +22,8 @@ export default function CompanyInfo(props: any) {
     <div className="lg:pt-8 pl-8 pr-8">
       <div className="flex">
         <img src={Logo} alt="Logo" className="h-14 w-14 mr-2"></img>
-        <div>
-          <div className="text-4xl font-bold">Apple</div>
+        <div className="mb-0.5">
+          <div className="text-4xl font-bold mb-0.5">Apple</div>
           <div className="text-lightGrayText">Tech - Cupertino, California</div>
         </div>
       </div>

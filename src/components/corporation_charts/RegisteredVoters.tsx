@@ -138,7 +138,7 @@ export default function RegisteredVoters(props: any) {
     return (
       <div className="h-full w-full pb-4">
         <div className="w-full grid grid-cols-12">
-          <span className="col-start-1 col-end-6 flex justify-center">
+          <span className="col-start-1 col-end-8 flex justify-start">
             Registered Voters
           </span>
           <div className="col-start-10 col-end-13 flex justify-center">
@@ -172,7 +172,7 @@ export default function RegisteredVoters(props: any) {
     return (
       <div className="h-full w-full">
         <div className="w-full grid grid-cols-12">
-          <span className="col-start-1 col-end-6 flex justify-center">
+          <span className="col-start-1 col-end-8 flex justify-start">
             Registered Voters
           </span>
           <div className="col-start-10 col-end-13 flex justify-center">

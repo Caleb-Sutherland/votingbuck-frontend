@@ -15,7 +15,7 @@ import {
   LineChart,
   Line,
 } from "recharts";
-import { graph_colors } from "../../graph_colors";
+import { graph_colors } from "../../constants/graph_colors";
 import TileSelectBox from "../TileSelectBox";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
 import * as format from "../../helper/formatting";

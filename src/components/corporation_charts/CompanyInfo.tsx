@@ -10,7 +10,7 @@ import {
   Label,
   LabelList,
 } from "recharts";
-import { graph_colors } from "../../graph_colors";
+import { graph_colors } from "../../constants/graph_colors";
 import * as format from "../../helper/formatting";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
 import TileSelectBox from "../TileSelectBox";

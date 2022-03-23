@@ -12,7 +12,7 @@ import {
   LabelList,
   Rectangle,
 } from "recharts";
-import { graph_colors } from "../../graph_colors";
+import { graph_colors } from "../../constants/graph_colors";
 import TileSelectBox from "../TileSelectBox";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
 
@@ -109,7 +109,6 @@ export default function TopRecipientsByDonation(props: any) {
           <div className="col-start-10 col-end-13 flex justify-center">
             <TileSelectBox
               onChange={setLocalPeriod}
-              periods={["2017-2018", "2019-2020", "2021-2022"]}
               defaultValue={localPeriod}
             />
           </div>
@@ -141,7 +140,6 @@ export default function TopRecipientsByDonation(props: any) {
           <div className="col-start-10 col-end-13 flex justify-center">
             <TileSelectBox
               onChange={setLocalPeriod}
-              periods={["2017-2018", "2019-2020", "2021-2022"]}
               defaultValue={localPeriod}
             />
           </div>

@@ -9,7 +9,7 @@ import {
   LabelList,
 } from "recharts";
 import { text } from "stream/consumers";
-import { graph_colors } from "../../graph_colors";
+import { graph_colors } from "../../constants/graph_colors";
 import * as format from "../../helper/formatting";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
 import TileSelectBox from "../TileSelectBox";
@@ -133,7 +133,6 @@ export default function ContributionShareByParty(props: any) {
           <div className="col-start-10 col-end-13 flex justify-center">
             <TileSelectBox
               onChange={setLocalPeriod}
-              periods={["2017-2018", "2019-2020", "2021-2022"]}
               defaultValue={localPeriod}
             />
           </div>
@@ -167,7 +166,6 @@ export default function ContributionShareByParty(props: any) {
           <div className="col-start-10 col-end-13 flex justify-center">
             <TileSelectBox
               onChange={setLocalPeriod}
-              periods={["2017-2018", "2019-2020", "2021-2022"]}
               defaultValue={localPeriod}
             />
           </div>

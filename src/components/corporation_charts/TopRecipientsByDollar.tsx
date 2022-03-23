@@ -88,7 +88,7 @@ export default function TopRecipientsByDollar(props: any) {
     const data = corporation[props.corpId].periods[
       localPeriod
     ].topRecipientsDollar.sort(
-      (a: ITopRecipientDollar, b: ITopRecipientDollar): number => {
+      (a: ICorporateTopRecipientDollar, b: ICorporateTopRecipientDollar): number => {
         if (a.amount_received < b.amount_received) {
           return 1;
         }

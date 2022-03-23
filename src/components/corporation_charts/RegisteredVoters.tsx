@@ -36,7 +36,7 @@ export default function RegisteredVoters(props: any) {
   );
 
   if (localPeriod in corporation[props.corpId].periods) {
-    const data: IRegisteredVoters[] =
+    const data: ICorporateRegisteredVoters[] =
       corporation[props.corpId].periods[localPeriod].registeredVoters;
 
     const formattedData: { name: string; value: number; fill: string }[] = [];

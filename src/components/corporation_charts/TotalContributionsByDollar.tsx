@@ -46,7 +46,7 @@ export default function TotalContributionsByDollar(props: any) {
     const data = corporation[props.corpId].periods[
       localPeriod
     ].totalContributionsDollar.sort(
-      (a: ITotalContributionsDollar, b: ITotalContributionsDollar) => {
+      (a: ICorporateTotalContributionsDollar, b: ICorporateTotalContributionsDollar) => {
         const d1 = Date.parse(a.date);
         const d2 = Date.parse(b.date);
 

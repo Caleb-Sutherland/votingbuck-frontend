@@ -89,7 +89,7 @@ export default function TopRecipientsByDonation(props: any) {
     const data = corporation[props.corpId].periods[
       localPeriod
     ].topRecipientsDonation.sort(
-      (a: ITopRecipientDonation, b: ITopRecipientDonation): number => {
+      (a: ICorporateTopRecipientDonation, b: ICorporateTopRecipientDonation): number => {
         if (a.donations_received < b.donations_received) {
           return 1;
         }

@@ -1,13 +1,13 @@
 /* Corporate types*/
 
 // Donations made by an organization
-interface ICorporationDonation {
+interface ICorporateDonation {
   month_start_date: string;
   amount_donated: number;
 }
 
 // A donator from the organization
-interface ICorporationEmployeeDonation {
+interface ICorporateEmployeeDonation {
   contributor: string;
   total_amount: number;
 }
@@ -19,7 +19,7 @@ interface ICorporateDonationToParty {
 }
 
 // Top recipients that a corporation donates to in dollars
-interface ITopRecipientDollar {
+interface ICorporateTopRecipientDollar {
   id: number;
   name: string;
   party: string;
@@ -27,7 +27,7 @@ interface ITopRecipientDollar {
 }
 
 // Top recipients that a corporation donates to
-interface ITopRecipientDonation {
+interface ICorporateTopRecipientDonation {
   id: number;
   name: string;
   party: string;
@@ -35,19 +35,19 @@ interface ITopRecipientDonation {
 }
 
 // Ideology score based on who a company donated to
-interface IIdeologyScore {
+interface ICorporateIdeologyScore {
   ideology: number;
   dollars_donated: number;
 }
 
 // Total contributions a corporation donates in dollars
-interface ITotalContributionsDollar {
+interface ICorporateTotalContributionsDollar {
   dollars_donated: number;
   date: string;
 }
 
 // Registered voters on board of directors at a company
-interface IRegisteredVoters {
+interface ICorporateRegisteredVoters {
   [democratic: string]: number;
   [republican: string]: number;
   [independent: string]: number;
@@ -56,14 +56,14 @@ interface IRegisteredVoters {
 // Stores on period's worth of data for an organization
 interface ICorporationPeriod {
   id: string;
-  donationsByMonth: ICorporationDonation[];
-  topDonators: ICorporationEmployeeDonation[];
+  donationsByMonth: ICorporateDonation[];
+  topDonators: ICorporateEmployeeDonation[];
   donationsByParty: ICorporateDonationToParty[];
-  topRecipientsDollar: ITopRecipientDollar[];
-  topRecipientsDonation: ITopRecipientDonation[];
-  ideologyDistribution: IIdeologyScore[];
-  totalContributionsDollar: ITotalContributionsDollar[];
-  registeredVoters: IRegisteredVoters[];
+  topRecipientsDollar: ICorporateTopRecipientDollar[];
+  topRecipientsDonation: ICorporateTopRecipientDonation[];
+  ideologyDistribution: ICorporateIdeologyScore[];
+  totalContributionsDollar: ICorporateTotalContributionsDollar[];
+  registeredVoters: ICorporateRegisteredVoters[];
 }
 
 // Organization that stores a set of Records (key: period, value: period_data)

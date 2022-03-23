@@ -37,10 +37,10 @@ export default function Corporation() {
     corporations[corp_id].periods[current_period] !== undefined
   ) {
     const tailwindGridRow =
-      "flex flex-col w-full lg:h-1/3 lg:overflow-auto lg:h-screen lg:grid lg:grid-cols-12 lg:gap-x-8 lg:mb-8 lg:pb-1 lg:pt-1" +
+      "flex flex-col w-full lg:h-1/3 lg:overflow-auto lg:grid lg:grid-cols-12 lg:gap-x-8 lg:mb-8 lg:pb-1 lg:pt-1" +
       " ";
     const tailwindTileStyles =
-      "h-full w-full pl-3 pr-3 pt-2 pb-2 mb-4 flex justify-content-center content-center rounded overflow-hidden shadow-lg lg:mb-0 lg:pt-2 lg:pb-2" +
+      "pl-3 pr-3 pt-2 pb-2 mb-4 flex justify-content-center content-center rounded overflow-hidden shadow-lg lg:mb-0 lg:pt-2 lg:pb-2" +
       " ";
     return (
       <div>

@@ -47,7 +47,7 @@ export default function ImputedIdeology(props: any) {
     const data = corporation[props.corpId].periods[
       localPeriod
     ].ideologyDistribution.sort(
-      (a: IIdeologyScore, b: IIdeologyScore): number => {
+      (a: ICorporateIdeologyScore, b: ICorporateIdeologyScore): number => {
         if (a.ideology > b.ideology) {
           return 1;
         }

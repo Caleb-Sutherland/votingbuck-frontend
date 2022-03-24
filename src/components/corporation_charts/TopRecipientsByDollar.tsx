@@ -38,57 +38,20 @@ export default function TopRecipientsByDollar(props: any) {
     (state: DataState) => state.corporations
   );
 
-  // Custom bar style for the graph
-  const CustomBar = (props: any) => {
-    let fill;
-    if (props.party == "democratic") {
-      fill = graph_colors.democratic;
-    } else if (props.party == "republican") {
-      fill = graph_colors.republican;
-    } else {
-      fill = graph_colors.independent;
-    }
-
-    //use explicit fill here, or use the additional css class and make a css selector to update fill there
-    return <Rectangle {...props} fill={fill} />;
-  };
-
-  // Custom tooltip style for each bar
-  const CustomTooltip = ({ active, payload }: any) => {
-    if (!active) {
-      return null;
-    }
-    const data = payload[0].payload;
-
-    let fill;
-    let text_color;
-    if (data.party == "democratic") {
-      fill = graph_colors.democratic;
-      text_color = " text-white";
-    } else if (data.party == "republican") {
-      fill = graph_colors.republican;
-      text_color = " text-white";
-    } else {
-      fill = graph_colors.independent;
-      text_color = " text-black";
-    }
-    return (
-      <div
-        className={"bg-other p-4 opacity-90 rounded-2xl" + text_color}
-        style={{ backgroundColor: fill }}
-      >
-        Received: ${format.formatNumber(data.amount_received)}
-      </div>
-    );
-  };
-
   // Ensure that this periods data has been successfully loaded into the redux store
-  if (localPeriod in corporation[props.corpId].periods) {
+  if (
+    localPeriod in corporation[props.corpId].periods &&
+    corporation[props.corpId].periods[localPeriod].topRecipientsDollar.length >
+      0
+  ) {
     // Data to feed the graph
     const data = corporation[props.corpId].periods[
       localPeriod
     ].topRecipientsDollar.sort(
-      (a: ICorporateTopRecipientDollar, b: ICorporateTopRecipientDollar): number => {
+      (
+        a: ICorporateTopRecipientDollar,
+        b: ICorporateTopRecipientDollar
+      ): number => {
         if (a.amount_received < b.amount_received) {
           return 1;
         }
@@ -98,6 +61,50 @@ export default function TopRecipientsByDollar(props: any) {
         return 0;
       }
     );
+
+    // Custom bar style for the graph
+    const CustomBar = (props: any) => {
+      let fill;
+      if (props.party == "democratic") {
+        fill = graph_colors.democratic;
+      } else if (props.party == "republican") {
+        fill = graph_colors.republican;
+      } else {
+        fill = graph_colors.independent;
+      }
+
+      //use explicit fill here, or use the additional css class and make a css selector to update fill there
+      return <Rectangle {...props} fill={fill} />;
+    };
+
+    // Custom tooltip style for each bar
+    const CustomTooltip = ({ active, payload }: any) => {
+      if (!active) {
+        return null;
+      }
+      const data = payload[0].payload;
+
+      let fill;
+      let text_color;
+      if (data.party == "democratic") {
+        fill = graph_colors.democratic;
+        text_color = " text-white";
+      } else if (data.party == "republican") {
+        fill = graph_colors.republican;
+        text_color = " text-white";
+      } else {
+        fill = graph_colors.independent;
+        text_color = " text-black";
+      }
+      return (
+        <div
+          className={"bg-other p-4 opacity-90 rounded-2xl" + text_color}
+          style={{ backgroundColor: fill }}
+        >
+          Received: ${format.formatNumber(data.amount_received)}
+        </div>
+      );
+    };
 
     return (
       <div className="h-full w-full">
@@ -142,6 +149,11 @@ export default function TopRecipientsByDollar(props: any) {
               defaultValue={localPeriod}
             />
           </div>
+        </div>
+        <div>
+          {localPeriod in corporation[props.corpId].periods
+            ? "No data for this period..."
+            : "Loading..."}
         </div>
       </div>
     );

@@ -35,7 +35,10 @@ export default function ContributionShareByParty(props: any) {
     (state: DataState) => state.corporations
   );
 
-  if (localPeriod in corporation[props.corpId].periods) {
+  if (
+    localPeriod in corporation[props.corpId].periods &&
+    corporation[props.corpId].periods[localPeriod].donationsByParty.length > 0
+  ) {
     const data =
       corporation[props.corpId].periods[localPeriod].donationsByParty;
 
@@ -118,7 +121,11 @@ export default function ContributionShareByParty(props: any) {
           className={"bg-other p-4 opacity-90 rounded-2xl" + text_color}
           style={{ backgroundColor: fill }}
         >
-          <div>{data.name !== "independent" ? format.capitalizeWord(data.name) + " Party" : "Other Parties"}</div>
+          <div>
+            {data.name !== "independent"
+              ? format.capitalizeWord(data.name) + " Party"
+              : "Other Parties"}
+          </div>
           <div>Received: ${format.formatNumber(data.value)}</div>
         </div>
       );
@@ -169,6 +176,11 @@ export default function ContributionShareByParty(props: any) {
               defaultValue={localPeriod}
             />
           </div>
+        </div>
+        <div>
+          {localPeriod in corporation[props.corpId].periods
+            ? "No data for this period..."
+            : "Loading..."}
         </div>
       </div>
     );

@@ -84,12 +84,19 @@ export default function TopRecipientsByDonation(props: any) {
   };
 
   // Ensure that this periods data has been successfully loaded into the redux store
-  if (localPeriod in corporation[props.corpId].periods) {
+  if (
+    localPeriod in corporation[props.corpId].periods &&
+    corporation[props.corpId].periods[localPeriod].topRecipientsDonation
+      .length > 0
+  ) {
     // Data to feed the graph
     const data = corporation[props.corpId].periods[
       localPeriod
     ].topRecipientsDonation.sort(
-      (a: ICorporateTopRecipientDonation, b: ICorporateTopRecipientDonation): number => {
+      (
+        a: ICorporateTopRecipientDonation,
+        b: ICorporateTopRecipientDonation
+      ): number => {
         if (a.donations_received < b.donations_received) {
           return 1;
         }
@@ -131,6 +138,7 @@ export default function TopRecipientsByDonation(props: any) {
       </div>
     );
   } else {
+    console.log("here");
     return (
       <div className="h-full w-full">
         <div className="w-full grid grid-cols-12 mb-3">
@@ -143,6 +151,11 @@ export default function TopRecipientsByDonation(props: any) {
               defaultValue={localPeriod}
             />
           </div>
+        </div>
+        <div>
+          {localPeriod in corporation[props.corpId].periods
+            ? "No data for this period..."
+            : "Loading..."}
         </div>
       </div>
     );

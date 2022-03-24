@@ -42,7 +42,11 @@ export default function ImputedIdeology(props: any) {
   );
 
   // Ensure that this periods data has been successfully loaded into the redux store
-  if (localPeriod in corporation[props.corpId].periods) {
+  if (
+    localPeriod in corporation[props.corpId].periods &&
+    corporation[props.corpId].periods[localPeriod].ideologyDistribution.length >
+      0
+  ) {
     // Data to feed the graph
     const data = corporation[props.corpId].periods[
       localPeriod
@@ -101,7 +105,10 @@ export default function ImputedIdeology(props: any) {
       };
       average_amount = getAverage(group);
 
-      smoothed_data.push({ideology: mid_ideology, dollars_donated: average_amount});
+      smoothed_data.push({
+        ideology: mid_ideology,
+        dollars_donated: average_amount,
+      });
     }
 
     // Custom tooltip style for each bar
@@ -175,6 +182,11 @@ export default function ImputedIdeology(props: any) {
               defaultValue={localPeriod}
             />
           </div>
+        </div>
+        <div>
+          {localPeriod in corporation[props.corpId].periods
+            ? "No data for this period..."
+            : "Loading..."}
         </div>
       </div>
     );

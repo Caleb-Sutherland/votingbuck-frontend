@@ -1,3 +1,4 @@
+// Function to get all periods between the start of the data and today
 export const getPeriods = (start_year = 2001) => {
   const curr_date = new Date();
   let curr_year = curr_date.getFullYear();

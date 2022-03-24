@@ -35,7 +35,10 @@ export default function RegisteredVoters(props: any) {
     (state: DataState) => state.corporations
   );
 
-  if (localPeriod in corporation[props.corpId].periods) {
+  if (
+    localPeriod in corporation[props.corpId].periods &&
+    corporation[props.corpId].periods[localPeriod].registeredVoters
+  ) {
     const data: ICorporateRegisteredVoters[] =
       corporation[props.corpId].periods[localPeriod].registeredVoters;
 
@@ -184,6 +187,11 @@ export default function RegisteredVoters(props: any) {
               defaultValue={localPeriod}
             />
           </div>
+        </div>
+        <div>
+          {localPeriod in corporation[props.corpId].periods
+            ? "No data for this period..."
+            : "Loading..."}
         </div>
       </div>
     );

@@ -50,7 +50,6 @@ interface ICorporateTotalContributionsDollar {
 interface ICorporateRegisteredVoters {
   [democratic: string]: number;
   [republican: string]: number;
-  [independent: string]: number;
 }
 
 // Stores on period's worth of data for an organization

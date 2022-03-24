@@ -122,7 +122,7 @@ export default function TotalContributionsByDollar(props: any) {
         </div>
       );
     };
-
+    
     return (
       <div className="h-full w-full">
         <div className="w-full grid grid-cols-12 mb-3">

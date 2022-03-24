@@ -9,7 +9,6 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  LabelList,
   Rectangle,
 } from "recharts";
 import { graph_colors } from "../../constants/graph_colors";

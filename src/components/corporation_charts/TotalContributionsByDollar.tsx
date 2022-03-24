@@ -2,21 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Dispatch } from "redux";
 import {
-  BarChart,
-  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  LabelList,
-  Rectangle,
-  Legend,
   LineChart,
   Line,
 } from "recharts";
-import { graph_colors } from "../../constants/graph_colors";
-import TileSelectBox from "../TileSelectBox";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
 import * as format from "../../helper/formatting";
 
@@ -46,7 +39,10 @@ export default function TotalContributionsByDollar(props: any) {
     const data = corporation[props.corpId].periods[
       localPeriod
     ].totalContributionsDollar.sort(
-      (a: ICorporateTotalContributionsDollar, b: ICorporateTotalContributionsDollar) => {
+      (
+        a: ICorporateTotalContributionsDollar,
+        b: ICorporateTotalContributionsDollar
+      ) => {
         const d1 = Date.parse(a.date);
         const d2 = Date.parse(b.date);
 
@@ -122,7 +118,7 @@ export default function TotalContributionsByDollar(props: any) {
         </div>
       );
     };
-    
+
     return (
       <div className="h-full w-full">
         <div className="w-full grid grid-cols-12 mb-3">
@@ -156,7 +152,7 @@ export default function TotalContributionsByDollar(props: any) {
       <div className="h-full w-full">
         <div className="w-full grid grid-cols-12 mb-3">
           <span className="col-start-1 col-end-8 flex justify-start">
-          Total Donations ($) 
+            Total Donations ($)
           </span>
         </div>
       </div>

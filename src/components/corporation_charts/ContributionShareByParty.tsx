@@ -5,10 +5,8 @@ import {
   Pie,
   Tooltip,
   ResponsiveContainer,
-  Label,
   LabelList,
 } from "recharts";
-import { text } from "stream/consumers";
 import { graph_colors } from "../../constants/graph_colors";
 import * as format from "../../helper/formatting";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
@@ -56,7 +54,7 @@ export default function ContributionShareByParty(props: any) {
 
     // Custom label positioning and content
     const renderCustomLabel = (entry: any) => {
-      const RADIAN = Math.PI / 180;
+      const RADIAN: number = Math.PI / 180;
 
       // Unpack data from the entry
       const vBox: any = entry.viewBox;

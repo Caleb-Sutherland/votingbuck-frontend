@@ -138,7 +138,6 @@ export default function TopRecipientsByDonation(props: any) {
       </div>
     );
   } else {
-    console.log("here");
     return (
       <div className="h-full w-full">
         <div className="w-full grid grid-cols-12 mb-3">

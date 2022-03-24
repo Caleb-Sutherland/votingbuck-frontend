@@ -12,10 +12,26 @@ import TotalContributionsByDollar from "../components/corporation_charts/TotalCo
 import TotalContributions from "../components/corporation_charts/TotalContributions";
 import CompanyInfo from "../components/corporation_charts/CompanyInfo";
 import RegisteredVoters from "../components/corporation_charts/RegisteredVoters";
+import TileSelectBox from "../components/TileSelectBox";
 
 export default function Corporation() {
+  
+  // Get the default current period
+  const temp = new Date();
+  const curr_year = temp.getFullYear();
+  let start;
+  let end;
+  // Start with the current period one cycle back (in case data takes long to gather)
+  if (curr_year % 2 === 0) {
+    start = curr_year - 3;
+    end = curr_year - 2;
+  } else {
+    start = curr_year - 2;
+    end = curr_year - 1;
+  }
+  
   // Master period control
-  const default_period = "2019-2020";
+  const default_period = start.toString() + "-" + end.toString();
   const [current_period, setCurrentPeriod] = useState(default_period);
   const corp_id = 1; // Needs to be a prop passed to the page or taken from url
 
@@ -25,7 +41,7 @@ export default function Corporation() {
   useEffect(() => {
     // Enter the periods data into the redux store
     dispatch(addCorporationPeriod(corp_id, current_period));
-  }, [dispatch]);
+  }, [dispatch, current_period]);
 
   // Access the redux store
   const corporations: Record<number, ICorporation> = useSelector(
@@ -44,7 +60,14 @@ export default function Corporation() {
       " ";
     return (
       <div>
-        <div className="h-screen mt-16 lg:pl-16 lg:pr-16 lg:mb-16">
+        <div className="h-screen mt-8 lg:pl-16 lg:pr-16 lg:mb-16">
+          <div className="flex w-full mb-2 justify-end pr-4">
+            <div className="mt-0.5 mr-2">Data Period</div>
+            <TileSelectBox
+              onChange={setCurrentPeriod}
+              defaultValue={current_period}
+            />
+          </div>
           <div className={tailwindGridRow}>
             <div className={tailwindTileStyles + "lg:col-start-1 lg:col-end-7"}>
               <CompanyInfo

@@ -13,9 +13,9 @@ import TotalContributions from "../components/corporation_charts/TotalContributi
 import CompanyInfo from "../components/corporation_charts/CompanyInfo";
 import RegisteredVoters from "../components/corporation_charts/RegisteredVoters";
 import TileSelectBox from "../components/TileSelectBox";
+import { useParams } from "react-router-dom";
 
 export default function Corporation() {
-  
   // Get the default current period
   const temp = new Date();
   const curr_year = temp.getFullYear();
@@ -29,11 +29,17 @@ export default function Corporation() {
     start = curr_year - 2;
     end = curr_year - 1;
   }
-  
+
   // Master period control
   const default_period = start.toString() + "-" + end.toString();
   const [current_period, setCurrentPeriod] = useState(default_period);
-  const corp_id = 1; // Needs to be a prop passed to the page or taken from url
+
+  // Get the corporation id from the url
+  const url_params = useParams();
+  if (!url_params.corpId) {
+    return <div>Corporation not specified!</div>;
+  }
+  const corp_id: number = parseInt(url_params.corpId);
 
   // Setup the redux store
   const dispatch: Dispatch<any> = useDispatch();

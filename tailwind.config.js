@@ -13,6 +13,11 @@ module.exports = {
       blue: "#2563EB",
       red: "#EF4444",
       lightGreyText: "#4B5563",
+      blueGray300: "#90a4ae",
+      blueGray600: "#546e7a",
+      blue500: "#2196f3",
+      footerBackground: "#3F3F46",
+      footerText: "white"
     },
     extend: {},
   },

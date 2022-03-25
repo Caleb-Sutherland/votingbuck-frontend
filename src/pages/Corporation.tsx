@@ -14,6 +14,8 @@ import CompanyInfo from "../components/corporation_charts/CompanyInfo";
 import RegisteredVoters from "../components/corporation_charts/RegisteredVoters";
 import TileSelectBox from "../components/TileSelectBox";
 import { useParams } from "react-router-dom";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 export default function Corporation() {
   // Get the default current period
@@ -59,21 +61,22 @@ export default function Corporation() {
     corporations[corp_id].periods[current_period] !== undefined
   ) {
     const tailwindGridRow =
-      "flex flex-col w-full lg:h-1/3 lg:overflow-auto lg:grid lg:grid-cols-12 lg:gap-x-8 lg:mb-8 lg:pb-1 lg:pt-1" +
+      "flex flex-col w-full lg:h-1/3 lg:overflow-auto lg:grid lg:grid-cols-12 lg:gap-x-8 lg:pb-4 lg:pt-4 lg:pt-1" +
       " ";
     const tailwindTileStyles =
       "pl-3 pr-3 pt-2 pb-2 mb-4 flex justify-content-center content-center rounded overflow-hidden shadow-lg lg:mb-0 lg:pt-2 lg:pb-2" +
       " ";
     return (
       <div>
-        <div className="h-screen mt-8 lg:pl-16 lg:pr-16 lg:mb-16">
-          <div className="flex w-full mb-2 justify-end pr-4">
-            <div className="mt-0.5 mr-2">Data Period</div>
-            <TileSelectBox
-              onChange={setCurrentPeriod}
-              defaultValue={current_period}
-            />
-          </div>
+        <Header />
+        <div className="flex w-full lg:mb-4 lg:mt-8 justify-end lg:pr-16 lg:mb-16">
+          <div className="mt-0.5 mr-2">Data Period</div>
+          <TileSelectBox
+            onChange={setCurrentPeriod}
+            defaultValue={current_period}
+          />
+        </div>
+        <div className="h-screen lg:pl-16 lg:pr-16 lg:mb-16">
           <div className={tailwindGridRow}>
             <div className={tailwindTileStyles + "lg:col-start-1 lg:col-end-7"}>
               <CompanyInfo
@@ -137,6 +140,7 @@ export default function Corporation() {
             ></div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   } else {

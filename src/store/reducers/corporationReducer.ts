@@ -1,20 +1,20 @@
 import { initialState } from "../initialState";
 import * as actionTypes from "../actions/actionTypes";
 
-const politicianReducer = (
-  state: Record<number, IPolitician> = initialState.politicians,
-  action: PoliticianAction
-): Record<number, IPolitician> => {
+const corporationReducer = (
+  state: Record<number, ICorporation> = initialState.corporations,
+  action: CorporationAction
+): Record<number, ICorporation> => {
   switch (action.type) {
-    case actionTypes.ADD_POLITICIAN_PERIOD:
+    case actionTypes.ADD_CORPORATION_PERIOD:
       // If the organization already exists, just add the period
-      if (state[action.politician.id]) {
+      if (state[action.corporation.id]) {
         return {
           ...state,
-          [action.politician.id]: {
-            ...state[action.politician.id],
+          [action.corporation.id]: {
+            ...state[action.corporation.id],
             periods: {
-              ...state[action.politician.id].periods,
+              ...state[action.corporation.id].periods,
               [action.period.id]: {
                 ...action.period,
               },
@@ -26,8 +26,8 @@ const politicianReducer = (
       else {
         return {
           ...state,
-          [action.politician.id]: {
-            ...action.politician,
+          [action.corporation.id]: {
+            ...action.corporation,
             periods: {
               [action.period.id]: action.period,
             },
@@ -35,7 +35,8 @@ const politicianReducer = (
         };
       }
   }
+
   return { ...state };
 };
 
-export default politicianReducer;
+export default corporationReducer;

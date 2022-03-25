@@ -1,14 +1,11 @@
 import * as actionTypes from "./actionTypes";
-import { data } from "../../components/TempData";
+import { poliData } from "../../components/TempData";
 
 /* Period action creators */
 // Add a period to the store
-export function addOrganizationPeriod(
-  organization_id: number,
-  period_id: string
-) {
+export function addPoliticianPeriod(politician_id: number, period_id: string) {
   // Must retrieve the organization/period data from the database
-  return getOrganizationPeriod(organization_id, period_id);
+  return getPoliticianPeriod(politician_id, period_id);
 }
 
 // export function removeAllOrganizationPeriods() {
@@ -23,28 +20,25 @@ export function addOrganizationPeriod(
 // }
 
 // Helper function to retrieve organization/period data from the backend
-export function getOrganizationPeriod(
-  organization_id: number,
-  period_id: string
-) {
+export function getPoliticianPeriod(politician_id: number, period_id: string) {
   return async (dispatch: DispatchType) => {
     // Get real data from database here
 
     // Using the temp data for now, construct an organization
-    const organization: IOrganization = { ...data.orgInfo, periods: {} };
-    organization.periods = {
+    const politician: IPolitician = { ...poliData.recInfo, periods: {} };
+    politician.periods = {
       period_id: {
         id: period_id,
-        donationsByMonth: data.donationsByMonth,
-        topDonators: data.topDonators,
+        donationsByMonth: poliData.donationsByMonth,
+        topDonators: poliData.topDonators,
       },
     };
 
     // Construct the action
-    const action: OrganizationAction = {
-      type: actionTypes.ADD_ORGANIZATION_PERIOD,
-      organization: organization,
-      period: organization.periods.period_id,
+    const action: PoliticianAction = {
+      type: actionTypes.ADD_POLITICIAN_PERIOD,
+      politician: politician,
+      period: politician.periods.period_id,
     };
     dispatch(action);
   };

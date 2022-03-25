@@ -1,8 +1,8 @@
 export const initialState: DataState = {
-  organizations: {
+  corporations: {
     [-1]: {
-      id: -1, 
-      name: "Test Organization", 
+      id: -1,
+      name: "Test Corporation",
       industry: "school",
       periods: {
         "2018-2020": {
@@ -21,6 +21,7 @@ export const initialState: DataState = {
             { contributor: "William Mendoza", total_amount: 162192.21 },
             { contributor: "Walter Hernandez", total_amount: 138196.64 },
           ],
+          donationsByParty: []
         },
         "2016-2018": {
           id: "2016-2018",
@@ -38,12 +39,11 @@ export const initialState: DataState = {
             { contributor: "William Mendoza", total_amount: 162192.21 },
             { contributor: "Walter Hernandez", total_amount: 138196.64 },
           ],
+          donationsByParty: []
         },
       },
-    } 
+    },
   },
-  politicians: {
-
-  }
-
+  politicians: {},
+  universities: {},
 };

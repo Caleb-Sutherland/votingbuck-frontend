@@ -2,11 +2,13 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./pages/Main";
-import OrganizationMain from "./pages/OrganizationMain";
-import IndividualMain from "./pages/IndividualMain";
+import CorporationMain from "./pages/CorporationMain";
+import PoliticianMain from "./pages/PoliticianMain";
+import UniversityMain from "./pages/UniversityMain";
 import Header from "./components/Header";
-import Organization from "./pages/Organization";
-import Individual from "./pages/Individual";
+import Corporation from "./pages/Corporation";
+import Politician from "./pages/Politician";
+import University from "./pages/University";
 
 function App() {
 
@@ -15,10 +17,12 @@ function App() {
       {/* <Header /> */}
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/organizations/:orgId" element={<Organization />} />
-        <Route path="/organizations" element={<OrganizationMain />}/>
-        <Route path="/individuals/:indId" element={<Individual />} />
-        <Route path="/individuals" element={<IndividualMain />} />
+        <Route path="/corporates/:corpId" element={<Corporation />} />
+        <Route path="/corporates" element={<CorporationMain />}/>
+        <Route path="/politicians/:poliId" element={<Politician />} />
+        <Route path="/politicians" element={<PoliticianMain />} />
+        <Route path="/universities/:uniId" element={<University />} />
+        <Route path="/universities" element={<UniversityMain />} />
       </Routes>
     </BrowserRouter>
   );

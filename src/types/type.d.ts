@@ -1,13 +1,13 @@
 /* Corporate types*/
 
 // Donations made by an organization
-interface ICorporationDonation {
+interface ICorporateDonation {
   month_start_date: string;
   amount_donated: number;
 }
 
 // A donator from the organization
-interface ICorporationEmployeeDonation {
+interface ICorporateEmployeeDonation {
   contributor: string;
   total_amount: number;
 }
@@ -18,12 +18,51 @@ interface ICorporateDonationToParty {
   total_amount: number;
 }
 
+// Top recipients that a corporation donates to in dollars
+interface ICorporateTopRecipientDollar {
+  id: number;
+  name: string;
+  party: string;
+  amount_received: number;
+}
+
+// Top recipients that a corporation donates to
+interface ICorporateTopRecipientDonation {
+  id: number;
+  name: string;
+  party: string;
+  donations_received: number;
+}
+
+// Ideology score based on who a company donated to
+interface ICorporateIdeologyScore {
+  ideology: number;
+  dollars_donated: number;
+}
+
+// Total contributions a corporation donates in dollars
+interface ICorporateTotalContributionsDollar {
+  dollars_donated: number;
+  date: string;
+}
+
+// Registered voters on board of directors at a company
+interface ICorporateRegisteredVoters {
+  [democratic: string]: number;
+  [republican: string]: number;
+}
+
 // Stores on period's worth of data for an organization
 interface ICorporationPeriod {
   id: string;
-  donationsByMonth: ICorporationDonation[];
-  topDonators: ICorporationEmployeeDonation[];
+  donationsByMonth: ICorporateDonation[];
+  topDonators: ICorporateEmployeeDonation[];
   donationsByParty: ICorporateDonationToParty[];
+  topRecipientsDollar: ICorporateTopRecipientDollar[];
+  topRecipientsDonation: ICorporateTopRecipientDonation[];
+  ideologyDistribution: ICorporateIdeologyScore[];
+  totalContributionsDollar: ICorporateTotalContributionsDollar[];
+  registeredVoters: ICorporateRegisteredVoters[];
 }
 
 // Organization that stores a set of Records (key: period, value: period_data)
@@ -40,6 +79,7 @@ interface CorporationAction {
   corporation: ICorporation;
   period: ICorporationPeriod;
 }
+
 
 /* Politician types */
 // Period for politicians
@@ -109,8 +149,8 @@ interface IUniversity {
 
 interface UniversityAction {
   type: string;
-  university: ICorporation;
-  period: ICorporationPeriod;
+  university: IUniversity;
+  period: IUniversityPeriod;
 }
 
 /* Shared types */

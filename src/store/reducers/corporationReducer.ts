@@ -22,10 +22,9 @@ const corporationReducer = (
           },
         };
       }
-      // Otherwise add the whole organization
+      // Otherwise add the whole organization (also remove any other organizations so that the store does not get cluttered)
       else {
         return {
-          ...state,
           [action.corporation.id]: {
             ...action.corporation,
             periods: {

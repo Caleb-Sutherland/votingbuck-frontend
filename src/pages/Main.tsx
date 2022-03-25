@@ -4,7 +4,7 @@ import { GiPublicSpeaker } from "react-icons/gi";
 import { BsBuilding } from "react-icons/bs";
 import Particles from "react-tsparticles";
 import { Link } from "react-router-dom";
-import Header from "../components/Header";
+import HeaderMain from "../components/HeaderMain";
 import Footer from "../components/Footer";
 
 export default function Main() {
@@ -19,8 +19,8 @@ export default function Main() {
   };
   return (
     <div>
-      <Header/>
-      <div className="bg-gradient-to-tr from-red-600 to-blue-600 h-screen">
+      <HeaderMain/>
+      <div className="bg-gradient-to-tr from-red to-blue h-screen">
         <Particles
           id="tsparticles"
           className="absolute w-full inset-y-0 left-0"
@@ -75,7 +75,7 @@ export default function Main() {
             <p className="text-4xl sm:text-5xl font-medium text-center text-white">View political donation information for organizations and political figures.</p>  
             <p className="text-2xl sm:text-3xl font-light text-center text-white">Research and discover political associations through donation information.</p>
             <div className="flex flex-row space-x-2 justify-center">
-              <input type="text" placeholder="corporates, universities or politicians" className="w-72 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring shadow-lg rounded-lg"/>
+              <input type="text" placeholder="corporates, universities or politicians" className="w-72 px-3 py-3 placeholder-blueGray300 text-blueGray600 relative bg-white bg-white text-sm border border-blueGray300 outline-none focus:outline-none focus:ring shadow-lg rounded-lg"/>
             </div>
           </div>
         </div>
@@ -182,7 +182,7 @@ export default function Main() {
               <p className="text-lg font-medium">Politicians</p>
               <p className="font-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla!
   Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
-              <Link className="text-blue-500 font-normal text-center w-full" to="politicians">Explore</Link>
+              <Link className="text-blue500 font-normal text-center w-full" to="politicians">Explore</Link>
             </div>
           </div>
           <div className="m-8 w-80 relative flex flex-col">
@@ -191,7 +191,7 @@ export default function Main() {
               <p className="text-lg font-medium">Corporates</p>
               <p className="font-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla!
   Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
-              <Link className="text-blue-500 font-normal text-center w-full" to="corporates">Explore</Link>
+              <Link className="text-blue500 font-normal text-center w-full" to="corporates">Explore</Link>
             </div>
           </div>
           <div className="m-8 w-80 relative flex flex-col">
@@ -200,7 +200,7 @@ export default function Main() {
               <p className="text-lg font-medium">Universities</p>
               <p className="font-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla!
   Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
-              <Link className="text-blue-500 font-normal text-center w-full" to="universities">Explore</Link>
+              <Link className="text-blue500 font-normal text-center w-full" to="universities">Explore</Link>
             </div>
           </div>
         </div>

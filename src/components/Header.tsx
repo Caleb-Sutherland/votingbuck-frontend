@@ -10,11 +10,11 @@ export default function Header() {
           <Link className="lg:ml-24 text-xl font-medium text-opacity-75" to="corporates">
             corporates
           </Link>
-          <Link className="lg:ml-12 text-xl font-medium text-opacity-75" to="politicians">
-            politicians
-          </Link>
           <Link className="lg:ml-12 text-xl font-medium text-opacity-75" to="universities">
             universities
+          </Link>
+          <Link className="lg:ml-12 text-xl font-medium text-opacity-75" to="politicians">
+            politicians
           </Link>
         </div>
       </div>

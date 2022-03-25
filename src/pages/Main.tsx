@@ -182,7 +182,7 @@ export default function Main() {
               <p className="text-lg font-medium">Politicians</p>
               <p className="font-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla!
   Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
-              <Link className="text-blue-500 font-normal text-center w-full" to="individuals">Explore</Link>
+              <Link className="text-blue-500 font-normal text-center w-full" to="politicians">Explore</Link>
             </div>
           </div>
           <div className="m-8 w-80 relative flex flex-col">
@@ -191,7 +191,7 @@ export default function Main() {
               <p className="text-lg font-medium">Corporates</p>
               <p className="font-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla!
   Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
-              <Link className="text-blue-500 font-normal text-center w-full" to="organizations">Explore</Link>
+              <Link className="text-blue-500 font-normal text-center w-full" to="corporates">Explore</Link>
             </div>
           </div>
           <div className="m-8 w-80 relative flex flex-col">
@@ -200,7 +200,7 @@ export default function Main() {
               <p className="text-lg font-medium">Universities</p>
               <p className="font-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla!
   Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
-              <Link className="text-blue-500 font-normal text-center w-full" to="organizations">Explore</Link>
+              <Link className="text-blue-500 font-normal text-center w-full" to="universities">Explore</Link>
             </div>
           </div>
         </div>

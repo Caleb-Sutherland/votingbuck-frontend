@@ -22,10 +22,9 @@ const universityReducer = (
           },
         };
       }
-      // Otherwise add the whole organization
+      // Otherwise add the whole university and remove any other universities
       else {
         return {
-          ...state,
           [action.university.id]: {
             ...action.university,
             periods: {

@@ -133,11 +133,50 @@ interface IUniversityDonationToParty {
   total_amount: number;
 }
 
+// Top recipients that a corporation donates to in dollars
+interface IUniversityTopRecipientDollar {
+  id: number;
+  name: string;
+  party: string;
+  amount_received: number;
+}
+
+// Top recipients that a corporation donates to
+interface IUniversityTopRecipientDonation {
+  id: number;
+  name: string;
+  party: string;
+  donations_received: number;
+}
+
+// Ideology score based on who a company donated to
+interface IUniversityIdeologyScore {
+  ideology: number;
+  dollars_donated: number;
+}
+
+// Total contributions a corporation donates in dollars
+interface IUniversityTotalContributionsDollar {
+  dollars_donated: number;
+  date: string;
+}
+
+// Registered voters on board of directors at a company
+interface IUniversityRegisteredVoters {
+  [democratic: string]: number;
+  [republican: string]: number;
+}
+
 interface IUniversityPeriod {
   id: string;
   donationsByMonth: IUniversityDonation[];
   topDonators: IUniversityEmployeeDonation[];
   donationsByParty: IUniversityDonationToParty[];
+  topRecipientsDollar: IUniversityTopRecipientDollar[];
+  topRecipientsDonation: IUniversityTopRecipientDonation[];
+  ideologyDistribution: IUniversityIdeologyScore[];
+  totalContributionsDollar: IUniversityTotalContributionsDollar[];
+  registeredVoters: IUniversityRegisteredVoters[];
 }
 
 interface IUniversity {

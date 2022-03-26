@@ -25,7 +25,7 @@ export function getCorporationPeriod(
 
     // Fetch data from the backend
     const res = await fetch(
-      `http://localhost:3000/organizations/${corporation_id}?start_date=${period_dates[0]}&end_date=${period_dates[1]}`
+      `${process.env.REACT_APP_API_BASE_URL}/organizations/${corporation_id}?start_date=${period_dates[0]}&end_date=${period_dates[1]}`
     );
     const data = await res.json();
 

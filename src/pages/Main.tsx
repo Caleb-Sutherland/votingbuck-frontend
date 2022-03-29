@@ -7,16 +7,10 @@ import { Link } from "react-router-dom";
 import HeaderMain from "../components/HeaderMain";
 import Footer from "../components/Footer";
 
+import * as highlightsImport from "../highlights.json";
+
 export default function Main() {
-  const particlesInit = (main: any) => {
-    console.log(main);
-
-    // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
-  };
-
-  const particlesLoaded = (container: any) => {
-    console.log(container);
-  };
+  let highlights = highlightsImport;
   return (
     <div>
       <HeaderMain/>
@@ -85,59 +79,33 @@ export default function Main() {
           <FaUniversity size="16em"/>
           <div className="flex flex-col space-y-4 w-1/3">
             <p className="text-lg font-medium">Highlighted Universities</p>
-            <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
-              <div>
-                <p>Harvard University</p>
-              </div>
-              <div>
-                <p className="text-right">Donated <span className="font-medium">$1,254,332.20</span> in 2021</p>
-              </div>
-            </div>
-            <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
-              <div>
-                <p>Massachusetts Institute of Technology</p>
-              </div>
-              <div>
-                <p className="text-right">Employed <span className="font-medium">124</span> Political Contributors</p>
-              </div>
-            </div>
-            <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
-              <div>
-                <p>New York University</p>
-              </div>
-              <div>
-                <p className="text-right">Made <span className="font-medium">1,424</span> Donations in 2021</p>
-              </div>
-            </div>
+              { highlights.universities.map(function (entry) {
+                return (
+                  <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
+                    <div>
+                      <p>{ entry.name }</p>
+                    </div>
+                    <div>
+                      <p className="text-right" dangerouslySetInnerHTML={{__html: entry.statistic.replace(/\*([^\*]*)\*/g, "<span class=\"font-medium\">$1</span>")}}></p>
+                    </div>
+                  </div>)
+              }) }
           </div>
         </div>
         <div className="-m-5 flex flex-row flex-wrap justify-center space-x-32">
           <div className="flex flex-col space-y-4 w-1/3">
             <p className="text-lg font-medium text-right">Highlighted Politicians</p>
-            <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
-              <div>
-                <p>Joe Biden</p>
-              </div>
-              <div>
-                <p className="text-right">Received <span className="font-medium">$1,254,332.20</span> in 2021</p>
-              </div>
-            </div>
-            <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
-              <div>
-                <p>Donald Trump</p>
-              </div>
-              <div>
-                <p className="text-right">Received <span className="font-medium">1,424</span> Donations in 2021</p>
-              </div>
-            </div>
-            <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
-              <div>
-                <p>Kamala Harris</p>
-              </div>
-              <div>
-                <p className="text-right">Received From <span className="font-medium">1,545</span> Contributors</p>
-              </div>
-            </div>
+              { highlights.politicians.map(function (entry) {
+                return (
+                  <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
+                    <div>
+                      <p>{ entry.name }</p>
+                    </div>
+                    <div>
+                      <p className="text-right" dangerouslySetInnerHTML={{__html: entry.statistic.replace(/\*([^\*]*)\*/g, "<span class=\"font-medium\">$1</span>")}}></p>
+                    </div>
+                  </div>)
+              }) }
           </div>
           <GiPublicSpeaker size="16em"/>
         </div>
@@ -145,30 +113,17 @@ export default function Main() {
           <BsBuilding size="16em"/>
           <div className="flex flex-col space-y-4 w-1/3">
             <p className="text-lg font-medium">Highlighted Corporates</p>
-            <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
-              <div>
-                <p>Apple</p>
-              </div>
-              <div>
-                <p className="text-right">Donated <span className="font-medium">$1,254,332.20</span> in 2021</p>
-              </div>
-            </div>
-            <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
-              <div>
-                <p>Bank of America</p>
-              </div>
-              <div>
-                <p className="text-right">Employed <span className="font-medium">124</span> Political Contributors</p>
-              </div>
-            </div>
-            <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
-              <div>
-                <p>Lockheed Martin</p>
-              </div>
-              <div>
-                <p className="text-right">Made <span className="font-medium">1,424</span> Donations in 2021</p>
-              </div>
-            </div>
+              { highlights.corporates.map(function (entry) {
+                return (
+                  <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
+                    <div>
+                      <p>{ entry.name }</p>
+                    </div>
+                    <div>
+                      <p className="text-right" dangerouslySetInnerHTML={{__html: entry.statistic.replace(/\*([^\*]*)\*/g, "<span class=\"font-medium\">$1</span>")}}></p>
+                    </div>
+                  </div>)
+              }) }
           </div>
         </div>
         <div className="flex flex-col space-y-5 max-w-5xl m-auto">

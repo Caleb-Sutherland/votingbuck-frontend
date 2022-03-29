@@ -1,0 +1,53 @@
+{
+    "universities": [
+        {
+            "id":1,
+            "name":"Harvard University",
+            "statistic":"Donated *$1,254,332,20* in 2021"
+        },
+        {
+            "id":2,
+            "name":"Massachusetts Institute of Technology",
+            "statistic":"Employed *124* Political Contributors"
+        },
+        {
+            "id":3,
+            "name":"New York University",
+            "statistic":"Made *1,424* Donations in 2021"
+        }
+    ],
+    "politicians": [
+        {
+            "id":1,
+            "name":"Joe Biden",
+            "statistic":"Received *$1,254,332,20* in 2021"
+        },
+        {
+            "id":2,
+            "name":"Donald Trump",
+            "statistic":"Received *1,424* Donations in 2021"
+        },
+        {
+            "id":3,
+            "name":"Kamala Harris",
+            "statistic":"Received From *1,545* Contributors"
+        }
+    ],
+    "corporates": [
+        {
+            "id":4,
+            "name":"Apple",
+            "statistic":"Donated *$1,254,332,20* in 2021"
+        },
+        {
+            "id":5,
+            "name":"Bank of America",
+            "statistic":"Employed *124* Political Contributors"
+        },
+        {
+            "id":6,
+            "name":"Lockheed Martin",
+            "statistic":"Made *1,424* Donations in 2021"
+        }
+    ]
+}

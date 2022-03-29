@@ -150,7 +150,7 @@ export default function ImputedIdeology(props: any) {
             margin={{ top: 5, right: 25, left: 25, bottom: 30 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="ideology" ticks={[-1, 0, 1]} />
+            <XAxis dataKey="ideology" type="number" ticks={[-1, 0, 1]} />
             <YAxis dataKey="dollars_donated" />
             <Tooltip content={CustomTooltip} />
             <Line

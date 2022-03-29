@@ -7,7 +7,7 @@ const politicianReducer = (
 ): Record<number, IPolitician> => {
   switch (action.type) {
     case actionTypes.ADD_POLITICIAN_PERIOD:
-      // If the organization already exists, just add the period
+      // If the politician already exists, just add the period
       if (state[action.politician.id]) {
         return {
           ...state,
@@ -22,10 +22,9 @@ const politicianReducer = (
           },
         };
       }
-      // Otherwise add the whole organization
+      // Otherwise add the whole politician
       else {
         return {
-          ...state,
           [action.politician.id]: {
             ...action.politician,
             periods: {

@@ -89,10 +89,34 @@ interface IPoliticianDonation {
   amount_donated: number;
 }
 
+interface IPoliticianIdeologyCount {
+  ideology: number;
+  count: number;
+}
+
+interface IPoliticianIndustryDonation {
+  industry: string;
+  dollars_donated: number;
+}
+
+interface IPoliticianCorporationDonation {
+  corporation: string;
+  dollars_donated: number;
+}
+
+interface IPoliticianUniversityDonation {
+  university: string;
+  dollars_donated: number;
+}
+
 interface IPoliticianPeriod {
   id: string;
   donationsByMonth: IDonation[];
   topDonators: IDonationFromOrganization[];
+  ideologyDistribution: IPoliticianIdeologyCount[];
+  topDonationsDollarsByIndustry: IPoliticianIndustryDonation[];
+  topDonationsDollarsByCorporation: IPoliticianCorporationDonation[];
+  topDonationsDollarsByUniversity: IPoliticianUniversityDonation[];
 }
 
 interface IDonationFromOrganization {

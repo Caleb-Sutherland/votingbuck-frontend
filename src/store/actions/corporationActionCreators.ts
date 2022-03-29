@@ -16,8 +16,6 @@ export function getCorporationPeriod(
   period_id: string
 ) {
   return async (dispatch: DispatchType) => {
-    
-    
     // Get the correct range of years from the period_id
     const period_dates: string[] = period_id.split("-");
     period_dates[0] = (parseInt(period_dates[0]) - 1).toString() + "-11-03";

@@ -15,6 +15,7 @@ import {
 import TileSelectBox from "../TileSelectBox";
 import { addPoliticianPeriod } from "../../store/actions/politicianActionCreators";
 import * as format from "../../helper/formatting";
+import { tooltip_background } from "../../constants/graph_colors";
 
 export default function IdeologyDistribution(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -116,8 +117,7 @@ export default function IdeologyDistribution(props: any) {
 
       return (
         <div
-          className="bg-other p-4 text-black opacity-90 rounded-2xl"
-          style={{ backgroundColor: "#e6f7f4" }}
+          className="bg-tooltipBack p-4 text-black opacity-90 rounded-2xl"
         >
           <div>
             <span>Ideology: {data.ideology}</span>
@@ -135,7 +135,10 @@ export default function IdeologyDistribution(props: any) {
       return (
         <g>
           <foreignObject x={x} y={y} width={100} height={100}>
-            <div>{politicians[poliId].name}</div>
+            <div>
+              {" "}
+              {" <"} {politicians[poliId].name}
+            </div>
           </foreignObject>
         </g>
       );
@@ -175,9 +178,11 @@ export default function IdeologyDistribution(props: any) {
               isFront
               x={politicians[props.poliId].ideology}
               stroke="green"
-              label={<Label position="insideTop" content={ReferenceLineLabel} />}
               ifOverflow="extendDomain"
-            />
+              strokeWidth={2}
+            >
+              <Label position={politicians[props.poliId].ideology > 0 ? "insideTopRight" : "insideTopLeft"} value={politicians[poliId].name} />
+            </ReferenceLine>
           </LineChart>
         </ResponsiveContainer>
       </div>

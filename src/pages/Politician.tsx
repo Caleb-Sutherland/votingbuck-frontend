@@ -5,6 +5,9 @@ import { Dispatch } from "redux";
 import { addPoliticianPeriod } from "../store/actions/politicianActionCreators";
 
 import IdeologyDistribution from "../components/politician_charts/IdeologyDistribution";
+import TopDonationsDollarsByIndustry from "../components/politician_charts/TopDonationsDollarsByIndustry";
+import TopDonationsDollarsByCorporation from "../components/politician_charts/TopDonationsDollarsByCorporation";
+import TopDonationsDollarsByUniversity from "../components/politician_charts/TopDonationsDollarsByUniversity";
 import TileSelectBox from "../components/TileSelectBox";
 import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";
@@ -71,40 +74,48 @@ export default function Politician() {
         </div>
         <div className="h-screen lg:pl-16 lg:pr-16 lg:mb-16">
           <div className={tailwindGridRow}>
-            <div className={tailwindTileStyles + "lg:col-start-1 lg:col-end-7"}>
-              
-            </div>
+            <div
+              className={tailwindTileStyles + "lg:col-start-1 lg:col-end-7"}
+            ></div>
             <div
               className={tailwindTileStyles + "lg:col-start-7 lg:col-end-10"}
-            >
-              
-            </div>
+            ></div>
             <div
               className={tailwindTileStyles + "lg:col-start-10 lg:col-end-13"}
-            >
-              
-            </div>
+            ></div>
           </div>
           <div className={tailwindGridRow}>
             <div className={tailwindTileStyles + "lg:col-start-1 lg:col-end-5"}>
-              <IdeologyDistribution globalPeriod={current_period} poliId={poli_id}/>
+              <IdeologyDistribution
+                globalPeriod={current_period}
+                poliId={poli_id}
+              />
             </div>
             <div className={tailwindTileStyles + "lg:col-start-5 lg:col-end-9"}>
-              
+              <TopDonationsDollarsByIndustry
+                globalPeriod={current_period}
+                poliId={poli_id}
+              />
             </div>
             <div
               className={tailwindTileStyles + "lg:col-start-9 lg:col-end-13"}
             >
-              
+              <TopDonationsDollarsByCorporation
+                globalPeriod={current_period}
+                poliId={poli_id}
+              />
             </div>
           </div>
           <div className={tailwindGridRow}>
             <div className={tailwindTileStyles + "lg:col-start-1 lg:col-end-5"}>
-              
+              <TopDonationsDollarsByUniversity
+                globalPeriod={current_period}
+                poliId={poli_id}
+              />
             </div>
-            <div className={tailwindTileStyles + "lg:col-start-5 lg:col-end-9"}>
-              
-            </div>
+            <div
+              className={tailwindTileStyles + "lg:col-start-5 lg:col-end-9"}
+            ></div>
             <div
               className={tailwindTileStyles + "lg:col-start-9 lg:col-end-13"}
             ></div>

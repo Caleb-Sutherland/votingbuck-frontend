@@ -17,7 +17,8 @@ module.exports = {
       blueGray600: "#546e7a",
       blue500: "#2196f3",
       footerBackground: "#3F3F46",
-      footerText: "white"
+      footerText: "white",
+      tooltipBack: "#e6f7f4",
     },
     extend: {},
   },

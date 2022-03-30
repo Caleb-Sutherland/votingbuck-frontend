@@ -81,14 +81,16 @@ export default function Main() {
             <p className="text-lg font-medium">Highlighted Universities</p>
               { highlights.universities.map(function (entry) {
                 return (
-                  <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
-                    <div>
-                      <p>{ entry.name }</p>
+                  <Link to={ "universities/" + entry.id }>
+                    <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
+                      <div>
+                        <p>{ entry.name }</p>
+                      </div>
+                      <div>
+                        <p className="text-right" dangerouslySetInnerHTML={{__html: entry.statistic.replace(/\*([^\*]*)\*/g, "<span class=\"font-medium\">$1</span>")}}></p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-right" dangerouslySetInnerHTML={{__html: entry.statistic.replace(/\*([^\*]*)\*/g, "<span class=\"font-medium\">$1</span>")}}></p>
-                    </div>
-                  </div>)
+                  </Link>)
               }) }
           </div>
         </div>
@@ -97,14 +99,16 @@ export default function Main() {
             <p className="text-lg font-medium text-right">Highlighted Politicians</p>
               { highlights.politicians.map(function (entry) {
                 return (
-                  <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
-                    <div>
-                      <p>{ entry.name }</p>
+                  <Link to={ "politicians/" + entry.id }>
+                    <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
+                      <div>
+                        <p>{ entry.name }</p>
+                      </div>
+                      <div>
+                        <p className="text-right" dangerouslySetInnerHTML={{__html: entry.statistic.replace(/\*([^\*]*)\*/g, "<span class=\"font-medium\">$1</span>")}}></p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-right" dangerouslySetInnerHTML={{__html: entry.statistic.replace(/\*([^\*]*)\*/g, "<span class=\"font-medium\">$1</span>")}}></p>
-                    </div>
-                  </div>)
+                  </Link>)
               }) }
           </div>
           <GiPublicSpeaker size="16em"/>
@@ -115,14 +119,16 @@ export default function Main() {
             <p className="text-lg font-medium">Highlighted Corporates</p>
               { highlights.corporates.map(function (entry) {
                 return (
-                  <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
-                    <div>
-                      <p>{ entry.name }</p>
+                  <Link to={ "corporates/" + entry.id }>
+                    <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
+                      <div>
+                        <p>{ entry.name }</p>
+                      </div>
+                      <div>
+                        <p className="text-right" dangerouslySetInnerHTML={{__html: entry.statistic.replace(/\*([^\*]*)\*/g, "<span class=\"font-medium\">$1</span>")}}></p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-right" dangerouslySetInnerHTML={{__html: entry.statistic.replace(/\*([^\*]*)\*/g, "<span class=\"font-medium\">$1</span>")}}></p>
-                    </div>
-                  </div>)
+                  </Link>)
               }) }
           </div>
         </div>

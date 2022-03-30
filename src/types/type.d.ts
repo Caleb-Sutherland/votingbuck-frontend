@@ -228,6 +228,15 @@ interface IUniversity {
   id: number;
   name: string;
   industry: string = "School";
+  uni_acronym: string;
+  uni_enrollment_high: string;
+  uni_enrollment_low: string;
+  uni_founded: string;
+  uni_public: boolean;
+  uni_rank: string;
+  location: string;
+  website: string;
+  description: string;
   periods: Record<string, IUniversityPeriod>;
 }
 

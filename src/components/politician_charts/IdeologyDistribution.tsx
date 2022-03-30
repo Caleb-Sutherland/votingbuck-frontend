@@ -14,9 +14,7 @@ import {
 } from "recharts";
 import TileSelectBox from "../TileSelectBox";
 import { addPoliticianPeriod } from "../../store/actions/politicianActionCreators";
-import * as format from "../../helper/formatting";
-import { tooltip_background } from "../../constants/graph_colors";
-import { FaSpinner } from "react-icons/fa";
+import TileLoading from "../TileLoading";
 
 export default function IdeologyDistribution(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -211,7 +209,7 @@ export default function IdeologyDistribution(props: any) {
           {localPeriod in politicians[props.poliId].periods ? (
             "No data for this period..."
           ) : (
-            <FaSpinner size={50} className="animate-spin" />
+            <TileLoading />
           )}
         </div>
       </div>

@@ -1,5 +1,4 @@
 import React, { Dispatch, useEffect, useState } from "react";
-import { FaSpinner } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import {
   PieChart,
@@ -11,6 +10,7 @@ import {
 import { graph_colors } from "../../constants/graph_colors";
 import * as format from "../../helper/formatting";
 import { addUniversityPeriod } from "../../store/actions/universityActionCreators";
+import TileLoading from "../TileLoading";
 import TileSelectBox from "../TileSelectBox";
 
 export default function ContributionShareByParty(props: any) {
@@ -180,7 +180,7 @@ export default function ContributionShareByParty(props: any) {
           {localPeriod in universities[props.uniId].periods ? (
             "No data for this period..."
           ) : (
-            <FaSpinner size={50} className="animate-spin" />
+            <TileLoading />
           )}
         </div>
       </div>

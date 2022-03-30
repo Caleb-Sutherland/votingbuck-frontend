@@ -12,7 +12,7 @@ import {
 } from "recharts";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
 import * as format from "../../helper/formatting";
-import { FaSpinner } from "react-icons/fa";
+import TileLoading from "../TileLoading";
 
 export default function TotalContributionsByDollar(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -160,7 +160,7 @@ export default function TotalContributionsByDollar(props: any) {
           {localPeriod in corporation[props.corpId].periods ? (
             "No data for this company..."
           ) : (
-            <FaSpinner size={50} className="animate-spin" />
+            <TileLoading />
           )}
         </div>
       </div>

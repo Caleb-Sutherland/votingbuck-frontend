@@ -1,5 +1,4 @@
 import React, { Dispatch, useEffect, useState } from "react";
-import { FaSpinner } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import {
   PieChart,
@@ -11,6 +10,7 @@ import {
 import { graph_colors } from "../../constants/graph_colors";
 import * as format from "../../helper/formatting";
 import { addUniversityPeriod } from "../../store/actions/universityActionCreators";
+import TileLoading from "../TileLoading";
 import TileSelectBox from "../TileSelectBox";
 
 export default function RegisteredVoters(props: any) {
@@ -39,7 +39,7 @@ export default function RegisteredVoters(props: any) {
     universities[props.uniId].periods[localPeriod].registeredVoters
   ) {
     const data: ICorporateRegisteredVoters[] =
-    universities[props.uniId].periods[localPeriod].registeredVoters;
+      universities[props.uniId].periods[localPeriod].registeredVoters;
 
     const formattedData: { name: string; value: number; fill: string }[] = [];
     for (const key in data[0]) {
@@ -188,9 +188,11 @@ export default function RegisteredVoters(props: any) {
           </div>
         </div>
         <div>
-          {localPeriod in universities[props.uniId].periods
-            ? "No data for this period..."
-            : <FaSpinner size={50} className="animate-spin" />}
+          {localPeriod in universities[props.uniId].periods ? (
+            "No data for this period..."
+          ) : (
+            <TileLoading />
+          )}
         </div>
       </div>
     );

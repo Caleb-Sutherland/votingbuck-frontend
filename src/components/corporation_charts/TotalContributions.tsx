@@ -2,24 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Dispatch } from "redux";
 import {
-  BarChart,
-  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  LabelList,
-  Rectangle,
-  Legend,
   LineChart,
   Line,
 } from "recharts";
-import { graph_colors } from "../../constants/graph_colors";
-import TileSelectBox from "../TileSelectBox";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
-import * as format from "../../helper/formatting";
-import { FaSpinner } from "react-icons/fa";
+import TileLoading from "../TileLoading";
 
 export default function TotalContributions(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -47,7 +39,10 @@ export default function TotalContributions(props: any) {
     const data = corporation[props.corpId].periods[
       localPeriod
     ].totalContributionsDollar.sort(
-      (a: ICorporateTotalContributionsDollar, b: ICorporateTotalContributionsDollar) => {
+      (
+        a: ICorporateTotalContributionsDollar,
+        b: ICorporateTotalContributionsDollar
+      ) => {
         const d1 = Date.parse(a.date);
         const d2 = Date.parse(b.date);
 
@@ -164,7 +159,7 @@ export default function TotalContributions(props: any) {
           {localPeriod in corporation[props.corpId].periods ? (
             "No data for this company..."
           ) : (
-            <FaSpinner size={50} className="animate-spin" />
+            <TileLoading />
           )}
         </div>
       </div>

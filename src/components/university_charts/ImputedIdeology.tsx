@@ -13,7 +13,7 @@ import {
 import TileSelectBox from "../TileSelectBox";
 import { addUniversityPeriod } from "../../store/actions/universityActionCreators";
 import * as format from "../../helper/formatting";
-import { FaSpinner } from "react-icons/fa";
+import TileLoading from "../TileLoading";
 
 export default function ImputedIdeology(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -191,7 +191,7 @@ export default function ImputedIdeology(props: any) {
           {localPeriod in universities[props.uniId].periods ? (
             "No data for this period..."
           ) : (
-            <FaSpinner size={50} className="animate-spin" />
+            <TileLoading />
           )}
         </div>
       </div>

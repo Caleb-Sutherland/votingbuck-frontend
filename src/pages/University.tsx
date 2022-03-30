@@ -16,6 +16,7 @@ import TileSelectBox from "../components/TileSelectBox";
 import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import LoadingScreen from "../components/LoadingScreen";
 
 export default function University() {
   // Get the default current period
@@ -89,10 +90,7 @@ export default function University() {
             <div
               className={tailwindTileStyles + "lg:col-start-7 lg:col-end-10"}
             >
-              <RegisteredVoters
-                uniId={uni_id}
-                globalPeriod={current_period}
-              />
+              <RegisteredVoters uniId={uni_id} globalPeriod={current_period} />
             </div>
             <div
               className={tailwindTileStyles + "lg:col-start-10 lg:col-end-13"}
@@ -144,6 +142,6 @@ export default function University() {
       </div>
     );
   } else {
-    return <div>Loading...</div>;
+    return <LoadingScreen />;
   }
 }

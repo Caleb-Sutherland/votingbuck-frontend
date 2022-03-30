@@ -15,6 +15,7 @@ import TileSelectBox from "../TileSelectBox";
 import { addPoliticianPeriod } from "../../store/actions/politicianActionCreators";
 import * as format from "../../helper/formatting";
 import { extra_colors, graph_colors } from "../../constants/graph_colors";
+import { FaSpinner } from "react-icons/fa";
 
 export default function TopDonationsDollarsByIndustry(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -127,7 +128,7 @@ export default function TopDonationsDollarsByIndustry(props: any) {
         <div>
           {localPeriod in politicians[props.poliId].periods
             ? "No data for this period..."
-            : "Loading..."}
+            : <FaSpinner size={50} className="animate-spin" />}
         </div>
       </div>
     );

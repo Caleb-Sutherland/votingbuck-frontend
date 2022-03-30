@@ -16,6 +16,8 @@ import TileSelectBox from "../components/TileSelectBox";
 import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import { AiOutlineLoading } from "react-icons/ai";
+import LoadingScreen from "../components/LoadingScreen";
 
 export default function Corporation() {
   // Get the default current period
@@ -144,6 +146,6 @@ export default function Corporation() {
       </div>
     );
   } else {
-    return <div>Loading...</div>;
+    return <LoadingScreen />;
   }
 }

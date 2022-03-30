@@ -1,4 +1,5 @@
 import React, { Dispatch, useEffect, useState } from "react";
+import { FaSpinner } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import {
   PieChart,
@@ -38,7 +39,7 @@ export default function ContributionShareByParty(props: any) {
     universities[props.uniId].periods[localPeriod].donationsByParty.length > 0
   ) {
     const data =
-    universities[props.uniId].periods[localPeriod].donationsByParty;
+      universities[props.uniId].periods[localPeriod].donationsByParty;
 
     const formattedData = data.map((item: ICorporateDonationToParty): any => {
       let fill_color;
@@ -176,9 +177,11 @@ export default function ContributionShareByParty(props: any) {
           </div>
         </div>
         <div>
-          {localPeriod in universities[props.uniId].periods
-            ? "No data for this period..."
-            : "Loading..."}
+          {localPeriod in universities[props.uniId].periods ? (
+            "No data for this period..."
+          ) : (
+            <FaSpinner size={50} className="animate-spin" />
+          )}
         </div>
       </div>
     );

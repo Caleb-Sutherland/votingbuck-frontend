@@ -1,4 +1,5 @@
 import React, { Dispatch, useEffect, useState } from "react";
+import { FaSpinner } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import {
   PieChart,
@@ -189,7 +190,7 @@ export default function RegisteredVoters(props: any) {
         <div>
           {localPeriod in universities[props.uniId].periods
             ? "No data for this period..."
-            : "Loading..."}
+            : <FaSpinner size={50} className="animate-spin" />}
         </div>
       </div>
     );

@@ -14,6 +14,7 @@ import {
 import { graph_colors } from "../../constants/graph_colors";
 import TileSelectBox from "../TileSelectBox";
 import { addUniversityPeriod } from "../../store/actions/universityActionCreators";
+import { FaSpinner } from "react-icons/fa";
 
 export default function TopRecipientsByDonation(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -153,7 +154,7 @@ export default function TopRecipientsByDonation(props: any) {
         <div>
           {localPeriod in universities[props.uniId].periods
             ? "No data for this period..."
-            : "Loading..."}
+            : <FaSpinner size={50} className="animate-spin" />}
         </div>
       </div>
     );

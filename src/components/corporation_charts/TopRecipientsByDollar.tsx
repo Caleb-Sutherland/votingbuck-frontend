@@ -15,6 +15,7 @@ import { graph_colors } from "../../constants/graph_colors";
 import TileSelectBox from "../TileSelectBox";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
 import * as format from "../../helper/formatting";
+import { FaSpinner } from "react-icons/fa";
 
 export default function TopRecipientsByDollar(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -150,9 +151,11 @@ export default function TopRecipientsByDollar(props: any) {
           </div>
         </div>
         <div>
-          {localPeriod in corporation[props.corpId].periods
-            ? "No data for this period..."
-            : "Loading..."}
+          {localPeriod in corporation[props.corpId].periods ? (
+            "No data for this period..."
+          ) : (
+            <FaSpinner size={50} className="animate-spin" />
+          )}
         </div>
       </div>
     );

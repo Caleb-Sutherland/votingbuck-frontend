@@ -13,6 +13,7 @@ import {
 import TileSelectBox from "../TileSelectBox";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
 import * as format from "../../helper/formatting";
+import { FaSpinner } from "react-icons/fa";
 
 export default function ImputedIdeology(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -150,7 +151,15 @@ export default function ImputedIdeology(props: any) {
             margin={{ top: 5, right: 25, left: 25, bottom: 30 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="ideology" type="number" ticks={[-1, 0, 1]} />
+            <XAxis
+              dataKey="ideology"
+              type="number"
+              ticks={[
+                parseFloat(smoothed_data[0].ideology),
+                0,
+                parseFloat(smoothed_data[smoothed_data.length - 1].ideology),
+              ]}
+            />
             <YAxis dataKey="dollars_donated" />
             <Tooltip content={CustomTooltip} />
             <Line
@@ -178,9 +187,11 @@ export default function ImputedIdeology(props: any) {
           </div>
         </div>
         <div>
-          {localPeriod in corporation[props.corpId].periods
-            ? "No data for this period..."
-            : "Loading..."}
+          {localPeriod in corporation[props.corpId].periods ? (
+            "No data for this period..."
+          ) : (
+            <FaSpinner size={50} className="animate-spin" />
+          )}
         </div>
       </div>
     );

@@ -16,6 +16,7 @@ import TileSelectBox from "../TileSelectBox";
 import { addPoliticianPeriod } from "../../store/actions/politicianActionCreators";
 import * as format from "../../helper/formatting";
 import { tooltip_background } from "../../constants/graph_colors";
+import { FaSpinner } from "react-icons/fa";
 
 export default function IdeologyDistribution(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -116,9 +117,7 @@ export default function IdeologyDistribution(props: any) {
       const data = payload[0].payload;
 
       return (
-        <div
-          className="bg-tooltipBack p-4 text-black opacity-90 rounded-2xl"
-        >
+        <div className="bg-tooltipBack p-4 text-black opacity-90 rounded-2xl">
           <div>
             <span>Ideology: {data.ideology}</span>
           </div>
@@ -181,7 +180,14 @@ export default function IdeologyDistribution(props: any) {
               ifOverflow="extendDomain"
               strokeWidth={2}
             >
-              <Label position={politicians[props.poliId].ideology > 0 ? "insideTopRight" : "insideTopLeft"} value={politicians[poliId].name} />
+              <Label
+                position={
+                  politicians[props.poliId].ideology > 0
+                    ? "insideTopRight"
+                    : "insideTopLeft"
+                }
+                value={politicians[poliId].name}
+              />
             </ReferenceLine>
           </LineChart>
         </ResponsiveContainer>
@@ -202,9 +208,11 @@ export default function IdeologyDistribution(props: any) {
           </div>
         </div>
         <div>
-          {localPeriod in politicians[props.poliId].periods
-            ? "No data for this period..."
-            : "Loading..."}
+          {localPeriod in politicians[props.poliId].periods ? (
+            "No data for this period..."
+          ) : (
+            <FaSpinner size={50} className="animate-spin" />
+          )}
         </div>
       </div>
     );

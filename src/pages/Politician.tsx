@@ -12,6 +12,7 @@ import TileSelectBox from "../components/TileSelectBox";
 import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import LoadingScreen from "../components/LoadingScreen";
 
 export default function Politician() {
   // Get the default current period
@@ -125,6 +126,6 @@ export default function Politician() {
       </div>
     );
   } else {
-    return <div>Loading...</div>;
+    return <LoadingScreen />;
   }
 }

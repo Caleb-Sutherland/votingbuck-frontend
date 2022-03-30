@@ -22,7 +22,13 @@ export function getPoliticianPeriod(politician_id: number, period_id: string) {
     const data = await res.json();
 
     // Using the temp data for now, construct an organization
-    const politician: IPolitician = { ...data.recInfo, periods: {} };
+    const politician: IPolitician = {
+      ...data.recInfo,
+      timeInCongress: data.timeInCongress,
+      leadership: data.leadership,
+      committee: data.committee,
+      periods: {},
+    };
     politician.periods = {
       period_id: {
         id: period_id,

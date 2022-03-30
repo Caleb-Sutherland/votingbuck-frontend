@@ -80,7 +80,6 @@ interface CorporationAction {
   period: ICorporationPeriod;
 }
 
-
 /* Politician types */
 // Period for politicians
 
@@ -124,12 +123,34 @@ interface IDonationFromOrganization {
   total_amount: number;
 }
 
+interface ITimeInCongress {
+  startDate: string;
+  endDate: string;
+  position: string;
+}
+
+interface ILeadership {
+  title: string;
+  startDate: string;
+  endDate: string;
+}
+
+interface ICommittee {
+  name: string;
+  rank: number;
+}
+
 // Politician that stores set of Records (key: period, value: period_data)
 interface IPolitician {
   id: number;
   name: string;
   ideology: number;
   party: string;
+  dob: string;
+  state: string;
+  timeInCongress: ITimeInCongress[];
+  leadership: ILeadership[];
+  committee: ICommittee[];
   periods: Record<string, IPoliticianPeriod>;
 }
 

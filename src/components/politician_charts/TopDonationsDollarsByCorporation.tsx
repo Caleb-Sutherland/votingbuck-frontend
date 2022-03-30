@@ -74,7 +74,6 @@ export default function TopDonationsDollarsByCorporation(props: any) {
         return null;
       }
       const data = payload[0].payload;
-      console.log(data);
       return (
         <div className={"bg-tooltipBack p-4 opacity-90 rounded-2xl"}>
           Received: ${format.formatNumber(data.dollars_donated)}

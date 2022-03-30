@@ -77,7 +77,7 @@ export default function University() {
             defaultValue={current_period}
           />
         </div>
-        <div className="h-screen lg:pl-16 lg:pr-16 lg:mb-16">
+        <div className="h-fit lg:h-screen lg:pl-16 lg:pr-16 lg:mb-16">
           <div className={tailwindGridRow}>
             <div className={tailwindTileStyles + "lg:col-start-1 lg:col-end-7"}>
               <UniversityInfo

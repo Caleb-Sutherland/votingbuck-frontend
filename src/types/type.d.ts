@@ -70,6 +70,7 @@ interface ICorporation {
   id: number;
   name: string;
   industry: string;
+  location: string;
   periods: Record<string, ICorporationPeriod>;
 }
 

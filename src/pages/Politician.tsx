@@ -8,6 +8,7 @@ import IdeologyDistribution from "../components/politician_charts/IdeologyDistri
 import TopDonationsDollarsByIndustry from "../components/politician_charts/TopDonationsDollarsByIndustry";
 import TopDonationsDollarsByCorporation from "../components/politician_charts/TopDonationsDollarsByCorporation";
 import TopDonationsDollarsByUniversity from "../components/politician_charts/TopDonationsDollarsByUniversity";
+import PoliticianInfo from "../components/politician_charts/PoliticianInfo";
 import TileSelectBox from "../components/TileSelectBox";
 import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";
@@ -77,7 +78,7 @@ export default function Politician() {
           <div className={tailwindGridRow}>
             <div
               className={tailwindTileStyles + "lg:col-start-1 lg:col-end-7"}
-            ></div>
+            ><PoliticianInfo poliId={poli_id}/></div>
             <div
               className={tailwindTileStyles + "lg:col-start-7 lg:col-end-10"}
             ></div>

@@ -60,7 +60,6 @@ export default function ImputedIdeology(props: any) {
     // Pass through data and convert to a dictionary so that we can quickly see what ideology scores are missing
     const ideologyToValue: any = {};
     for (let i = 0; i < data.length; i++) {
-      console.log(data[i]);
       ideologyToValue[data[i].ideology.toFixed(2)] = data[i].dollars_donated;
     }
 

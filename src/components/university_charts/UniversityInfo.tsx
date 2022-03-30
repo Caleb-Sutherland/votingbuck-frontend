@@ -1,19 +1,4 @@
-import React, { Dispatch, useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import Logo from "../../images/Apple.svg";
-
-import {
-  PieChart,
-  Pie,
-  Tooltip,
-  ResponsiveContainer,
-  Label,
-  LabelList,
-} from "recharts";
-import { graph_colors } from "../../constants/graph_colors";
-import * as format from "../../helper/formatting";
-import { addUniversityPeriod } from "../../store/actions/universityActionCreators";
-import TileSelectBox from "../TileSelectBox";
+import React from "react";
 import { IoSchoolSharp } from "react-icons/io5";
 
 export default function UniversityInfo(props: any) {

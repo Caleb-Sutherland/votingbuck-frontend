@@ -18,7 +18,7 @@ export default function UniversityInfo(props: any) {
   let enrollment;
   if (uni.uni_enrollment_low && uni.uni_enrollment_high) {
     enrollment = (
-      <div>
+      <div className="flex">
         <span className={tailwindBoldValue}>
           {uni.uni_enrollment_low + "-" + uni.uni_enrollment_high}
         </span>
@@ -27,23 +27,22 @@ export default function UniversityInfo(props: any) {
     );
   } else if (uni.uni_enrollment_low) {
     enrollment = (
-      <div>
-        <MdArrowDropUp />
-        <span className={tailwindBoldValue}>{uni.uni_enrollment_low}</span>
+      <div className="flex">
+        <MdArrowDropUp size={30}/>
+        <span className={tailwindBoldValue + "mr-1"}>{uni.uni_enrollment_low}</span>
         <span className={tailwindValueLabel}> Enrollment</span>
       </div>
     );
   } else {
     enrollment = (
-      <div>
-        <MdArrowDropDown />
-        <span className={tailwindBoldValue}>{uni.uni_enrollment_high}</span>
+      <div className="flex">
+        <MdArrowDropDown size={30}/>
+        <span className={tailwindBoldValue + "mr-1"}>{uni.uni_enrollment_high}</span>
         <span className={tailwindValueLabel}> Enrollment</span>
       </div>
     );
   }
 
-  console.log(universities[props.uniId]);
   return (
     <div className="lg:pt-8 pl-8 pr-8 grid grid-rows-10">
       <div className="flex items-center">

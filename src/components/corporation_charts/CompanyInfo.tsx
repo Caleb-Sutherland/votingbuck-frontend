@@ -9,7 +9,6 @@ export default function CompanyInfo(props: any) {
   );
 
   const corp = corporations[props.corpId];
-  console.log(corp);
   const temp =
     "Apple Inc. is an American multinational technology company that specializes in consumer electronics, software and online services. Apple  is the largest information technology company by revenue (totaling US$365.8 billion in 2021) and, as of January 2021, it is the world's most valuable company...";
   return (

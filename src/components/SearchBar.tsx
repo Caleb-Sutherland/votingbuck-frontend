@@ -67,47 +67,47 @@ export function SearchBar() {
         className="w-72 px-3 py-3 placeholder-blueGray300 text-blueGray600 relative bg-white bg-white text-sm border border-blueGray300 outline-none focus:outline-none focus:ring shadow-lg rounded-lg"
       />
       {queryResults ? (
-        <div className="absolute top-12 w-72 px-3 py-3 text-blueGray600 bg-white bg-white text-sm outline-none shadow-lg rounded-lg">
+        <div className="absolute top-12 w-72 px-0 py-3 text-blueGray600 bg-white bg-white text-sm outline-none shadow-lg rounded-lg">
           {queryResults.politicians.length > 0 ? (
             <div>
-              <p>POLITICIANS {queryResults.pCount}</p>
+              <p className="px-3">POLITICIANS</p>
             </div>
           ) : null}
           {queryResults.politicians.map((item: any, index: number) => {
             return (
-              <div className="pl-5 py-1 hover:bg-slate-400">
-                <Link key={index} to={"politicians/" + item.value.id}>
-                  {item.value.name}
-                </Link>
-              </div>
+              <Link key={index} to={"politicians/" + item.value.id}>
+                <div className="pl-8 pr-3 py-1 hover:bg-lightGray">
+                  <p>{item.value.name}</p>
+                </div>
+              </Link>
             );
           })}
           {queryResults.corporates.length > 0 ? (
             <div>
-              <p>CORPORATES {queryResults.cCount}</p>
+              <p className="px-3">CORPORATES</p>
             </div>
           ) : null}
           {queryResults.corporates.map((item: any, index: number) => {
             return (
-              <div className="pl-5 py-1 hover:bg-slate-400">
-                <Link key={index} to={"corporates/" + item.value.id}>
-                  {item.value.name}
-                </Link>
-              </div>
+              <Link key={index} to={"corporates/" + item.value.id}>
+                <div className="pl-8 pr-3 py-1 hover:bg-lightGray">
+                  <p>{item.value.name}</p>
+                </div>
+              </Link>
             );
           })}
           {queryResults.universities.length > 0 ? (
             <div>
-              <p>UNIVERSITIES {queryResults.uCount}</p>
+              <p className="px-3">UNIVERSITIES</p>
             </div>
           ) : null}
           {queryResults.universities.map((item: any, index: number) => {
             return (
-              <div className="pl-5 py-1 hover:bg-slate-400">
-                <Link key={index} to={"universities/" + item.value.id}>
-                  {item.value.name}
-                </Link>
-              </div>
+              <Link key={index} to={"universities/" + item.value.id}>
+                <div className="pl-8 pr-3 py-1 hover:bg-lightGray">
+                  <p>{item.value.name}</p>
+                </div>
+              </Link>
             );
           })}
         </div>

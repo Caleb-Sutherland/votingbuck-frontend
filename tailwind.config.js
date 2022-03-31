@@ -7,6 +7,7 @@ module.exports = {
       other: "#22c74e",
       white: "white",
       black: "black",
+      lightGray: "#e0e0e0",
       selectBg: "white",
       selectBorder: "#e3edfc",
       selectBorderActive: "#6b96db",

@@ -13,8 +13,8 @@ export default function UniversityInfo(props: any) {
 
   const uni = universities[props.uniId];
 
-  const tailwindBoldValue = "text-lg font-semibold" + " ";
-  const tailwindValueLabel = "text-md font-light" + " ";
+  const tailwindBoldValue = "text-xl font-semibold" + " ";
+  const tailwindValueLabel = "text-lg font-light" + " ";
   const temp =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
@@ -65,7 +65,7 @@ export default function UniversityInfo(props: any) {
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center w-full lg:flex lg:flex-row lg:space-x-8 lg:content-center mb-2 mt-2">
+      <div className="flex flex-col items-center w-full lg:flex lg:flex-row lg:space-x-10 lg:content-center mb-2 mt-2">
         <div>
           <span className={tailwindBoldValue}>{uni.uni_founded}</span>
           <span className={tailwindValueLabel}> Founded</span>

@@ -95,7 +95,7 @@ export default function TotalContributions(props: any) {
           margin={{ top: 5, right: 25, left: 25, bottom: 30 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="ideology" ticks={[-1, 0, 1]} />
+          <XAxis dataKey="date_range" minTickGap={0} ticks={[1]} />
           <YAxis dataKey="number_of_donations" />
           <Tooltip content={CustomTooltip} />
           <Line

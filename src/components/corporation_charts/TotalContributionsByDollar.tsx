@@ -13,6 +13,7 @@ import {
 import * as format from "../../helper/formatting";
 import { Corporation } from "../../interfaces/corporation.interface";
 import { DataState } from "../../interfaces/global.interface";
+import TileTitle from "../TileTitle";
 
 export default function TotalContributionsByDollar(props: any) {
   // Access the redux store
@@ -87,11 +88,7 @@ export default function TotalContributionsByDollar(props: any) {
 
   return (
     <div className="h-full w-full">
-      <div className="w-full grid grid-cols-12 mb-3">
-        <span className="col-start-1 col-end-8 flex justify-start">
-          Total Donations ($)
-        </span>
-      </div>
+      <TileTitle title="Total Donations ($)"/>
       <ResponsiveContainer width="100%">
         <LineChart
           width={730}

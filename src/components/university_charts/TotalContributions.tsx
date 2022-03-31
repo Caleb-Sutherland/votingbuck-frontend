@@ -11,6 +11,7 @@ import {
 } from "recharts";
 import { DataState } from "../../interfaces/global.interface";
 import { University } from "../../interfaces/university.interface";
+import TileTitle from "../TileTitle";
 
 export default function TotalContributions(props: any) {
   // Access the redux store
@@ -85,11 +86,7 @@ export default function TotalContributions(props: any) {
 
   return (
     <div className="h-full w-full">
-      <div className="w-full grid grid-cols-12 mb-3">
-        <span className="col-start-1 col-end-8 flex justify-start">
-          Total Donations (# of Donations)
-        </span>
-      </div>
+      <TileTitle title="Total Donations (# of Donations)"/>
       <ResponsiveContainer width="100%">
         <LineChart
           width={730}

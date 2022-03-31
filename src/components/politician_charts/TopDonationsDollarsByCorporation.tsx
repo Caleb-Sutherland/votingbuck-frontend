@@ -21,6 +21,7 @@ import {
   Politician,
   CorporationDonation,
 } from "../../interfaces/politician.interface";
+import TileTitle from "../TileTitle";
 
 export default function TopDonationsDollarsByCorporation(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -85,17 +86,7 @@ export default function TopDonationsDollarsByCorporation(props: any) {
 
     return (
       <div className="h-full w-full">
-        <div className="w-full grid grid-cols-12 mb-3">
-          <span className="col-start-1 col-end-8 flex justify-start">
-            Top Corporation Receipts
-          </span>
-          <div className="col-start-10 col-end-13 flex justify-center">
-            <TileSelectBox
-              onChange={setLocalPeriod}
-              defaultValue={localPeriod}
-            />
-          </div>
-        </div>
+        <TileTitle title="Top Corporation Receipts" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
         <ResponsiveContainer width="100%" height="85%">
           <BarChart
             data={data}
@@ -116,17 +107,7 @@ export default function TopDonationsDollarsByCorporation(props: any) {
   } else {
     return (
       <div className="h-full w-full">
-        <div className="w-full grid grid-cols-12 mb-3">
-          <span className="col-start-1 col-end-8 flex justify-start">
-            Top Corporation Receipts
-          </span>
-          <div className="col-start-10 col-end-13 flex justify-center">
-            <TileSelectBox
-              onChange={setLocalPeriod}
-              defaultValue={localPeriod}
-            />
-          </div>
-        </div>
+        <TileTitle title="Top Corporation Receipts" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
         <div className="h-full flex content-center justify-center items-center">
           {localPeriod in politicians[props.poliId].periods ? (
             <div>No data for this period...</div>

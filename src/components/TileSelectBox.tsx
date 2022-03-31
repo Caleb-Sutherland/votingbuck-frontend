@@ -1,26 +1,34 @@
 import React from "react";
 import { getPeriods } from "../helper/periods";
+import Select from "react-select";
 
 export default function TileSelectBox(props: any) {
   const periods = getPeriods();
   const changeFunction = props.onChange;
   const defaultValue = props.defaultValue;
 
+  const options = periods
+    .map((period) => {
+      return { value: period, label: period };
+    })
+    .reverse();
+
+  const customStyles = {
+    control: (base: any) => ({
+      ...base,
+      height: "50%",
+    }),
+  };
   return (
-    <select
+    <Select
       onChange={(e) => {
-        changeFunction(e.target.value);
+        if (e) {
+          changeFunction(e.value);
+        }
       }}
-      defaultValue={defaultValue}
-      className="bg-selectBg border-solid border border-selectBorder rounded outline-none hover:border-selectBorderActive active:border-selectBorderActive"
-    >
-      {periods.map((period: string, index: number) => {
-        return (
-          <option key={index} value={period}>
-            {period}
-          </option>
-        );
-      })}
-    </select>
+      defaultValue={{ value: defaultValue, label: defaultValue }}
+      options={options}
+      styles={customStyles}
+    />
   );
 }

@@ -16,7 +16,10 @@ import TileSelectBox from "../TileSelectBox";
 import { addPoliticianPeriod } from "../../store/actions/politicianActionCreators";
 import TileLoading from "../TileLoading";
 import { DataState } from "../../interfaces/global.interface";
-import { Politician, IdeologyCount } from "../../interfaces/politician.interface";
+import {
+  Politician,
+  IdeologyCount,
+} from "../../interfaces/politician.interface";
 
 export default function IdeologyDistribution(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -46,19 +49,8 @@ export default function IdeologyDistribution(props: any) {
       0
   ) {
     // Data to feed the graph
-    const data = politicians[props.poliId].periods[
-      localPeriod
-    ].ideologyDistribution.sort(
-      (a: IdeologyCount, b: IdeologyCount): number => {
-        if (a.ideology > b.ideology) {
-          return 1;
-        }
-        if (a.ideology < b.ideology) {
-          return -1;
-        }
-        return 0;
-      }
-    );
+    const data =
+      politicians[props.poliId].periods[localPeriod].ideologyDistribution;
 
     // Pass through data and convert to a dictionary so that we can quickly see what ideology scores are missing
     const ideologyToValue: any = {};

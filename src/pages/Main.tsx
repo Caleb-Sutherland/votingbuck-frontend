@@ -2,24 +2,20 @@ import React from "react";
 import { FaUniversity } from "react-icons/fa";
 import { GiPublicSpeaker } from "react-icons/gi";
 import { BsBuilding } from "react-icons/bs";
+import { FiExternalLink } from "react-icons/fi";
 import Particles from "react-tsparticles";
 import { Link } from "react-router-dom";
 import HeaderMain from "../components/HeaderMain";
 import Footer from "../components/Footer";
+import { SearchBar } from "../components/SearchBar";
+
+import * as highlightsImport from "../highlights.json";
 
 export default function Main() {
-  const particlesInit = (main: any) => {
-    console.log(main);
-
-    // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
-  };
-
-  const particlesLoaded = (container: any) => {
-    console.log(container);
-  };
+  const highlights = highlightsImport;
   return (
     <div>
-      <HeaderMain/>
+      <HeaderMain />
       <div className="bg-gradient-to-tr from-red to-blue h-screen">
         <Particles
           id="tsparticles"
@@ -72,139 +68,185 @@ export default function Main() {
         />
         <div className="absolute flex flex-col space-y-24 py-48 px-20 inset-y-0 left-0 w-full">
           <div className="flex flex-col space-y-5 max-w-5xl m-auto">
-            <p className="text-4xl sm:text-5xl font-medium text-center text-white">View political donation information for organizations and political figures.</p>  
-            <p className="text-2xl sm:text-3xl font-light text-center text-white">Research and discover political associations through donation information.</p>
+            <p className="text-4xl sm:text-5xl font-medium text-center text-white">
+              View political donation information for organizations and
+              political figures.
+            </p>
+            <p className="text-2xl sm:text-3xl font-light text-center text-white">
+              Research and discover political associations through donation
+              information.
+            </p>
             <div className="flex flex-row space-x-2 justify-center">
-              <input type="text" placeholder="corporates, universities or politicians" className="w-72 px-3 py-3 placeholder-blueGray300 text-blueGray600 relative bg-white bg-white text-sm border border-blueGray300 outline-none focus:outline-none focus:ring shadow-lg rounded-lg"/>
+              <SearchBar />
             </div>
           </div>
         </div>
       </div>
       <div className="flex flex-col space-y-32 py-32 px-20">
         <div className="-m-5 flex flex-row flex-wrap justify-center space-x-32">
-          <FaUniversity size="16em"/>
+          <FaUniversity size="16em" />
           <div className="flex flex-col space-y-4 w-1/3">
             <p className="text-lg font-medium">Highlighted Universities</p>
-            <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
-              <div>
-                <p>Harvard University</p>
-              </div>
-              <div>
-                <p className="text-right">Donated <span className="font-medium">$1,254,332.20</span> in 2021</p>
-              </div>
-            </div>
-            <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
-              <div>
-                <p>Massachusetts Institute of Technology</p>
-              </div>
-              <div>
-                <p className="text-right">Employed <span className="font-medium">124</span> Political Contributors</p>
-              </div>
-            </div>
-            <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
-              <div>
-                <p>New York University</p>
-              </div>
-              <div>
-                <p className="text-right">Made <span className="font-medium">1,424</span> Donations in 2021</p>
-              </div>
-            </div>
+            {highlights.universities.map(function (entry, index) {
+              return (
+                <Link key={index} to={"universities/" + entry.id}>
+                  <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
+                    <div>
+                      <p>{entry.name}</p>
+                    </div>
+                    <div className="flex flex-row items-center space-x-2">
+                      <p
+                        className="text-right"
+                        dangerouslySetInnerHTML={{
+                          __html: entry.statistic.replace(
+                            /\*([^*]*)\*/g,
+                            "<span class=\"font-medium\">$1</span>"
+                          ),
+                        }}
+                      ></p>
+                      <FiExternalLink size="1.1em" />
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
         <div className="-m-5 flex flex-row flex-wrap justify-center space-x-32">
           <div className="flex flex-col space-y-4 w-1/3">
-            <p className="text-lg font-medium text-right">Highlighted Politicians</p>
-            <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
-              <div>
-                <p>Joe Biden</p>
-              </div>
-              <div>
-                <p className="text-right">Received <span className="font-medium">$1,254,332.20</span> in 2021</p>
-              </div>
-            </div>
-            <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
-              <div>
-                <p>Donald Trump</p>
-              </div>
-              <div>
-                <p className="text-right">Received <span className="font-medium">1,424</span> Donations in 2021</p>
-              </div>
-            </div>
-            <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
-              <div>
-                <p>Kamala Harris</p>
-              </div>
-              <div>
-                <p className="text-right">Received From <span className="font-medium">1,545</span> Contributors</p>
-              </div>
-            </div>
+            <p className="text-lg font-medium text-right">
+              Highlighted Politicians
+            </p>
+            {highlights.politicians.map(function (entry, index) {
+              return (
+                <Link key={index} to={"politicians/" + entry.id}>
+                  <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
+                    <div>
+                      <p>{entry.name}</p>
+                    </div>
+                    <div className="flex flex-row items-center space-x-2">
+                      <p
+                        className="text-right"
+                        dangerouslySetInnerHTML={{
+                          __html: entry.statistic.replace(
+                            /\*([^*]*)\*/g,
+                            "<span class=\"font-medium\">$1</span>"
+                          ),
+                        }}
+                      ></p>
+                      <FiExternalLink size="1.1em" />
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
-          <GiPublicSpeaker size="16em"/>
+          <GiPublicSpeaker size="16em" />
         </div>
         <div className="-m-5 flex flex-row flex-wrap justify-center space-x-32">
-          <BsBuilding size="16em"/>
+          <BsBuilding size="16em" />
           <div className="flex flex-col space-y-4 w-1/3">
             <p className="text-lg font-medium">Highlighted Corporates</p>
-            <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
-              <div>
-                <p>Apple</p>
-              </div>
-              <div>
-                <p className="text-right">Donated <span className="font-medium">$1,254,332.20</span> in 2021</p>
-              </div>
-            </div>
-            <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
-              <div>
-                <p>Bank of America</p>
-              </div>
-              <div>
-                <p className="text-right">Employed <span className="font-medium">124</span> Political Contributors</p>
-              </div>
-            </div>
-            <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
-              <div>
-                <p>Lockheed Martin</p>
-              </div>
-              <div>
-                <p className="text-right">Made <span className="font-medium">1,424</span> Donations in 2021</p>
-              </div>
-            </div>
+            {highlights.corporates.map(function (entry, index) {
+              return (
+                <Link key={index} to={"corporates/" + entry.id}>
+                  <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
+                    <div>
+                      <p>{entry.name}</p>
+                    </div>
+                    <div className="flex flex-row items-center space-x-2">
+                      <p
+                        className="text-right"
+                        dangerouslySetInnerHTML={{
+                          __html: entry.statistic.replace(
+                            /\*([^*]*)\*/g,
+                            "<span class=\"font-medium\">$1</span>"
+                          ),
+                        }}
+                      ></p>
+                      <FiExternalLink size="1.1em" />
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
         <div className="flex flex-col space-y-5 max-w-5xl m-auto">
-          <p className="text-4xl sm:text-5xl font-medium text-center">About votingbuck</p>  
-          <p className="text-2xl sm:text-3xl font-light text-center leading-10">Voting Buck&apos;s mission is to make political data available to everyone. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
+          <p className="text-4xl sm:text-5xl font-medium text-center">
+            About votingbuck
+          </p>
+          <p className="text-2xl sm:text-3xl font-light text-center leading-10">
+            Voting Buck&apos;s mission is to make political data available to
+            everyone. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Voluptatibus quia, nulla! Maiores et perferendis eaque,
+            exercitationem praesentium nihil.
+          </p>
         </div>
         <div className="-m-5 flex flex-row flex-wrap justify-center">
           <div className="m-8 w-80 relative flex flex-col">
-            <img className="h-44 object-cover rounded-lg" src="https://images.unsplash.com/photo-1541872705-1f73c6400ec9?ixlib=rb-1.2.1&w=400"></img>
+            <img
+              className="h-44 object-cover rounded-lg"
+              src="https://images.unsplash.com/photo-1541872705-1f73c6400ec9?ixlib=rb-1.2.1&w=400"
+            ></img>
             <div className="py-8 flex flex-col space-y-3">
               <p className="text-lg font-medium">Politicians</p>
-              <p className="font-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla!
-  Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
-              <Link className="text-blue500 font-normal text-center w-full" to="politicians">Explore</Link>
+              <p className="font-light">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptatibus quia, nulla! Maiores et perferendis eaque,
+                exercitationem praesentium nihil.
+              </p>
+              <Link
+                className="text-blue500 font-normal text-center w-full"
+                to="politicians"
+              >
+                Explore
+              </Link>
             </div>
           </div>
           <div className="m-8 w-80 relative flex flex-col">
-            <img className="h-44 object-cover rounded-lg" src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?ixlib=rb-1.2.1&w=400"></img>
+            <img
+              className="h-44 object-cover rounded-lg"
+              src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?ixlib=rb-1.2.1&w=400"
+            ></img>
             <div className="py-8 flex flex-col space-y-3">
               <p className="text-lg font-medium">Corporates</p>
-              <p className="font-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla!
-  Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
-              <Link className="text-blue500 font-normal text-center w-full" to="corporates">Explore</Link>
+              <p className="font-light">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptatibus quia, nulla! Maiores et perferendis eaque,
+                exercitationem praesentium nihil.
+              </p>
+              <Link
+                className="text-blue500 font-normal text-center w-full"
+                to="corporates"
+              >
+                Explore
+              </Link>
             </div>
           </div>
           <div className="m-8 w-80 relative flex flex-col">
-            <img className="h-44 object-cover rounded-lg" src="https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?ixlib=rb-1.2.1&w=400"></img>
+            <img
+              className="h-44 object-cover rounded-lg"
+              src="https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?ixlib=rb-1.2.1&w=400"
+            ></img>
             <div className="py-8 flex flex-col space-y-3">
               <p className="text-lg font-medium">Universities</p>
-              <p className="font-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla!
-  Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
-              <Link className="text-blue500 font-normal text-center w-full" to="universities">Explore</Link>
+              <p className="font-light">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptatibus quia, nulla! Maiores et perferendis eaque,
+                exercitationem praesentium nihil.
+              </p>
+              <Link
+                className="text-blue500 font-normal text-center w-full"
+                to="universities"
+              >
+                Explore
+              </Link>
             </div>
           </div>
         </div>
       </div>
       <Footer />
-    </div>);
+    </div>
+  );
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { SearchBar } from "../components/SearchBar";
 
 export default function Header() {
   return (
@@ -16,6 +17,9 @@ export default function Header() {
           <Link className="lg:ml-12 text-xl font-normal text-opacity-75" to="/politicians">
             politicians
           </Link>
+        </div>
+        <div className="lg:pr-5">
+          <SearchBar/>
         </div>
       </div>
     </header>

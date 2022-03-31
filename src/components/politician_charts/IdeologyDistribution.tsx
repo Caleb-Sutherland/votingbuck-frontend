@@ -9,53 +9,54 @@ import {
   ResponsiveContainer,
   LineChart,
   Line,
+  ReferenceLine,
+  Label,
 } from "recharts";
 import TileSelectBox from "../TileSelectBox";
-import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
-import * as format from "../../helper/formatting";
+import { addPoliticianPeriod } from "../../store/actions/politicianActionCreators";
 import TileLoading from "../TileLoading";
-import {
-  Corporation,
-  IdeologyScore,
-} from "../../interfaces/corporation.interface";
 import { DataState } from "../../interfaces/global.interface";
+import {
+  Politician,
+  IdeologyCount,
+} from "../../interfaces/politician.interface";
 import TileTitle from "../TileTitle";
 
-export default function ImputedIdeology(props: any) {
+export default function IdeologyDistribution(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
 
   // Set up dispatch to be able to add local periods
   const dispatch: Dispatch<any> = useDispatch();
 
   useEffect(() => {
-    // Check if we need to fetch a new period for this corporation
+    // Check if we need to fetch a new period for this politician
     if (
       localPeriod !== props.globalPeriod &&
-      !(localPeriod in corporation[props.corpId].periods)
+      !(localPeriod in politicians[props.poliId].periods)
     ) {
-      dispatch(addCorporationPeriod(props.corpId, localPeriod));
+      dispatch(addPoliticianPeriod(props.poliId, localPeriod));
     }
   }, [localPeriod]);
 
   // Access the redux store
-  const corporation: Record<number, Corporation> = useSelector(
-    (state: DataState) => state.corporations
+  const politicians: Record<number, Politician> = useSelector(
+    (state: DataState) => state.politicians
   );
 
   // Ensure that this periods data has been successfully loaded into the redux store
   if (
-    localPeriod in corporation[props.corpId].periods &&
-    corporation[props.corpId].periods[localPeriod].ideologyDistribution.length >
+    localPeriod in politicians[props.poliId].periods &&
+    politicians[props.poliId].periods[localPeriod].ideologyDistribution.length >
       0
   ) {
     // Data to feed the graph
     const data =
-      corporation[props.corpId].periods[localPeriod].ideologyDistribution;
+      politicians[props.poliId].periods[localPeriod].ideologyDistribution;
 
     // Pass through data and convert to a dictionary so that we can quickly see what ideology scores are missing
     const ideologyToValue: any = {};
     for (let i = 0; i < data.length; i++) {
-      ideologyToValue[data[i].ideology.toFixed(2)] = data[i].dollars_donated;
+      ideologyToValue[data[i].ideology.toFixed(2)] = data[i].count;
     }
 
     // Fill in any missing ideology scores
@@ -63,11 +64,11 @@ export default function ImputedIdeology(props: any) {
     for (let i = -1; i <= 1.01; i += 0.01) {
       const key = i.toFixed(2);
       if (!(key in ideologyToValue)) {
-        formattedData.push({ ideology: key, dollars_donated: 0 });
+        formattedData.push({ ideology: key, count: 0 });
       } else {
         formattedData.push({
           ideology: key,
-          dollars_donated: ideologyToValue[key],
+          count: ideologyToValue[key],
         });
       }
     }
@@ -76,7 +77,7 @@ export default function ImputedIdeology(props: any) {
     const smoothed_data = [];
     const group_size = 21; // Must be odd number
     let mid_ideology;
-    let average_amount;
+    let amount;
     for (let i = 0; i <= formattedData.length - group_size; i++) {
       // Get the group
       const group = [];
@@ -86,18 +87,18 @@ export default function ImputedIdeology(props: any) {
 
       // Calculate the midpoint and average amount
       mid_ideology = group[(group_size - 1) / 2].ideology;
-      const getAverage = (arr: any) => {
+      const getTotalCount = (arr: any) => {
         let sum = 0;
         for (let k = 0; k < arr.length; k++) {
-          sum += arr[k].dollars_donated;
+          sum += arr[k].count;
         }
-        return sum / arr.length;
+        return sum;
       };
-      average_amount = getAverage(group);
+      amount = getTotalCount(group);
 
       smoothed_data.push({
         ideology: mid_ideology,
-        dollars_donated: average_amount,
+        count: amount,
       });
     }
 
@@ -109,17 +110,12 @@ export default function ImputedIdeology(props: any) {
       const data = payload[0].payload;
 
       return (
-        <div
-          className="bg-other p-4 text-black opacity-90 rounded-2xl"
-          style={{ backgroundColor: "#e6f7f4" }}
-        >
+        <div className="bg-tooltipBack p-4 text-black opacity-90 rounded-2xl">
           <div>
             <span>Ideology: {data.ideology}</span>
           </div>
           <div>
-            <span>
-              Weighted Value: {format.formatNumber(data.dollars_donated)}
-            </span>
+            <span>Politicians: {data.count}</span>
           </div>
         </div>
       );
@@ -127,7 +123,7 @@ export default function ImputedIdeology(props: any) {
 
     return (
       <div className="h-full w-full">
-        <TileTitle title="Imputed Ideology" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
+        <TileTitle title="Ideology Distribution" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
         <ResponsiveContainer width="100%">
           <LineChart
             width={730}
@@ -145,14 +141,30 @@ export default function ImputedIdeology(props: any) {
                 parseFloat(smoothed_data[smoothed_data.length - 1].ideology),
               ]}
             />
-            <YAxis dataKey="dollars_donated" />
+            <YAxis dataKey="count" />
             <Tooltip content={CustomTooltip} />
             <Line
               type="monotone"
-              dataKey="dollars_donated"
+              dataKey="count"
               stroke="#8884d8"
               dot={false}
             />
+            <ReferenceLine
+              isFront
+              x={politicians[props.poliId].ideology}
+              stroke="purple"
+              ifOverflow="extendDomain"
+              strokeWidth={2}
+            >
+              <Label
+                position={
+                  parseFloat(politicians[props.poliId].ideology) > 0
+                    ? "insideTopRight"
+                    : "insideTopLeft"
+                }
+                value={politicians[props.poliId].name}
+              />
+            </ReferenceLine>
           </LineChart>
         </ResponsiveContainer>
       </div>
@@ -160,9 +172,9 @@ export default function ImputedIdeology(props: any) {
   } else {
     return (
       <div className="h-full w-full">
-        <TileTitle title="Imputed Ideology" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
+        <TileTitle title="Ideology Distribution" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
         <div className="h-full flex content-center justify-center items-center">
-          {localPeriod in corporation[props.corpId].periods ? (
+          {localPeriod in politicians[props.poliId].periods ? (
             <div>No data for this period...</div>
           ) : (
             <TileLoading />

@@ -17,6 +17,7 @@ import thunk from "redux-thunk";
 import corporationReducer from "./store/reducers/corporationReducer";
 import politicianReducer from "./store/reducers/politicianReducer";
 import universityReducer from "./store/reducers/universityReducer";
+import { DataState, DispatchType } from "./interfaces/global.interface";
 
 const rootReducer = combineReducers({
   corporations: corporationReducer,

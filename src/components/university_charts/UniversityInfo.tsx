@@ -1,40 +1,94 @@
-import React, { Dispatch, useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import Logo from "../../images/Apple.svg";
-
-import {
-  PieChart,
-  Pie,
-  Tooltip,
-  ResponsiveContainer,
-  Label,
-  LabelList,
-} from "recharts";
-import { graph_colors } from "../../constants/graph_colors";
-import * as format from "../../helper/formatting";
-import { addUniversityPeriod } from "../../store/actions/universityActionCreators";
-import TileSelectBox from "../TileSelectBox";
-import { IoSchoolSharp } from "react-icons/io5";
+import React from "react";
+import { FaUniversity } from "react-icons/fa";
+import { MdArrowDropUp, MdArrowDropDown } from "react-icons/md";
+import { useSelector } from "react-redux";
+import { DataState } from "../../interfaces/global.interface";
+import { University } from "../../interfaces/university.interface";
 
 export default function UniversityInfo(props: any) {
+  // Access the redux store
+  const universities: Record<number, University> = useSelector(
+    (state: DataState) => state.universities
+  );
+
+  const uni = universities[props.uniId];
+
+  const tailwindBoldValue = "text-xl font-semibold" + " ";
+  const tailwindValueLabel = "text-lg font-light" + " ";
+  const temp =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
+  // Compute the uni enrollment component
+  let enrollment;
+  if (uni.uni_enrollment_low && uni.uni_enrollment_high) {
+    enrollment = (
+      <div className="flex items-center">
+        <span className={tailwindBoldValue + "mr-1"}>
+          {uni.uni_enrollment_low + "-" + uni.uni_enrollment_high}
+        </span>
+        <span className={tailwindValueLabel}> Enrollment</span>
+      </div>
+    );
+  } else if (uni.uni_enrollment_low) {
+    enrollment = (
+      <div className="flex items-center">
+        <MdArrowDropUp size={30} />
+        <span className={tailwindBoldValue + "mr-1"}>
+          {uni.uni_enrollment_low}
+        </span>
+        <span className={tailwindValueLabel}> Enrollment</span>
+      </div>
+    );
+  } else {
+    enrollment = (
+      <div className="flex items-center">
+        <MdArrowDropDown size={30} />
+        <span className={tailwindBoldValue + "mr-1"}>
+          {uni.uni_enrollment_high}
+        </span>
+        <span className={tailwindValueLabel}> Enrollment</span>
+      </div>
+    );
+  }
+
   return (
-    <div className="lg:pt-8 pl-8 pr-8">
-      <div className="flex">
-        <IoSchoolSharp size={60} className="mr-3"/>
+    <div className="lg:pt-2 pl-8 pr-8 flex flex-col overflow-y-auto">
+      <div className="flex items-center">
+        <FaUniversity size={85} className="mr-6 mb-2" />
         <div className="mb-0.5">
-          <div className="text-4xl font-bold mb-0.5">
-            Harvard University (HU)
+          <div className="text-2xl lg:text-4xl font-bold mb-0.5">
+            {uni.name}
           </div>
-          <div className="text-lightGrayText">Private, Founded in 1636</div>
+          <div className="text-gray-600">
+            {uni.uni_acronym} ‧ {uni.location} ‧{" "}
+            {uni.uni_public ? "Public" : "Private"}
+          </div>
         </div>
       </div>
-      <div className="mb-2 mt-2">
-        <span>Massachusetts Hall Cambridge 02138 Massachusetts Road</span>
+      <div className="flex flex-col items-center w-full lg:flex lg:flex-row lg:space-x-10 lg:content-center mb-2 mt-2">
+        <div>
+          <span className={tailwindBoldValue}>{uni.uni_founded}</span>
+          <span className={tailwindValueLabel}> Founded</span>
+        </div>
+        {enrollment}
+        <div>
+          <span className={tailwindBoldValue}>#{uni.uni_rank}</span>
+          <span className={tailwindValueLabel}> Ranking</span>
+        </div>
       </div>
-      <div className="mb-2">
-        <a href="https://www.harvard.edu">https://www.harvard.edu</a>
+      <div className="text-lg h-1/2 w-auto mt-2">
+        {/* <div className="h-2/3 overflow-y-auto mb-4 text-gray-600">{uni.description}</div> */}
+        <div className="overflow-y-auto mb-1 text-gray-600">
+          {temp}
+        </div>
+        {uni.website ? (
+          <div className="text-blue">
+            <a href={uni.website} target="_blank" rel="noreferrer">
+              University Website
+            </a>
+          </div>
+        ) : null}
       </div>
-      <div>40-45k Students, 2-2.5k Staff</div>
     </div>
   );
 }

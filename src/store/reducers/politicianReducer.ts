@@ -1,13 +1,14 @@
 import { initialState } from "../initialState";
 import * as actionTypes from "../actions/actionTypes";
+import { Politician, PoliticianAction } from "../../interfaces/politician.interface";
 
 const politicianReducer = (
-  state: Record<number, IPolitician> = initialState.politicians,
+  state: Record<number, Politician> = initialState.politicians,
   action: PoliticianAction
-): Record<number, IPolitician> => {
+): Record<number, Politician> => {
   switch (action.type) {
     case actionTypes.ADD_POLITICIAN_PERIOD:
-      // If the organization already exists, just add the period
+      // If the politician already exists, just add the period
       if (state[action.politician.id]) {
         return {
           ...state,
@@ -22,10 +23,9 @@ const politicianReducer = (
           },
         };
       }
-      // Otherwise add the whole organization
+      // Otherwise add the whole politician
       else {
         return {
-          ...state,
           [action.politician.id]: {
             ...action.politician,
             periods: {

@@ -214,6 +214,9 @@ export const poliData = {
     ideology: -0.64,
     party: "Democratic Party",
   },
+  ideologyDistribution: [
+    
+  ],
   donationsByMonth: [
     {
       month_start_date: "2010-01-01T00:00:00+00:00",
@@ -964,3 +967,4 @@ export const uniData = {
     },
   ],
 };
+

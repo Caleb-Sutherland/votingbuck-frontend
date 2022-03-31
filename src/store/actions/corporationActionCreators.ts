@@ -1,3 +1,5 @@
+import { Corporation, CorporationAction } from "../../interfaces/corporation.interface";
+import { DispatchType } from "../../interfaces/global.interface";
 import * as actionTypes from "./actionTypes";
 
 /* Period action creators */
@@ -16,12 +18,10 @@ export function getCorporationPeriod(
   period_id: string
 ) {
   return async (dispatch: DispatchType) => {
-    
-    
     // Get the correct range of years from the period_id
     const period_dates: string[] = period_id.split("-");
-    period_dates[0] = (parseInt(period_dates[0]) - 1).toString() + "-11-03";
-    period_dates[1] = period_dates[1] + "-11-03";
+    period_dates[0] = (parseInt(period_dates[0]) - 1).toString() + "-11-10";
+    period_dates[1] = period_dates[1] + "-11-10";
 
     // Fetch data from the backend
     const res = await fetch(
@@ -30,7 +30,7 @@ export function getCorporationPeriod(
     const data = await res.json();
 
     // Using the temp data for now, construct an organization
-    const corporation: ICorporation = { ...data.orgInfo, periods: {} };
+    const corporation: Corporation = { ...data.orgInfo, totalContributionsDollar: data.totalContributionsDollar, periods: {} };
     corporation.periods = {
       period_id: {
         id: period_id,
@@ -40,7 +40,6 @@ export function getCorporationPeriod(
         topRecipientsDollar: data.topRecipientsDollar,
         topRecipientsDonation: data.topRecipientsDonation,
         ideologyDistribution: data.ideologyDistribution,
-        totalContributionsDollar: data.totalContributionsDollar,
         registeredVoters: data.registeredVoters
       },
     };

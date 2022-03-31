@@ -13,6 +13,13 @@ import {
 import TileSelectBox from "../TileSelectBox";
 import { addUniversityPeriod } from "../../store/actions/universityActionCreators";
 import * as format from "../../helper/formatting";
+import TileLoading from "../TileLoading";
+import { DataState } from "../../interfaces/global.interface";
+import {
+  University,
+  IdeologyScore,
+} from "../../interfaces/university.interface";
+import TileTitle from "../TileTitle";
 
 export default function ImputedIdeology(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -31,7 +38,7 @@ export default function ImputedIdeology(props: any) {
   }, [localPeriod]);
 
   // Access the redux store
-  const universities: Record<number, IUniversity> = useSelector(
+  const universities: Record<number, University> = useSelector(
     (state: DataState) => state.universities
   );
 
@@ -42,19 +49,8 @@ export default function ImputedIdeology(props: any) {
       0
   ) {
     // Data to feed the graph
-    const data = universities[props.uniId].periods[
-      localPeriod
-    ].ideologyDistribution.sort(
-      (a: ICorporateIdeologyScore, b: ICorporateIdeologyScore): number => {
-        if (a.ideology > b.ideology) {
-          return 1;
-        }
-        if (a.ideology < b.ideology) {
-          return -1;
-        }
-        return 0;
-      }
-    );
+    const data =
+      universities[props.uniId].periods[localPeriod].ideologyDistribution;
 
     // Pass through data and convert to a dictionary so that we can quickly see what ideology scores are missing
     const ideologyToValue: any = {};
@@ -131,17 +127,7 @@ export default function ImputedIdeology(props: any) {
 
     return (
       <div className="h-full w-full">
-        <div className="w-full grid grid-cols-12 mb-3">
-          <span className="col-start-1 col-end-8 flex justify-start">
-            Imputed Ideology
-          </span>
-          <div className="col-start-10 col-end-13 flex justify-center">
-            <TileSelectBox
-              onChange={setLocalPeriod}
-              defaultValue={localPeriod}
-            />
-          </div>
-        </div>
+        <TileTitle title="Imputed Ideology" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
         <ResponsiveContainer width="100%">
           <LineChart
             width={730}
@@ -150,7 +136,15 @@ export default function ImputedIdeology(props: any) {
             margin={{ top: 5, right: 25, left: 25, bottom: 30 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="ideology" ticks={[-1, 0, 1]} />
+            <XAxis
+              dataKey="ideology"
+              type="number"
+              ticks={[
+                parseFloat(smoothed_data[0].ideology),
+                0,
+                parseFloat(smoothed_data[smoothed_data.length - 1].ideology),
+              ]}
+            />
             <YAxis dataKey="dollars_donated" />
             <Tooltip content={CustomTooltip} />
             <Line
@@ -166,21 +160,13 @@ export default function ImputedIdeology(props: any) {
   } else {
     return (
       <div className="h-full w-full">
-        <div className="w-full grid grid-cols-12 mb-3">
-          <span className="col-start-1 col-end-8 flex justify-start">
-            Imputed Ideology
-          </span>
-          <div className="col-start-10 col-end-13 flex justify-center">
-            <TileSelectBox
-              onChange={setLocalPeriod}
-              defaultValue={localPeriod}
-            />
-          </div>
-        </div>
-        <div>
-          {localPeriod in universities[props.uniId].periods
-            ? "No data for this period..."
-            : "Loading..."}
+        <TileTitle title="Imputed Ideology" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
+        <div className="h-full flex content-center justify-center items-center">
+          {localPeriod in universities[props.uniId].periods ? (
+            <div>No data for this period...</div>
+          ) : (
+            <TileLoading />
+          )}
         </div>
       </div>
     );

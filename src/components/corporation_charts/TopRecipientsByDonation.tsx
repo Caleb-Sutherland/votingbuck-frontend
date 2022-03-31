@@ -14,6 +14,13 @@ import {
 import { graph_colors } from "../../constants/graph_colors";
 import TileSelectBox from "../TileSelectBox";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
+import TileLoading from "../TileLoading";
+import {
+  Corporation,
+  TopRecipientDonation,
+} from "../../interfaces/corporation.interface";
+import { DataState } from "../../interfaces/global.interface";
+import TileTitle from "../TileTitle";
 
 export default function TopRecipientsByDonation(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -32,7 +39,7 @@ export default function TopRecipientsByDonation(props: any) {
   }, [localPeriod]);
 
   // Access the redux store
-  const corporation: Record<number, ICorporation> = useSelector(
+  const corporation: Record<number, Corporation> = useSelector(
     (state: DataState) => state.corporations
   );
 
@@ -92,10 +99,7 @@ export default function TopRecipientsByDonation(props: any) {
     const data = corporation[props.corpId].periods[
       localPeriod
     ].topRecipientsDonation.sort(
-      (
-        a: ICorporateTopRecipientDonation,
-        b: ICorporateTopRecipientDonation
-      ): number => {
+      (a: TopRecipientDonation, b: TopRecipientDonation): number => {
         if (a.donations_received < b.donations_received) {
           return 1;
         }
@@ -108,17 +112,7 @@ export default function TopRecipientsByDonation(props: any) {
 
     return (
       <div className="h-full w-full">
-        <div className="w-full grid grid-cols-12 mb-3">
-          <span className="col-start-1 col-end-8 flex justify-start">
-            Top Recipients (# of Donations)
-          </span>
-          <div className="col-start-10 col-end-13 flex justify-center">
-            <TileSelectBox
-              onChange={setLocalPeriod}
-              defaultValue={localPeriod}
-            />
-          </div>
-        </div>
+        <TileTitle title="Top Recipients (# of Donations)" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
         <ResponsiveContainer width="100%" height="85%">
           <BarChart
             data={data}
@@ -139,21 +133,13 @@ export default function TopRecipientsByDonation(props: any) {
   } else {
     return (
       <div className="h-full w-full">
-        <div className="w-full grid grid-cols-12 mb-3">
-          <span className="col-start-1 col-end-8 flex justify-start">
-            Top Recipients (# of Donations)
-          </span>
-          <div className="col-start-10 col-end-13 flex justify-center">
-            <TileSelectBox
-              onChange={setLocalPeriod}
-              defaultValue={localPeriod}
-            />
-          </div>
-        </div>
-        <div>
-          {localPeriod in corporation[props.corpId].periods
-            ? "No data for this period..."
-            : "Loading..."}
+        <TileTitle title="Top Recipients (# of Donations)" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
+        <div className="h-full flex content-center justify-center items-center">
+          {localPeriod in corporation[props.corpId].periods ? (
+            <div>No data for this period...</div>
+          ) : (
+            <TileLoading />
+          )}
         </div>
       </div>
     );

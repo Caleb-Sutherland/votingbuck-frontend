@@ -9,8 +9,15 @@ import {
 } from "recharts";
 import { graph_colors } from "../../constants/graph_colors";
 import * as format from "../../helper/formatting";
+import {
+  Corporation,
+  DonationToParty,
+} from "../../interfaces/corporation.interface";
+import { DataState } from "../../interfaces/global.interface";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
+import TileLoading from "../TileLoading";
 import TileSelectBox from "../TileSelectBox";
+import TileTitle from "../TileTitle";
 
 export default function ContributionShareByParty(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -29,7 +36,7 @@ export default function ContributionShareByParty(props: any) {
   }, [localPeriod]);
 
   // Access the redux store
-  const corporation: Record<number, ICorporation> = useSelector(
+  const corporation: Record<number, Corporation> = useSelector(
     (state: DataState) => state.corporations
   );
 
@@ -40,7 +47,7 @@ export default function ContributionShareByParty(props: any) {
     const data =
       corporation[props.corpId].periods[localPeriod].donationsByParty;
 
-    const formattedData = data.map((item: ICorporateDonationToParty): any => {
+    const formattedData = data.map((item: DonationToParty): any => {
       let fill_color;
       if (item.party === "democratic") {
         fill_color = graph_colors.democratic;
@@ -131,17 +138,7 @@ export default function ContributionShareByParty(props: any) {
 
     return (
       <div className="h-full w-full pb-4">
-        <div className="w-full grid grid-cols-12">
-          <span className="col-start-1 col-end-8 flex justify-start">
-            Donations By Party ($)
-          </span>
-          <div className="col-start-10 col-end-13 flex justify-center">
-            <TileSelectBox
-              onChange={setLocalPeriod}
-              defaultValue={localPeriod}
-            />
-          </div>
-        </div>
+        <TileTitle title="Donations By Party ($)" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
         <ResponsiveContainer width="100%" height="100%">
           <PieChart width={500} height={500}>
             <Pie
@@ -164,21 +161,13 @@ export default function ContributionShareByParty(props: any) {
   } else {
     return (
       <div className="h-full w-full">
-        <div className="w-full grid grid-cols-12">
-          <span className="col-start-1 col-end-8 flex justify-start">
-            Donations By Party ($)
-          </span>
-          <div className="col-start-10 col-end-13 flex justify-center">
-            <TileSelectBox
-              onChange={setLocalPeriod}
-              defaultValue={localPeriod}
-            />
-          </div>
-        </div>
-        <div>
-          {localPeriod in corporation[props.corpId].periods
-            ? "No data for this period..."
-            : "Loading..."}
+        <TileTitle title="Donations By Party ($)" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
+        <div className="h-full flex content-center justify-center items-center">
+          {localPeriod in corporation[props.corpId].periods ? (
+            <div>No data for this period...</div>
+          ) : (
+            <TileLoading />
+          )}
         </div>
       </div>
     );

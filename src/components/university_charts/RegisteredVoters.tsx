@@ -9,8 +9,15 @@ import {
 } from "recharts";
 import { graph_colors } from "../../constants/graph_colors";
 import * as format from "../../helper/formatting";
+import { DataState } from "../../interfaces/global.interface";
+import {
+  University,
+  RegisteredVoters as IRegisteredVoters,
+} from "../../interfaces/university.interface";
 import { addUniversityPeriod } from "../../store/actions/universityActionCreators";
+import TileLoading from "../TileLoading";
 import TileSelectBox from "../TileSelectBox";
+import TileTitle from "../TileTitle";
 
 export default function RegisteredVoters(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -29,16 +36,16 @@ export default function RegisteredVoters(props: any) {
   }, [localPeriod]);
 
   // Access the redux store
-  const universities: Record<number, IUniversity> = useSelector(
+  const universities: Record<number, University> = useSelector(
     (state: DataState) => state.universities
   );
 
   if (
     localPeriod in universities[props.uniId].periods &&
-    universities[props.uniId].periods[localPeriod].registeredVoters
+    universities[props.uniId].periods[localPeriod].registeredVoters.length > 0
   ) {
-    const data: ICorporateRegisteredVoters[] =
-    universities[props.uniId].periods[localPeriod].registeredVoters;
+    const data: IRegisteredVoters[] =
+      universities[props.uniId].periods[localPeriod].registeredVoters;
 
     const formattedData: { name: string; value: number; fill: string }[] = [];
     for (const key in data[0]) {
@@ -142,17 +149,7 @@ export default function RegisteredVoters(props: any) {
 
     return (
       <div className="h-full w-full pb-4">
-        <div className="w-full grid grid-cols-12">
-          <span className="col-start-1 col-end-8 flex justify-start">
-            Registered Voters
-          </span>
-          <div className="col-start-10 col-end-13 flex justify-center">
-            <TileSelectBox
-              onChange={setLocalPeriod}
-              defaultValue={localPeriod}
-            />
-          </div>
-        </div>
+        <TileTitle title="Registered Voters" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
         <ResponsiveContainer width="100%" height="100%">
           <PieChart width={500} height={500}>
             <Pie
@@ -175,21 +172,13 @@ export default function RegisteredVoters(props: any) {
   } else {
     return (
       <div className="h-full w-full">
-        <div className="w-full grid grid-cols-12">
-          <span className="col-start-1 col-end-8 flex justify-start">
-            Registered Voters
-          </span>
-          <div className="col-start-10 col-end-13 flex justify-center">
-            <TileSelectBox
-              onChange={setLocalPeriod}
-              defaultValue={localPeriod}
-            />
-          </div>
-        </div>
-        <div>
-          {localPeriod in universities[props.uniId].periods
-            ? "No data for this period..."
-            : "Loading..."}
+        <TileTitle title="Registered Voters" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
+        <div className="h-full flex content-center justify-center items-center">
+          {localPeriod in universities[props.uniId].periods ? (
+            <div>No data for this period...</div>
+          ) : (
+            <TileLoading />
+          )}
         </div>
       </div>
     );

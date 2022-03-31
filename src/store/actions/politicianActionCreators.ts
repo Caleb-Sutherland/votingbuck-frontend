@@ -1,5 +1,6 @@
+import { DispatchType } from "../../interfaces/global.interface";
+import { Politician, PoliticianAction } from "../../interfaces/politician.interface";
 import * as actionTypes from "./actionTypes";
-import { poliData } from "../../components/TempData";
 
 /* Period action creators */
 // Add a period to the store
@@ -8,29 +9,38 @@ export function addPoliticianPeriod(politician_id: number, period_id: string) {
   return getPoliticianPeriod(politician_id, period_id);
 }
 
-// export function removeAllOrganizationPeriods() {
-//   const action: PeriodAction = {
-//     type: actionTypes.REMOVE_ALL_ORGANIZATION_PERIODS,
-//     period: null,
-//   };
-
-//   return (dispatch: DispatchType) => {
-//     dispatch(action);
-//   };
-// }
-
 // Helper function to retrieve organization/period data from the backend
 export function getPoliticianPeriod(politician_id: number, period_id: string) {
   return async (dispatch: DispatchType) => {
-    // Get real data from database here
+    // Get the correct range of years from the period_id
+    const period_dates: string[] = period_id.split("-");
+    period_dates[0] = (parseInt(period_dates[0]) - 1).toString() + "-11-10";
+    period_dates[1] = period_dates[1] + "-11-10";
+
+    // Fetch data from the backend
+    const res = await fetch(
+      `${process.env.REACT_APP_API_BASE_URL}/recipients/${politician_id}?start_date=${period_dates[0]}&end_date=${period_dates[1]}`
+    );
+    const data = await res.json();
 
     // Using the temp data for now, construct an organization
-    const politician: IPolitician = { ...poliData.recInfo, periods: {} };
+    const politician: Politician = {
+      ...data.recInfo,
+      timeInCongress: data.timeInCongress,
+      leadership: data.leadership,
+      committee: data.committee,
+      schoolInfo: data.schoolInfo,
+      periods: {},
+    };
     politician.periods = {
       period_id: {
         id: period_id,
-        donationsByMonth: poliData.donationsByMonth,
-        topDonators: poliData.topDonators,
+        donationsByMonth: data.donationsByMonth,
+        topDonators: data.topDonators,
+        ideologyDistribution: data.ideologyDistribution,
+        topDonationsDollarsByIndustry: data.topDonationsDollarsByIndustry,
+        topDonationsDollarsByCorporation: data.topDonationsDollarsByCorporation,
+        topDonationsDollarsByUniversity: data.topDonationsDollarsByUniversity,
       },
     };
 

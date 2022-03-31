@@ -1,9 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="h-20 flex items-center bg-footerBackground w-full">
+    <footer className="h-20 flex items-center bg-footerBackground w-full relative">
       <p className="text-footerText text-center w-full">Copyright &copy; 2022 votingbuck &mdash; All Rights Reserved.</p>
     </footer>
   );

@@ -1,10 +1,11 @@
 import { initialState } from "../initialState";
 import * as actionTypes from "../actions/actionTypes";
+import { University, UniversityAction } from "../../interfaces/university.interface";
 
 const universityReducer = (
-  state: Record<number, IUniversity> = initialState.universities,
+  state: Record<number, University> = initialState.universities,
   action: UniversityAction
-): Record<number, IUniversity> => {
+): Record<number, University> => {
   switch (action.type) {
     case actionTypes.ADD_UNIVERSITY_PERIOD:
       // If the organization already exists, just add the period

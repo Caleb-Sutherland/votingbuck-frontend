@@ -1,41 +1,48 @@
-import React, { Dispatch, useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import Logo from "../../images/Apple.svg";
-import { IoIosBusiness } from "react-icons/io";
-import {
-  PieChart,
-  Pie,
-  Tooltip,
-  ResponsiveContainer,
-  Label,
-  LabelList,
-} from "recharts";
-import { graph_colors } from "../../constants/graph_colors";
-import * as format from "../../helper/formatting";
-import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
-import TileSelectBox from "../TileSelectBox";
+import React from "react";
+import { BsBuilding } from "react-icons/bs";
+import { useSelector } from "react-redux";
+import { Corporation } from "../../interfaces/corporation.interface";
+import { DataState } from "../../interfaces/global.interface";
 
 export default function CompanyInfo(props: any) {
-  const temp =
-    "Apple Inc. is an American multinational technology company that specializes in consumer electronics, software and online services. Apple  is the largest information technology company by revenue (totaling US$365.8 billion in 2021) and, as of January 2021, it is the world's most valuable company...";
-  return (
-    <div className="lg:pt-8 pl-8 pr-8">
-      <div className="flex">
-        <IoIosBusiness size={65} className="mr-2"/>
-        <div className="mb-0.5">
-          <div className="text-4xl font-bold mb-0.5">Apple</div>
-          <div className="text-lightGrayText">Tech - Cupertino, California</div>
-        </div>
-      </div>
+  // Access the redux store
+  const corporations: Record<number, Corporation> = useSelector(
+    (state: DataState) => state.corporations
+  );
 
-      <div className="flex space-x-4 mb-2">
-        <div>
-          <span className="font-bold text-md">2,748</span><span> Revolvers</span>
+  const corp = corporations[props.corpId];
+  const temp =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+  return (
+    <div className="lg:pt-2 pl-8 pr-8 flex flex-col overflow-y-auto">
+      <div className="flex items-center">
+        <BsBuilding size={85} className="mr-6" />
+        <div className="mb-0.5">
+          <div className="text-2xl lg:text-4xl font-bold mb-0.5">
+            {corp.name}
+          </div>
+          <div className="text-gray-600">
+            {corp.industry} ‧ {corp.location}
+          </div>
         </div>
-        <div><span className="font-bold text-md">$1.7Bln</span><span> Lobbying Expenditure</span></div>
       </div>
-      <div className="mb-2">{temp}</div>
-      <div>Website</div>
+      <div className="flex space-x-4 mb-2 mt-4">
+        <div>
+          <span className="text-xl font-semibold">
+            {corp.corp_revolvers
+              .toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          </span>
+          <span className="text-lg font-light"> Revolvers</span>
+        </div>
+        <div>
+          <span className="text-xl font-semibold">$1.7Bln</span>
+          <span className="text-lg font-light"> Lobbying Expenditure</span>
+        </div>
+      </div>
+      <div className="mb-2 mt-3 text-lg overflow-y-auto text-gray-600">
+        {temp}
+      </div>
     </div>
   );
 }

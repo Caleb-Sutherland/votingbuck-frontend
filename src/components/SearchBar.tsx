@@ -75,7 +75,7 @@ export function SearchBar() {
           ) : null}
           {queryResults.politicians.map((item: any, index: number) => {
             return (
-              <Link key={index} to={"politicians/" + item.value.id}>
+              <Link key={index} to={"/politicians/" + item.value.id}>
                 <div className="pl-8 pr-3 py-1 hover:bg-lightGray transition-colors">
                   <p>{item.value.name}</p>
                 </div>
@@ -89,7 +89,7 @@ export function SearchBar() {
           ) : null}
           {queryResults.corporates.map((item: any, index: number) => {
             return (
-              <Link key={index} to={"corporates/" + item.value.id}>
+              <Link key={index} to={"/corporates/" + item.value.id}>
                 <div className="pl-8 pr-3 py-1 hover:bg-lightGray transition-colors">
                   <p>{item.value.name}</p>
                 </div>
@@ -103,7 +103,7 @@ export function SearchBar() {
           ) : null}
           {queryResults.universities.map((item: any, index: number) => {
             return (
-              <Link key={index} to={"universities/" + item.value.id}>
+              <Link key={index} to={"/universities/" + item.value.id}>
                 <div className="pl-8 pr-3 py-1 hover:bg-lightGray transition-colors">
                   <p>{item.value.name}</p>
                 </div>

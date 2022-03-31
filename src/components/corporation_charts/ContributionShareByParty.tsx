@@ -9,7 +9,10 @@ import {
 } from "recharts";
 import { graph_colors } from "../../constants/graph_colors";
 import * as format from "../../helper/formatting";
-import { Corporation, DonationToParty } from "../../interfaces/corporation.interface";
+import {
+  Corporation,
+  DonationToParty,
+} from "../../interfaces/corporation.interface";
 import { DataState } from "../../interfaces/global.interface";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
 import TileLoading from "../TileLoading";
@@ -178,9 +181,9 @@ export default function ContributionShareByParty(props: any) {
             />
           </div>
         </div>
-        <div>
+        <div className="h-full flex content-center justify-center items-center">
           {localPeriod in corporation[props.corpId].periods ? (
-            "No data for this period..."
+            <div>No data for this period...</div>
           ) : (
             <TileLoading />
           )}

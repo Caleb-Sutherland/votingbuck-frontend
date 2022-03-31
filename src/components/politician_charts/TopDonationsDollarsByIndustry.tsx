@@ -17,7 +17,10 @@ import * as format from "../../helper/formatting";
 import { extra_colors } from "../../constants/graph_colors";
 import TileLoading from "../TileLoading";
 import { DataState } from "../../interfaces/global.interface";
-import { Politician, IndustryDonation } from "../../interfaces/politician.interface";
+import {
+  Politician,
+  IndustryDonation,
+} from "../../interfaces/politician.interface";
 
 export default function TopDonationsDollarsByIndustry(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -50,10 +53,7 @@ export default function TopDonationsDollarsByIndustry(props: any) {
     const data = politicians[props.poliId].periods[
       localPeriod
     ].topDonationsDollarsByIndustry.sort(
-      (
-        a: IndustryDonation,
-        b: IndustryDonation
-      ): number => {
+      (a: IndustryDonation, b: IndustryDonation): number => {
         if (a.dollars_donated < b.dollars_donated) {
           return 1;
         }
@@ -127,9 +127,9 @@ export default function TopDonationsDollarsByIndustry(props: any) {
             />
           </div>
         </div>
-        <div>
+        <div className="h-full flex content-center justify-center items-center">
           {localPeriod in politicians[props.poliId].periods ? (
-            "No data for this period..."
+            <div>No data for this period...</div>
           ) : (
             <TileLoading />
           )}

@@ -14,7 +14,10 @@ import TileSelectBox from "../TileSelectBox";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
 import * as format from "../../helper/formatting";
 import TileLoading from "../TileLoading";
-import { Corporation, IdeologyScore } from "../../interfaces/corporation.interface";
+import {
+  Corporation,
+  IdeologyScore,
+} from "../../interfaces/corporation.interface";
 import { DataState } from "../../interfaces/global.interface";
 
 export default function ImputedIdeology(props: any) {
@@ -188,11 +191,11 @@ export default function ImputedIdeology(props: any) {
             />
           </div>
         </div>
-        <div>
+        <div className="h-full flex content-center justify-center items-center">
           {localPeriod in corporation[props.corpId].periods ? (
-            "No data for this period..."
+            <div>No data for this period...</div>
           ) : (
-            <TileLoading/>
+            <TileLoading />
           )}
         </div>
       </div>

@@ -215,9 +215,9 @@ export default function IdeologyDistribution(props: any) {
             />
           </div>
         </div>
-        <div>
+        <div className="h-full flex content-center justify-center items-center">
           {localPeriod in politicians[props.poliId].periods ? (
-            "No data for this period..."
+            <div>No data for this period...</div>
           ) : (
             <TileLoading />
           )}

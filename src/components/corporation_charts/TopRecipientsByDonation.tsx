@@ -15,7 +15,10 @@ import { graph_colors } from "../../constants/graph_colors";
 import TileSelectBox from "../TileSelectBox";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
 import TileLoading from "../TileLoading";
-import { Corporation, TopRecipientDonation } from "../../interfaces/corporation.interface";
+import {
+  Corporation,
+  TopRecipientDonation,
+} from "../../interfaces/corporation.interface";
 import { DataState } from "../../interfaces/global.interface";
 
 export default function TopRecipientsByDonation(props: any) {
@@ -95,10 +98,7 @@ export default function TopRecipientsByDonation(props: any) {
     const data = corporation[props.corpId].periods[
       localPeriod
     ].topRecipientsDonation.sort(
-      (
-        a: TopRecipientDonation,
-        b: TopRecipientDonation
-      ): number => {
+      (a: TopRecipientDonation, b: TopRecipientDonation): number => {
         if (a.donations_received < b.donations_received) {
           return 1;
         }
@@ -153,9 +153,9 @@ export default function TopRecipientsByDonation(props: any) {
             />
           </div>
         </div>
-        <div>
+        <div className="h-full flex content-center justify-center items-center">
           {localPeriod in corporation[props.corpId].periods ? (
-            "No data for this period..."
+            <div>No data for this period...</div>
           ) : (
             <TileLoading />
           )}

@@ -10,7 +10,10 @@ import {
 import { graph_colors } from "../../constants/graph_colors";
 import * as format from "../../helper/formatting";
 import { DataState } from "../../interfaces/global.interface";
-import { University, RegisteredVoters as IRegisteredVoters } from "../../interfaces/university.interface";
+import {
+  University,
+  RegisteredVoters as IRegisteredVoters,
+} from "../../interfaces/university.interface";
 import { addUniversityPeriod } from "../../store/actions/universityActionCreators";
 import TileLoading from "../TileLoading";
 import TileSelectBox from "../TileSelectBox";
@@ -38,7 +41,7 @@ export default function RegisteredVoters(props: any) {
 
   if (
     localPeriod in universities[props.uniId].periods &&
-    universities[props.uniId].periods[localPeriod].registeredVoters
+    universities[props.uniId].periods[localPeriod].registeredVoters.length > 0
   ) {
     const data: IRegisteredVoters[] =
       universities[props.uniId].periods[localPeriod].registeredVoters;
@@ -189,9 +192,9 @@ export default function RegisteredVoters(props: any) {
             />
           </div>
         </div>
-        <div>
+        <div className="h-full flex content-center justify-center items-center">
           {localPeriod in universities[props.uniId].periods ? (
-            "No data for this period..."
+            <div>No data for this period...</div>
           ) : (
             <TileLoading />
           )}

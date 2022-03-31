@@ -16,7 +16,10 @@ import TileSelectBox from "../TileSelectBox";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
 import * as format from "../../helper/formatting";
 import TileLoading from "../TileLoading";
-import { Corporation, TopRecipientDollar } from "../../interfaces/corporation.interface";
+import {
+  Corporation,
+  TopRecipientDollar,
+} from "../../interfaces/corporation.interface";
 import { DataState } from "../../interfaces/global.interface";
 
 export default function TopRecipientsByDollar(props: any) {
@@ -50,10 +53,7 @@ export default function TopRecipientsByDollar(props: any) {
     const data = corporation[props.corpId].periods[
       localPeriod
     ].topRecipientsDollar.sort(
-      (
-        a: TopRecipientDollar,
-        b: TopRecipientDollar
-      ): number => {
+      (a: TopRecipientDollar, b: TopRecipientDollar): number => {
         if (a.amount_received < b.amount_received) {
           return 1;
         }
@@ -152,11 +152,11 @@ export default function TopRecipientsByDollar(props: any) {
             />
           </div>
         </div>
-        <div>
+        <div className="h-full flex content-center justify-center items-center">
           {localPeriod in corporation[props.corpId].periods ? (
-            "No data for this period..."
+            <div>No data for this period...</div>
           ) : (
-            <TileLoading/>
+            <TileLoading />
           )}
         </div>
       </div>

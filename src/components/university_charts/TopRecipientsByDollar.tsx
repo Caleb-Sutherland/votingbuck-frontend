@@ -17,7 +17,10 @@ import { addUniversityPeriod } from "../../store/actions/universityActionCreator
 import * as format from "../../helper/formatting";
 import TileLoading from "../TileLoading";
 import { DataState } from "../../interfaces/global.interface";
-import { University, TopRecipientDollar } from "../../interfaces/university.interface";
+import {
+  University,
+  TopRecipientDollar,
+} from "../../interfaces/university.interface";
 
 export default function TopRecipientsByDollar(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -50,10 +53,7 @@ export default function TopRecipientsByDollar(props: any) {
     const data = universities[props.uniId].periods[
       localPeriod
     ].topRecipientsDollar.sort(
-      (
-        a: TopRecipientDollar,
-        b: TopRecipientDollar
-      ): number => {
+      (a: TopRecipientDollar, b: TopRecipientDollar): number => {
         if (a.amount_received < b.amount_received) {
           return 1;
         }
@@ -152,9 +152,9 @@ export default function TopRecipientsByDollar(props: any) {
             />
           </div>
         </div>
-        <div>
+        <div className="h-full flex content-center justify-center items-center">
           {localPeriod in universities[props.uniId].periods ? (
-            "No data for this period..."
+            <div>No data for this period...</div>
           ) : (
             <TileLoading />
           )}

@@ -11,14 +11,14 @@ module.exports = {
       selectBg: "white",
       selectBorder: "#e3edfc",
       selectBorderActive: "#6b96db",
-      blue: "#2563EB",
-      red: "#EF4444",
+      blue: "#004cff",
+      red: "#ff3636",
       lightGreyText: "#4B5563",
       blueGray300: "#90a4ae",
       blueGray600: "#546e7a",
       blue500: "#2196f3",
       footerBackground: "#3F3F46",
-      footerText: "white"
+      footerText: "#e0e0e0"
     },
     extend: {},
   },

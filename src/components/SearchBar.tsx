@@ -18,9 +18,9 @@ export function SearchBar() {
       let pIndex = 0;
       let cIndex = 0;
       let uIndex = 0;
-      let finalPoliticians: any = [];
-      let finalCorporates: any = [];
-      let finalUniversities: any = [];
+      const finalPoliticians: any = [];
+      const finalCorporates: any = [];
+      const finalUniversities: any = [];
 
       while (
         remainingSpaces > 0 &&
@@ -45,7 +45,7 @@ export function SearchBar() {
         }
       }
 
-      let finalData = {
+      const finalData = {
         politicians: finalPoliticians,
         corporates: finalCorporates,
         universities: finalUniversities,
@@ -76,7 +76,7 @@ export function SearchBar() {
           {queryResults.politicians.map((item: any, index: number) => {
             return (
               <Link key={index} to={"politicians/" + item.value.id}>
-                <div className="pl-8 pr-3 py-1 hover:bg-lightGray">
+                <div className="pl-8 pr-3 py-1 hover:bg-lightGray transition-colors">
                   <p>{item.value.name}</p>
                 </div>
               </Link>
@@ -90,7 +90,7 @@ export function SearchBar() {
           {queryResults.corporates.map((item: any, index: number) => {
             return (
               <Link key={index} to={"corporates/" + item.value.id}>
-                <div className="pl-8 pr-3 py-1 hover:bg-lightGray">
+                <div className="pl-8 pr-3 py-1 hover:bg-lightGray transition-colors">
                   <p>{item.value.name}</p>
                 </div>
               </Link>
@@ -104,7 +104,7 @@ export function SearchBar() {
           {queryResults.universities.map((item: any, index: number) => {
             return (
               <Link key={index} to={"universities/" + item.value.id}>
-                <div className="pl-8 pr-3 py-1 hover:bg-lightGray">
+                <div className="pl-8 pr-3 py-1 hover:bg-lightGray transition-colors">
                   <p>{item.value.name}</p>
                 </div>
               </Link>

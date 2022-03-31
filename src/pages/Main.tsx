@@ -2,6 +2,7 @@ import React from "react";
 import { FaUniversity } from "react-icons/fa";
 import { GiPublicSpeaker } from "react-icons/gi";
 import { BsBuilding } from "react-icons/bs";
+import { FiExternalLink } from "react-icons/fi";
 import Particles from "react-tsparticles";
 import { Link } from "react-router-dom";
 import HeaderMain from "../components/HeaderMain";
@@ -86,23 +87,24 @@ export default function Main() {
           <FaUniversity size="16em" />
           <div className="flex flex-col space-y-4 w-1/3">
             <p className="text-lg font-medium">Highlighted Universities</p>
-            {highlights.universities.map(function (entry) {
+            {highlights.universities.map(function (entry, index) {
               return (
-                <Link to={"universities/" + entry.id}>
+                <Link key={index} to={"universities/" + entry.id}>
                   <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
                     <div>
                       <p>{entry.name}</p>
                     </div>
-                    <div>
+                    <div className="flex flex-row items-center space-x-2">
                       <p
                         className="text-right"
                         dangerouslySetInnerHTML={{
                           __html: entry.statistic.replace(
-                            /\*([^\*]*)\*/g,
-                            '<span class="font-medium">$1</span>'
+                            /\*([^*]*)\*/g,
+                            "<span class=\"font-medium\">$1</span>"
                           ),
                         }}
                       ></p>
+                      <FiExternalLink size="1.1em" />
                     </div>
                   </div>
                 </Link>
@@ -115,23 +117,24 @@ export default function Main() {
             <p className="text-lg font-medium text-right">
               Highlighted Politicians
             </p>
-            {highlights.politicians.map(function (entry) {
+            {highlights.politicians.map(function (entry, index) {
               return (
-                <Link to={"politicians/" + entry.id}>
+                <Link key={index} to={"politicians/" + entry.id}>
                   <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
                     <div>
                       <p>{entry.name}</p>
                     </div>
-                    <div>
+                    <div className="flex flex-row items-center space-x-2">
                       <p
                         className="text-right"
                         dangerouslySetInnerHTML={{
                           __html: entry.statistic.replace(
-                            /\*([^\*]*)\*/g,
-                            '<span class="font-medium">$1</span>'
+                            /\*([^*]*)\*/g,
+                            "<span class=\"font-medium\">$1</span>"
                           ),
                         }}
                       ></p>
+                      <FiExternalLink size="1.1em" />
                     </div>
                   </div>
                 </Link>
@@ -144,23 +147,24 @@ export default function Main() {
           <BsBuilding size="16em" />
           <div className="flex flex-col space-y-4 w-1/3">
             <p className="text-lg font-medium">Highlighted Corporates</p>
-            {highlights.corporates.map(function (entry) {
+            {highlights.corporates.map(function (entry, index) {
               return (
-                <Link to={"corporates/" + entry.id}>
+                <Link key={index} to={"corporates/" + entry.id}>
                   <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
                     <div>
                       <p>{entry.name}</p>
                     </div>
-                    <div>
+                    <div className="flex flex-row items-center space-x-2">
                       <p
                         className="text-right"
                         dangerouslySetInnerHTML={{
                           __html: entry.statistic.replace(
-                            /\*([^\*]*)\*/g,
-                            '<span class="font-medium">$1</span>'
+                            /\*([^*]*)\*/g,
+                            "<span class=\"font-medium\">$1</span>"
                           ),
                         }}
                       ></p>
+                      <FiExternalLink size="1.1em" />
                     </div>
                   </div>
                 </Link>

@@ -16,7 +16,7 @@ export default function UniversityInfo(props: any) {
   const tailwindBoldValue = "text-lg font-semibold" + " ";
   const tailwindValueLabel = "text-md font-light" + " ";
   const temp =
-    "Apple Inc. is an American multinational technology company that specializes in consumer electronics, software and online services. Apple  is the largest information technology company by revenue (totaling US$365.8 billion in 2021).";
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
   // Compute the uni enrollment component
   let enrollment;
@@ -52,11 +52,13 @@ export default function UniversityInfo(props: any) {
   }
 
   return (
-    <div className="lg:pt-8 pl-8 pr-8 flex flex-col">
+    <div className="lg:pt-2 pl-8 pr-8 flex flex-col overflow-y-auto">
       <div className="flex items-center">
         <FaUniversity size={85} className="mr-6 mb-2" />
         <div className="mb-0.5">
-          <div className="text-2xl lg:text-4xl font-bold mb-0.5">{uni.name}</div>
+          <div className="text-2xl lg:text-4xl font-bold mb-0.5">
+            {uni.name}
+          </div>
           <div className="text-gray-600">
             {uni.uni_acronym} ‧ {uni.location} ‧{" "}
             {uni.uni_public ? "Public" : "Private"}
@@ -74,10 +76,13 @@ export default function UniversityInfo(props: any) {
           <span className={tailwindValueLabel}> Ranking</span>
         </div>
       </div>
-      <div className="text-lg h-1/2 w-auto mt-4">
-        <div className="h-2/3 overflow-y-auto mb-4 text-gray-600">{uni.description}</div>
+      <div className="text-lg h-1/2 w-auto mt-2">
+        {/* <div className="h-2/3 overflow-y-auto mb-4 text-gray-600">{uni.description}</div> */}
+        <div className="overflow-y-auto mb-1 text-gray-600">
+          {temp}
+        </div>
         {uni.website ? (
-          <div className="h-1/3 text-blue">
+          <div className="text-blue">
             <a href={uni.website} target="_blank" rel="noreferrer">
               University Website
             </a>

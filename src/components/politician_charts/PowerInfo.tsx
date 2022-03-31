@@ -31,11 +31,9 @@ export default function PowerInfo(props: any) {
 
     timeInCongress += endYear - startYear;
   }
-  console.log(politicians[props.poliId]);
-  const temp =
-    "Apple Inc. is an American multinational technology company that specializes in consumer electronics, software and online services. Apple  is the largest information technology company by revenue (totaling US$365.8 billion in 2021) and, as of January 2021, it is the world's most valuable company...";
+  
   return (
-    <div className="w-full lg:pt-8 pl-16 pr-16">
+    <div className="w-full lg:pt-8 pl-20 pr-20">
       <div className="flex justify-center mb-2 text-xl font-light">POWER</div>
       <div className="flex justify-between">
         <div>
@@ -47,7 +45,7 @@ export default function PowerInfo(props: any) {
           <div className="text-lg font-light leading-none">Time in House</div>
         </div>
       </div>
-      <div className="flex mt-4">
+      <div className="flex mt-3">
         <div>
           <div className="text-xl font-semibold">{timeInCongress}</div>
           <div className="text-lg font-light leading-none">
@@ -55,19 +53,26 @@ export default function PowerInfo(props: any) {
           </div>
         </div>
       </div>
-      <div className="mt-4">
+      <div className="mt-5">
         {poli.committee.length > 0 ? (
           poli.committee.map((item, index) => {
             return (
-              <div className="text-base font-semibold" key={index}>
-                {item.name + " ‧ " + item.rank}
+              <div className="text-lg leading-none mb-2" key={index}>
+                <div className="font-semibold">{item.name}</div>
+                <div className="font-regular">{"Member Rank " + item.rank}</div>
               </div>
             );
           })
         ) : (
-          <div className="text-xl font-semibold">N/A</div>
+          <div>
+            <div className="text-xl font-semibold">
+              {poli.senate_exit_reason
+                ? poli.senate_exit_reason
+                : poli.house_exit_reason}
+            </div>
+            <div className="text-lg font-light leading-none">Note of Interest</div>
+          </div>
         )}
-        <div className="text-lg font-light leading-none">Committees</div>
       </div>
     </div>
   );

@@ -17,6 +17,7 @@ import LoadingScreen from "../components/LoadingScreen";
 import { DataState } from "../interfaces/global.interface";
 import { Politician as IPolitician } from "../interfaces/politician.interface";
 import PowerInfo from "../components/politician_charts/PowerInfo";
+import WealthInfo from "../components/politician_charts/WealthInfo";
 
 export default function Politician() {
   // Get the default current period
@@ -85,13 +86,15 @@ export default function Politician() {
               <PoliticianInfo poliId={poli_id} />
             </div>
             <div
-              className={tailwindTileStyles + "lg:col-start-7 lg:col-end-10"}
+              className={tailwindTileStyles + "lg:col-start-7 lg:col-end-11"}
             >
               <PowerInfo poliId={poli_id} />
             </div>
             <div
-              className={tailwindTileStyles + "lg:col-start-10 lg:col-end-13"}
-            ></div>
+              className={tailwindTileStyles + "lg:col-start-11 lg:col-end-13"}
+            >
+              <WealthInfo poliId={poli_id} />
+            </div>
           </div>
           <div className={tailwindGridRow}>
             <div className={tailwindTileStyles + "lg:col-start-1 lg:col-end-5"}>

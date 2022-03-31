@@ -14,6 +14,8 @@ import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import LoadingScreen from "../components/LoadingScreen";
+import { DataState } from "../interfaces/global.interface";
+import { Politician as IPolitician } from "../interfaces/politician.interface";
 
 export default function Politician() {
   // Get the default current period

@@ -1,3 +1,5 @@
+import { DispatchType } from "../../interfaces/global.interface";
+import { Politician, PoliticianAction } from "../../interfaces/politician.interface";
 import * as actionTypes from "./actionTypes";
 
 /* Period action creators */
@@ -22,7 +24,7 @@ export function getPoliticianPeriod(politician_id: number, period_id: string) {
     const data = await res.json();
 
     // Using the temp data for now, construct an organization
-    const politician: IPolitician = {
+    const politician: Politician = {
       ...data.recInfo,
       timeInCongress: data.timeInCongress,
       leadership: data.leadership,

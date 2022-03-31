@@ -2,10 +2,12 @@ import React from "react";
 import { FaUniversity } from "react-icons/fa";
 import { MdArrowDropUp, MdArrowDropDown } from "react-icons/md";
 import { useSelector } from "react-redux";
+import { DataState } from "../../interfaces/global.interface";
+import { University } from "../../interfaces/university.interface";
 
 export default function UniversityInfo(props: any) {
   // Access the redux store
-  const universities: Record<number, IUniversity> = useSelector(
+  const universities: Record<number, University> = useSelector(
     (state: DataState) => state.universities
   );
 

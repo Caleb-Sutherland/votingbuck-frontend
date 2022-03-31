@@ -16,6 +16,8 @@ import { addPoliticianPeriod } from "../../store/actions/politicianActionCreator
 import * as format from "../../helper/formatting";
 import { extra_colors } from "../../constants/graph_colors";
 import TileLoading from "../TileLoading";
+import { DataState } from "../../interfaces/global.interface";
+import { Politician, IndustryDonation } from "../../interfaces/politician.interface";
 
 export default function TopDonationsDollarsByIndustry(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -34,7 +36,7 @@ export default function TopDonationsDollarsByIndustry(props: any) {
   }, [localPeriod]);
 
   // Access the redux store
-  const politicians: Record<number, IPolitician> = useSelector(
+  const politicians: Record<number, Politician> = useSelector(
     (state: DataState) => state.politicians
   );
 
@@ -49,8 +51,8 @@ export default function TopDonationsDollarsByIndustry(props: any) {
       localPeriod
     ].topDonationsDollarsByIndustry.sort(
       (
-        a: IPoliticianIndustryDonation,
-        b: IPoliticianIndustryDonation
+        a: IndustryDonation,
+        b: IndustryDonation
       ): number => {
         if (a.dollars_donated < b.dollars_donated) {
           return 1;

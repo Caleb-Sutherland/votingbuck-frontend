@@ -16,6 +16,8 @@ import TileSelectBox from "../TileSelectBox";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
 import * as format from "../../helper/formatting";
 import TileLoading from "../TileLoading";
+import { Corporation, TopRecipientDollar } from "../../interfaces/corporation.interface";
+import { DataState } from "../../interfaces/global.interface";
 
 export default function TopRecipientsByDollar(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -34,7 +36,7 @@ export default function TopRecipientsByDollar(props: any) {
   }, [localPeriod]);
 
   // Access the redux store
-  const corporation: Record<number, ICorporation> = useSelector(
+  const corporation: Record<number, Corporation> = useSelector(
     (state: DataState) => state.corporations
   );
 
@@ -49,8 +51,8 @@ export default function TopRecipientsByDollar(props: any) {
       localPeriod
     ].topRecipientsDollar.sort(
       (
-        a: ICorporateTopRecipientDollar,
-        b: ICorporateTopRecipientDollar
+        a: TopRecipientDollar,
+        b: TopRecipientDollar
       ): number => {
         if (a.amount_received < b.amount_received) {
           return 1;

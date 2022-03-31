@@ -1,3 +1,5 @@
+import { DispatchType } from "../../interfaces/global.interface";
+import { University, UniversityAction } from "../../interfaces/university.interface";
 import * as actionTypes from "./actionTypes";
 
 /* Period action creators */
@@ -28,7 +30,7 @@ export function getUniversityPeriod(
     const data = await res.json();
 
     // Using the temp data for now, construct an organization
-    const university: IUniversity = { ...data.uniInfo, periods: {} };
+    const university: University = { ...data.uniInfo, periods: {} };
     university.periods = {
       period_id: {
         id: period_id,

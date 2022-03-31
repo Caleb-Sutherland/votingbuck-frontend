@@ -9,6 +9,8 @@ import {
 } from "recharts";
 import { graph_colors } from "../../constants/graph_colors";
 import * as format from "../../helper/formatting";
+import { Corporation, RegisteredVoters as IRegisteredVoters} from "../../interfaces/corporation.interface";
+import { DataState } from "../../interfaces/global.interface";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
 import TileLoading from "../TileLoading";
 import TileSelectBox from "../TileSelectBox";
@@ -30,7 +32,7 @@ export default function RegisteredVoters(props: any) {
   }, [localPeriod]);
 
   // Access the redux store
-  const corporation: Record<number, ICorporation> = useSelector(
+  const corporation: Record<number, Corporation> = useSelector(
     (state: DataState) => state.corporations
   );
 
@@ -38,7 +40,7 @@ export default function RegisteredVoters(props: any) {
     localPeriod in corporation[props.corpId].periods &&
     corporation[props.corpId].periods[localPeriod].registeredVoters
   ) {
-    const data: ICorporateRegisteredVoters[] =
+    const data: IRegisteredVoters[] =
       corporation[props.corpId].periods[localPeriod].registeredVoters;
 
     const formattedData: { name: string; value: number; fill: string }[] = [];

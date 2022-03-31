@@ -16,6 +16,8 @@ import TileSelectBox from "../TileSelectBox";
 import { addUniversityPeriod } from "../../store/actions/universityActionCreators";
 import * as format from "../../helper/formatting";
 import TileLoading from "../TileLoading";
+import { DataState } from "../../interfaces/global.interface";
+import { University, TopRecipientDollar } from "../../interfaces/university.interface";
 
 export default function TopRecipientsByDollar(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -34,7 +36,7 @@ export default function TopRecipientsByDollar(props: any) {
   }, [localPeriod]);
 
   // Access the redux store
-  const universities: Record<number, IUniversity> = useSelector(
+  const universities: Record<number, University> = useSelector(
     (state: DataState) => state.universities
   );
 
@@ -49,8 +51,8 @@ export default function TopRecipientsByDollar(props: any) {
       localPeriod
     ].topRecipientsDollar.sort(
       (
-        a: ICorporateTopRecipientDollar,
-        b: ICorporateTopRecipientDollar
+        a: TopRecipientDollar,
+        b: TopRecipientDollar
       ): number => {
         if (a.amount_received < b.amount_received) {
           return 1;

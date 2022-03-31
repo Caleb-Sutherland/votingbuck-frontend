@@ -44,7 +44,7 @@ export interface TotalContributionsDollar {
 }
 
 // Registered voters on board of directors at a company
-export interface RegisteredVoters {
+export type RegisteredVoters = {
     [key: string]: number;
     democratic: number;
     republican: number;

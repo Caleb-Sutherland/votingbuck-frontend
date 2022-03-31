@@ -9,6 +9,8 @@ import {
 } from "recharts";
 import { graph_colors } from "../../constants/graph_colors";
 import * as format from "../../helper/formatting";
+import { DataState } from "../../interfaces/global.interface";
+import { University, DonationToParty } from "../../interfaces/university.interface";
 import { addUniversityPeriod } from "../../store/actions/universityActionCreators";
 import TileLoading from "../TileLoading";
 import TileSelectBox from "../TileSelectBox";
@@ -30,7 +32,7 @@ export default function ContributionShareByParty(props: any) {
   }, [localPeriod]);
 
   // Access the redux store
-  const universities: Record<number, IUniversity> = useSelector(
+  const universities: Record<number, University> = useSelector(
     (state: DataState) => state.universities
   );
 
@@ -41,7 +43,7 @@ export default function ContributionShareByParty(props: any) {
     const data =
       universities[props.uniId].periods[localPeriod].donationsByParty;
 
-    const formattedData = data.map((item: ICorporateDonationToParty): any => {
+    const formattedData = data.map((item: DonationToParty): any => {
       let fill_color;
       if (item.party === "democratic") {
         fill_color = graph_colors.democratic;

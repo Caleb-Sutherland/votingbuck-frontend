@@ -1,3 +1,5 @@
+import { Corporation, CorporationAction } from "../../interfaces/corporation.interface";
+import { DispatchType } from "../../interfaces/global.interface";
 import * as actionTypes from "./actionTypes";
 
 /* Period action creators */
@@ -28,7 +30,7 @@ export function getCorporationPeriod(
     const data = await res.json();
 
     // Using the temp data for now, construct an organization
-    const corporation: ICorporation = { ...data.orgInfo, periods: {} };
+    const corporation: Corporation = { ...data.orgInfo, periods: {} };
     corporation.periods = {
       period_id: {
         id: period_id,

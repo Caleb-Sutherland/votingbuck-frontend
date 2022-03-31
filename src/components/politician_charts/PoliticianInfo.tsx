@@ -1,10 +1,12 @@
 import React, { Dispatch, useEffect } from "react";
 import { IoIosBusiness } from "react-icons/io";
 import { useSelector } from "react-redux";
+import { DataState } from "../../interfaces/global.interface";
+import { Politician } from "../../interfaces/politician.interface";
 
 export default function PoliticianInfo(props: any) {
   // Access the redux store
-  const politicians: Record<number, IPolitician> = useSelector(
+  const politicians: Record<number, Politician> = useSelector(
     (state: DataState) => state.politicians
   );
 

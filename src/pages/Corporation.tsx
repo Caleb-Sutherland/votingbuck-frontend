@@ -17,6 +17,8 @@ import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import LoadingScreen from "../components/LoadingScreen";
+import { DataState } from "../interfaces/global.interface";
+import { Corporation as ICorporation} from "../interfaces/corporation.interface";
 
 export default function Corporation() {
   // Get the default current period

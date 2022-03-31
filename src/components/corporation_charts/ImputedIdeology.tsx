@@ -14,6 +14,8 @@ import TileSelectBox from "../TileSelectBox";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
 import * as format from "../../helper/formatting";
 import TileLoading from "../TileLoading";
+import { Corporation, IdeologyScore } from "../../interfaces/corporation.interface";
+import { DataState } from "../../interfaces/global.interface";
 
 export default function ImputedIdeology(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -32,7 +34,7 @@ export default function ImputedIdeology(props: any) {
   }, [localPeriod]);
 
   // Access the redux store
-  const corporation: Record<number, ICorporation> = useSelector(
+  const corporation: Record<number, Corporation> = useSelector(
     (state: DataState) => state.corporations
   );
 
@@ -46,7 +48,7 @@ export default function ImputedIdeology(props: any) {
     const data = corporation[props.corpId].periods[
       localPeriod
     ].ideologyDistribution.sort(
-      (a: ICorporateIdeologyScore, b: ICorporateIdeologyScore): number => {
+      (a: IdeologyScore, b: IdeologyScore): number => {
         if (a.ideology > b.ideology) {
           return 1;
         }

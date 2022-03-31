@@ -15,6 +15,8 @@ import { graph_colors } from "../../constants/graph_colors";
 import TileSelectBox from "../TileSelectBox";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
 import TileLoading from "../TileLoading";
+import { Corporation, TopRecipientDonation } from "../../interfaces/corporation.interface";
+import { DataState } from "../../interfaces/global.interface";
 
 export default function TopRecipientsByDonation(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -33,7 +35,7 @@ export default function TopRecipientsByDonation(props: any) {
   }, [localPeriod]);
 
   // Access the redux store
-  const corporation: Record<number, ICorporation> = useSelector(
+  const corporation: Record<number, Corporation> = useSelector(
     (state: DataState) => state.corporations
   );
 
@@ -94,8 +96,8 @@ export default function TopRecipientsByDonation(props: any) {
       localPeriod
     ].topRecipientsDonation.sort(
       (
-        a: ICorporateTopRecipientDonation,
-        b: ICorporateTopRecipientDonation
+        a: TopRecipientDonation,
+        b: TopRecipientDonation
       ): number => {
         if (a.donations_received < b.donations_received) {
           return 1;

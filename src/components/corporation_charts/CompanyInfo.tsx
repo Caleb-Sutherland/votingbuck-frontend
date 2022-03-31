@@ -1,10 +1,12 @@
 import React from "react";
 import { BsBuilding } from "react-icons/bs";
 import { useSelector } from "react-redux";
+import { Corporation } from "../../interfaces/corporation.interface";
+import { DataState } from "../../interfaces/global.interface";
 
 export default function CompanyInfo(props: any) {
   // Access the redux store
-  const corporations: Record<number, ICorporation> = useSelector(
+  const corporations: Record<number, Corporation> = useSelector(
     (state: DataState) => state.corporations
   );
 

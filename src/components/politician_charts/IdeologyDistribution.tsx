@@ -15,6 +15,8 @@ import {
 import TileSelectBox from "../TileSelectBox";
 import { addPoliticianPeriod } from "../../store/actions/politicianActionCreators";
 import TileLoading from "../TileLoading";
+import { DataState } from "../../interfaces/global.interface";
+import { Politician, IdeologyCount } from "../../interfaces/politician.interface";
 
 export default function IdeologyDistribution(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -33,7 +35,7 @@ export default function IdeologyDistribution(props: any) {
   }, [localPeriod]);
 
   // Access the redux store
-  const politicians: Record<number, IPolitician> = useSelector(
+  const politicians: Record<number, Politician> = useSelector(
     (state: DataState) => state.politicians
   );
 
@@ -47,7 +49,7 @@ export default function IdeologyDistribution(props: any) {
     const data = politicians[props.poliId].periods[
       localPeriod
     ].ideologyDistribution.sort(
-      (a: IPoliticianIdeologyCount, b: IPoliticianIdeologyCount): number => {
+      (a: IdeologyCount, b: IdeologyCount): number => {
         if (a.ideology > b.ideology) {
           return 1;
         }

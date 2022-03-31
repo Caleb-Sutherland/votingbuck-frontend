@@ -13,6 +13,8 @@ import {
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
 import * as format from "../../helper/formatting";
 import TileLoading from "../TileLoading";
+import { Corporation, TotalContributionsDollar } from "../../interfaces/corporation.interface";
+import { DataState } from "../../interfaces/global.interface";
 
 export default function TotalContributionsByDollar(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -31,7 +33,7 @@ export default function TotalContributionsByDollar(props: any) {
   }, [localPeriod]);
 
   // Access the redux store
-  const corporation: Record<number, ICorporation> = useSelector(
+  const corporation: Record<number, Corporation> = useSelector(
     (state: DataState) => state.corporations
   );
 
@@ -41,8 +43,8 @@ export default function TotalContributionsByDollar(props: any) {
       localPeriod
     ].totalContributionsDollar.sort(
       (
-        a: ICorporateTotalContributionsDollar,
-        b: ICorporateTotalContributionsDollar
+        a: TotalContributionsDollar,
+        b: TotalContributionsDollar
       ) => {
         const d1 = Date.parse(a.date);
         const d2 = Date.parse(b.date);

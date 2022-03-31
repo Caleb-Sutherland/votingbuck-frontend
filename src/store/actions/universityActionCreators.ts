@@ -30,7 +30,7 @@ export function getUniversityPeriod(
     const data = await res.json();
 
     // Using the temp data for now, construct an organization
-    const university: University = { ...data.uniInfo, periods: {} };
+    const university: University = { ...data.uniInfo, totalContributionsDollar: data.totalContributionsDollar, periods: {} };
     university.periods = {
       period_id: {
         id: period_id,
@@ -40,7 +40,6 @@ export function getUniversityPeriod(
         topRecipientsDollar: data.topRecipientsDollar,
         topRecipientsDonation: data.topRecipientsDonation,
         ideologyDistribution: data.ideologyDistribution,
-        totalContributionsDollar: data.totalContributionsDollar,
         registeredVoters: data.registeredVoters
       },
     };

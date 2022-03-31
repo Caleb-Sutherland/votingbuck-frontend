@@ -30,7 +30,7 @@ export function getCorporationPeriod(
     const data = await res.json();
 
     // Using the temp data for now, construct an organization
-    const corporation: Corporation = { ...data.orgInfo, periods: {} };
+    const corporation: Corporation = { ...data.orgInfo, totalContributionsDollar: data.totalContributionsDollar, periods: {} };
     corporation.periods = {
       period_id: {
         id: period_id,
@@ -40,7 +40,6 @@ export function getCorporationPeriod(
         topRecipientsDollar: data.topRecipientsDollar,
         topRecipientsDonation: data.topRecipientsDonation,
         ideologyDistribution: data.ideologyDistribution,
-        totalContributionsDollar: data.totalContributionsDollar,
         registeredVoters: data.registeredVoters
       },
     };

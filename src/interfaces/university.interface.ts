@@ -58,7 +58,6 @@ export interface UniversityPeriod {
   topRecipientsDollar: TopRecipientDollar[];
   topRecipientsDonation: TopRecipientDonation[];
   ideologyDistribution: IdeologyScore[];
-  totalContributionsDollar: TotalContributionsDollar[];
   registeredVoters: RegisteredVoters[];
 }
 
@@ -75,6 +74,7 @@ export interface University{
   location: string;
   website: string;
   description: string;
+  totalContributionsDollar: TotalContributionsDollar[];
   periods: Record<string, UniversityPeriod>;
 }
 

@@ -54,7 +54,7 @@ export type RegisteredVoters = {
 }
 
 // Stores on period's worth of data for an organization
-export interface ICorporationPeriod {
+export interface CorporationPeriod {
   id: string;
   donationsByMonth: Donation[];
   topDonators: EmployeeDonation[];
@@ -62,7 +62,6 @@ export interface ICorporationPeriod {
   topRecipientsDollar: TopRecipientDollar[];
   topRecipientsDonation: TopRecipientDonation[];
   ideologyDistribution: IdeologyScore[];
-  totalContributionsDollar: TotalContributionsDollar[];
   registeredVoters: RegisteredVoters[];
 }
 
@@ -72,12 +71,13 @@ export interface Corporation {
   name: string;
   industry: string;
   location: string;
-  periods: Record<string, ICorporationPeriod>;
+  totalContributionsDollar: TotalContributionsDollar[];
+  periods: Record<string, CorporationPeriod>;
 }
 
 // Format to follow when performing an action on an organization period
 export interface CorporationAction {
   type: string;
   corporation: Corporation;
-  period: ICorporationPeriod;
+  period: CorporationPeriod;
 }

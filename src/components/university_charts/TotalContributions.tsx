@@ -12,6 +12,9 @@ import {
 } from "recharts";
 import { addUniversityPeriod } from "../../store/actions/universityActionCreators";
 import TileLoading from "../TileLoading";
+import * as format from "../../helper/formatting";
+import { DataState } from "../../interfaces/global.interface";
+import { University, TotalContributionsDollar } from "../../interfaces/university.interface";
 
 export default function TotalContributions(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -30,7 +33,7 @@ export default function TotalContributions(props: any) {
   }, [localPeriod]);
 
   // Access the redux store
-  const universities: Record<number, IUniversity> = useSelector(
+  const universities: Record<number, University> = useSelector(
     (state: DataState) => state.universities
   );
 
@@ -39,10 +42,7 @@ export default function TotalContributions(props: any) {
     const data = universities[props.uniId].periods[
       localPeriod
     ].totalContributionsDollar.sort(
-      (
-        a: IUniversityTotalContributionsDollar,
-        b: IUniversityTotalContributionsDollar
-      ) => {
+      (a: TotalContributionsDollar, b: TotalContributionsDollar) => {
         const d1 = Date.parse(a.date);
         const d2 = Date.parse(b.date);
 

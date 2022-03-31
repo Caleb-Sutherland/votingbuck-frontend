@@ -14,6 +14,8 @@ import {
 import { graph_colors } from "../../constants/graph_colors";
 import TileSelectBox from "../TileSelectBox";
 import { addUniversityPeriod } from "../../store/actions/universityActionCreators";
+import { DataState } from "../../interfaces/global.interface";
+import { University, TopRecipientDonation } from "../../interfaces/university.interface";
 import TileLoading from "../TileLoading";
 
 export default function TopRecipientsByDonation(props: any) {
@@ -33,7 +35,7 @@ export default function TopRecipientsByDonation(props: any) {
   }, [localPeriod]);
 
   // Access the redux store
-  const universities: Record<number, IUniversity> = useSelector(
+  const universities: Record<number, University> = useSelector(
     (state: DataState) => state.universities
   );
 
@@ -94,8 +96,8 @@ export default function TopRecipientsByDonation(props: any) {
       localPeriod
     ].topRecipientsDonation.sort(
       (
-        a: ICorporateTopRecipientDonation,
-        b: ICorporateTopRecipientDonation
+        a: TopRecipientDonation,
+        b: TopRecipientDonation
       ): number => {
         if (a.donations_received < b.donations_received) {
           return 1;

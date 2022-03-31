@@ -12,7 +12,7 @@ module.exports = {
       selectBorderActive: "#6b96db",
       blue: "#2563EB",
       red: "#EF4444",
-      lightGreyText: "#4B5563",
+      lightGreyText: "#4a4a4a",
       blueGray300: "#90a4ae",
       blueGray600: "#546e7a",
       blue500: "#2196f3",

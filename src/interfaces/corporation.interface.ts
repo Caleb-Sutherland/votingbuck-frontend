@@ -67,16 +67,17 @@ export interface ICorporationPeriod {
 }
 
 // Organization that stores a set of Records (key: period, value: period_data)
-export interface ICorporation {
+export interface Corporation {
   id: number;
   name: string;
   industry: string;
+  location: string;
   periods: Record<string, ICorporationPeriod>;
 }
 
 // Format to follow when performing an action on an organization period
 export interface CorporationAction {
   type: string;
-  corporation: ICorporation;
+  corporation: Corporation;
   period: ICorporationPeriod;
 }

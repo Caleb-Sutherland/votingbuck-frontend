@@ -54,16 +54,16 @@ export default function UniversityInfo(props: any) {
   return (
     <div className="lg:pt-8 pl-8 pr-8 flex flex-col">
       <div className="flex items-center">
-        <FaUniversity size={85} className="mr-3 mb-2" />
+        <FaUniversity size={85} className="mr-6 mb-2" />
         <div className="mb-0.5">
           <div className="text-2xl lg:text-4xl font-bold mb-0.5">{uni.name}</div>
-          <div className="text-lightGreyText">
+          <div className="text-gray-600">
             {uni.uni_acronym} ‧ {uni.location} ‧{" "}
             {uni.uni_public ? "Public" : "Private"}
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center w-full lg:flex lg:flex-row lg:justify-between lg:content-center mb-2 mt-2 lg:w-5/6">
+      <div className="flex flex-col items-center w-full lg:flex lg:flex-row lg:space-x-8 lg:content-center mb-2 mt-2">
         <div>
           <span className={tailwindBoldValue}>{uni.uni_founded}</span>
           <span className={tailwindValueLabel}> Founded</span>
@@ -75,7 +75,7 @@ export default function UniversityInfo(props: any) {
         </div>
       </div>
       <div className="text-lg h-1/2 w-auto mt-4">
-        <div className="h-2/3 overflow-y-auto mb-4 text-lightGreyText">{uni.description}</div>
+        <div className="h-2/3 overflow-y-auto mb-4 text-gray-600">{uni.description}</div>
         {uni.website ? (
           <div className="h-1/3 text-blue">
             <a href={uni.website} target="_blank" rel="noreferrer">

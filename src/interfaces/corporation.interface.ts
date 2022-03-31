@@ -72,6 +72,7 @@ export interface Corporation {
   industry: string;
   location: string;
   totalContributionsDollar: TotalContributionsDollar[];
+  corp_revolvers: number;
   periods: Record<string, CorporationPeriod>;
 }
 

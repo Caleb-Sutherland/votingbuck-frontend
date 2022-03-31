@@ -42,8 +42,8 @@ export interface IDonationFromOrganization {
 }
 
 export interface ITimeInCongress {
-  startDate: string;
-  endDate: string;
+  startdate: string;
+  enddate: string;
   position: string;
 }
 
@@ -58,17 +58,27 @@ export interface ICommittee {
   rank: number;
 }
 
+export interface SchoolInfo {
+  name: string;
+  rank: number;
+}
+
 // Politician that stores set of Records (key: period, value: period_data)
 export interface Politician {
   id: number;
   name: string;
-  ideology: number;
+  ideology: string;
   party: string;
   dob: string;
   state: string;
   timeInCongress: ITimeInCongress[];
   leadership: ILeadership[];
   committee: ICommittee[];
+  school: string;
+  house_exit_reason: string;
+  description: string;
+  senate_exit_reason: string;
+  schoolInfo: SchoolInfo[];
   periods: Record<string, PoliticianPeriod>;
 }
 

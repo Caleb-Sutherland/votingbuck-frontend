@@ -29,6 +29,7 @@ export function getPoliticianPeriod(politician_id: number, period_id: string) {
       timeInCongress: data.timeInCongress,
       leadership: data.leadership,
       committee: data.committee,
+      schoolInfo: data.schoolInfo,
       periods: {},
     };
     politician.periods = {

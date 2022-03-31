@@ -158,7 +158,7 @@ export default function IdeologyDistribution(props: any) {
             >
               <Label
                 position={
-                  politicians[props.poliId].ideology > 0
+                  parseFloat(politicians[props.poliId].ideology) > 0
                     ? "insideTopRight"
                     : "insideTopLeft"
                 }

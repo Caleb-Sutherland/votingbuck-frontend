@@ -16,6 +16,7 @@ import Header from "../components/Header";
 import LoadingScreen from "../components/LoadingScreen";
 import { DataState } from "../interfaces/global.interface";
 import { Politician as IPolitician } from "../interfaces/politician.interface";
+import PowerInfo from "../components/politician_charts/PowerInfo";
 
 export default function Politician() {
   // Get the default current period
@@ -70,7 +71,9 @@ export default function Politician() {
       <div>
         <Header />
         <div className="flex w-full mt-4 lg:mb-4 lg:mt-8 justify-end lg:pl-16 lg:pr-16 lg:mb-8 h-10">
-          <div className="mt-0.5 mr-2 flex items-center text-gray-600 font-semibold text-lg"><span>Data Period</span></div>
+          <div className="mt-0.5 mr-2 flex items-center text-gray-600 font-semibold text-lg">
+            <span>Data Period</span>
+          </div>
           <TileSelectBox
             onChange={setCurrentPeriod}
             defaultValue={current_period}
@@ -78,12 +81,14 @@ export default function Politician() {
         </div>
         <div className="h-fit lg:pl-16 lg:pr-16 lg:mb-16">
           <div className={tailwindGridRow}>
-            <div
-              className={tailwindTileStyles + "lg:col-start-1 lg:col-end-7"}
-            ><PoliticianInfo poliId={poli_id}/></div>
+            <div className={tailwindTileStyles + "lg:col-start-1 lg:col-end-7"}>
+              <PoliticianInfo poliId={poli_id} />
+            </div>
             <div
               className={tailwindTileStyles + "lg:col-start-7 lg:col-end-10"}
-            ></div>
+            >
+              <PowerInfo poliId={poli_id} />
+            </div>
             <div
               className={tailwindTileStyles + "lg:col-start-10 lg:col-end-13"}
             ></div>

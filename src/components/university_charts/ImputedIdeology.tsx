@@ -15,7 +15,10 @@ import { addUniversityPeriod } from "../../store/actions/universityActionCreator
 import * as format from "../../helper/formatting";
 import TileLoading from "../TileLoading";
 import { DataState } from "../../interfaces/global.interface";
-import { University, IdeologyScore } from "../../interfaces/university.interface";
+import {
+  University,
+  IdeologyScore,
+} from "../../interfaces/university.interface";
 
 export default function ImputedIdeology(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);
@@ -45,19 +48,8 @@ export default function ImputedIdeology(props: any) {
       0
   ) {
     // Data to feed the graph
-    const data = universities[props.uniId].periods[
-      localPeriod
-    ].ideologyDistribution.sort(
-      (a: IdeologyScore, b: IdeologyScore): number => {
-        if (a.ideology > b.ideology) {
-          return 1;
-        }
-        if (a.ideology < b.ideology) {
-          return -1;
-        }
-        return 0;
-      }
-    );
+    const data =
+      universities[props.uniId].periods[localPeriod].ideologyDistribution;
 
     // Pass through data and convert to a dictionary so that we can quickly see what ideology scores are missing
     const ideologyToValue: any = {};

@@ -48,19 +48,8 @@ export default function ImputedIdeology(props: any) {
       0
   ) {
     // Data to feed the graph
-    const data = corporation[props.corpId].periods[
-      localPeriod
-    ].ideologyDistribution.sort(
-      (a: IdeologyScore, b: IdeologyScore): number => {
-        if (a.ideology > b.ideology) {
-          return 1;
-        }
-        if (a.ideology < b.ideology) {
-          return -1;
-        }
-        return 0;
-      }
-    );
+    const data =
+      corporation[props.corpId].periods[localPeriod].ideologyDistribution;
 
     // Pass through data and convert to a dictionary so that we can quickly see what ideology scores are missing
     const ideologyToValue: any = {};

@@ -7,8 +7,7 @@ export function SearchBar() {
   const handleChange = async (event: any) => {
     event.target.value = event.target.value.replace(/[^a-zA-Z0-9 ]/g, "");
     const res = await fetch(
-      "http://ec2-18-217-147-55.us-east-2.compute.amazonaws.com/search/" +
-        event.target.value
+      `${process.env.REACT_APP_API_BASE_URL}/search/${event.target.value}`
     );
     const data = await res.json();
     if (event.target.value == "") {

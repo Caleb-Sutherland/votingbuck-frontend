@@ -10,15 +10,11 @@ import {
   LineChart,
   Line,
 } from "recharts";
-import TileSelectBox from "../TileSelectBox";
 import { addUniversityPeriod } from "../../store/actions/universityActionCreators";
 import * as format from "../../helper/formatting";
 import TileLoading from "../TileLoading";
 import { DataState } from "../../interfaces/global.interface";
-import {
-  University,
-  IdeologyScore,
-} from "../../interfaces/university.interface";
+import { University } from "../../interfaces/university.interface";
 import TileTitle from "../TileTitle";
 
 export default function ImputedIdeology(props: any) {
@@ -127,7 +123,11 @@ export default function ImputedIdeology(props: any) {
 
     return (
       <div className="h-full w-full">
-        <TileTitle title="Imputed Ideology" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
+        <TileTitle
+          title="Imputed Ideology"
+          selectFunction={setLocalPeriod}
+          localPeriod={localPeriod}
+        />
         <ResponsiveContainer width="100%">
           <LineChart
             width={730}
@@ -160,7 +160,11 @@ export default function ImputedIdeology(props: any) {
   } else {
     return (
       <div className="h-full w-full">
-        <TileTitle title="Imputed Ideology" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
+        <TileTitle
+          title="Imputed Ideology"
+          selectFunction={setLocalPeriod}
+          localPeriod={localPeriod}
+        />
         <div className="h-full flex content-center justify-center items-center">
           {localPeriod in universities[props.uniId].periods ? (
             <div>No data for this period...</div>

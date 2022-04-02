@@ -7,8 +7,7 @@ export function SearchBar() {
   const handleChange = async (event: any) => {
     event.target.value = event.target.value.replace(/[^a-zA-Z0-9 ]/g, "");
     const res = await fetch(
-      "http://ec2-18-217-147-55.us-east-2.compute.amazonaws.com/search/" +
-        event.target.value
+      `${process.env.REACT_APP_API_BASE_URL}/search/${event.target.value}`
     );
     const data = await res.json();
     if (event.target.value == "") {
@@ -63,8 +62,8 @@ export function SearchBar() {
       <input
         type="text"
         onChange={handleChange}
-        placeholder="corporates, universities or politicians"
-        className="w-72 px-3 py-3 placeholder-blueGray300 text-blueGray600 relative bg-white bg-white text-sm border border-blueGray300 outline-none focus:outline-none focus:ring shadow-lg rounded-lg"
+        placeholder="corporations, universities or politicians"
+        className="mb-2 mt-2 lg:mb-0 lg:mb-0 w-72 px-3 py-3 placeholder-blueGray300 text-blueGray600 relative bg-white bg-white text-sm border border-blueGray300 outline-none focus:outline-none focus:ring shadow-lg rounded-lg"
       />
       {queryResults ? (
         <div className="absolute top-12 w-72 px-0 py-3 text-blueGray600 bg-white bg-white text-sm outline-none shadow-lg rounded-lg">
@@ -84,12 +83,12 @@ export function SearchBar() {
           })}
           {queryResults.corporates.length > 0 ? (
             <div>
-              <p className="px-3">CORPORATES</p>
+              <p className="px-3">CORPORATIONS</p>
             </div>
           ) : null}
           {queryResults.corporates.map((item: any, index: number) => {
             return (
-              <Link key={index} to={"/corporates/" + item.value.id}>
+              <Link key={index} to={"/corporations/" + item.value.id}>
                 <div className="pl-8 pr-3 py-1 hover:bg-lightGray transition-colors">
                   <p>{item.value.name}</p>
                 </div>

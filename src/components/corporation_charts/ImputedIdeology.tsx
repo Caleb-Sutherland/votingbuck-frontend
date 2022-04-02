@@ -10,14 +10,10 @@ import {
   LineChart,
   Line,
 } from "recharts";
-import TileSelectBox from "../TileSelectBox";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
 import * as format from "../../helper/formatting";
 import TileLoading from "../TileLoading";
-import {
-  Corporation,
-  IdeologyScore,
-} from "../../interfaces/corporation.interface";
+import { Corporation } from "../../interfaces/corporation.interface";
 import { DataState } from "../../interfaces/global.interface";
 import TileTitle from "../TileTitle";
 
@@ -127,7 +123,11 @@ export default function ImputedIdeology(props: any) {
 
     return (
       <div className="h-full w-full">
-        <TileTitle title="Imputed Ideology" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
+        <TileTitle
+          title="Imputed Ideology"
+          selectFunction={setLocalPeriod}
+          localPeriod={localPeriod}
+        />
         <ResponsiveContainer width="100%">
           <LineChart
             width={730}
@@ -160,7 +160,11 @@ export default function ImputedIdeology(props: any) {
   } else {
     return (
       <div className="h-full w-full">
-        <TileTitle title="Imputed Ideology" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
+        <TileTitle
+          title="Imputed Ideology"
+          selectFunction={setLocalPeriod}
+          localPeriod={localPeriod}
+        />
         <div className="h-full flex content-center justify-center items-center">
           {localPeriod in corporation[props.corpId].periods ? (
             <div>No data for this period...</div>

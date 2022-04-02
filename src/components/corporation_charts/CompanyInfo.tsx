@@ -18,29 +18,29 @@ export default function CompanyInfo(props: any) {
       <div className="flex items-center">
         <BsBuilding size={85} className="mr-6" />
         <div className="mb-0.5">
-          <div className="text-2xl lg:text-4xl font-bold mb-0.5">
+          <div className="text-xl lg:text-4xl font-bold mb-0.5">
             {corp.name}
           </div>
-          <div className="text-gray-600">
+          <div className="text-gray-600 text-xs lg:text-base">
             {corp.industry} ‧ {corp.location}
           </div>
         </div>
       </div>
-      <div className="flex space-x-4 mb-2 mt-4">
+      <div className="flex space-x-4 mb-0.5 mt-1 lg:mb-2 lg:mt-4">
         <div>
-          <span className="text-xl font-semibold">
+          <span className="text-base lg:text-xl font-semibold">
             {corp.corp_revolvers
               .toString()
               .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
           </span>
-          <span className="text-lg font-light"> Revolvers</span>
+          <span className="text-base lg:text-xl font-light"> Revolvers</span>
         </div>
         <div>
-          <span className="text-xl font-semibold">$1.7Bln</span>
-          <span className="text-lg font-light"> Lobbying Expenditure</span>
+          <span className="text-base lg:text-xl font-semibold">$1.7Bln</span>
+          <span className="text-base lg:text-xl font-light"> Lobbying Expenditure</span>
         </div>
       </div>
-      <div className="mb-2 mt-3 text-lg overflow-y-auto text-gray-600">
+      <div className="mb-2 mt-3 text-sm lg:text-lg text-gray-600">
         {temp}
       </div>
     </div>

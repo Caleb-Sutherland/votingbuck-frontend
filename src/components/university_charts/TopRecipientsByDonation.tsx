@@ -12,7 +12,6 @@ import {
   Rectangle,
 } from "recharts";
 import { graph_colors } from "../../constants/graph_colors";
-import TileSelectBox from "../TileSelectBox";
 import { addUniversityPeriod } from "../../store/actions/universityActionCreators";
 import { DataState } from "../../interfaces/global.interface";
 import {

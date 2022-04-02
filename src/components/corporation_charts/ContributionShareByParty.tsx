@@ -16,7 +16,6 @@ import {
 import { DataState } from "../../interfaces/global.interface";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
 import TileLoading from "../TileLoading";
-import TileSelectBox from "../TileSelectBox";
 import TileTitle from "../TileTitle";
 
 export default function ContributionShareByParty(props: any) {

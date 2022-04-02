@@ -1,4 +1,4 @@
-import React, { Dispatch, useEffect } from "react";
+import React from "react";
 import { GiPublicSpeaker } from "react-icons/gi";
 import { useSelector } from "react-redux";
 import { DataState } from "../../interfaces/global.interface";
@@ -30,10 +30,10 @@ export default function PoliticianInfo(props: any) {
       <div className="flex items-center">
         <GiPublicSpeaker size={85} className="mr-6" />
         <div className="mb-0.5">
-          <div className="text-2xl lg:text-4xl font-bold mb-0.5">
+          <div className="text-xl lg:text-4xl font-bold mb-0.5">
             {poli.name}
           </div>
-          <div className="text-gray-600">
+          <div className="text-gray-600 text-xs lg:text-base">
             {getAge(poli.dob) + " Years Old"}
             {poli.schoolInfo && poli.schoolInfo.length > 0
               ? " ‧ " +
@@ -45,8 +45,8 @@ export default function PoliticianInfo(props: any) {
           </div>
         </div>
       </div>
-      <div className="flex space-x-8 mb-2 mt-4">
-        <div className="text-xl font-semibold">
+      <div className="flex space-x-8 mt-0.5 lg:mb-2 lg:mt-2">
+        <div className="text-base lg:text-xl font-semibold">
           {poli.party.toLowerCase() === "democratic" ? (
             <span className="text-blue">
               {poli.party.charAt(0).toUpperCase() + poli.party.slice(1)}
@@ -62,19 +62,19 @@ export default function PoliticianInfo(props: any) {
           )}
         </div>
         <div>
-          <span className="text-xl font-semibold">
+          <span className="text-base lg:text-xl font-semibold">
             {parseFloat(poli.ideology).toFixed(2)}
           </span>
-          <span className="text-lg font-light"> Ideology</span>
+          <span className="text-base lg:text-xl font-light"> Ideology</span>
         </div>
         <div>
-          <span className="text-xl font-semibold">
+          <span className="text-base lg:text-xl font-semibold">
             {poli.state.toUpperCase()}
           </span>
-          <span className="text-lg font-light"> State</span>
+          <span className="text-base lg:text-xl font-light"> State</span>
         </div>
       </div>
-      <div className="mb-2 mt-4 text-lg overflow-y-auto text-gray-600">
+      <div className="mt-2 lg:mb-2 lg:mt-4 text-sm lg:text-lg text-gray-600">
         {temp}
         {/* {poli.description} */}
       </div>

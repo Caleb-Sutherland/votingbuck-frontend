@@ -16,8 +16,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/corporates/:corpId" element={<Corporation />} />
-        <Route path="/corporates" element={<CorporationMain />}/>
+        <Route path="/corporations/:corpId" element={<Corporation />} />
+        <Route path="/corporations" element={<CorporationMain />}/>
         <Route path="/politicians/:poliId" element={<Politician />} />
         <Route path="/politicians" element={<PoliticianMain />} />
         <Route path="/universities/:uniId" element={<University />} />

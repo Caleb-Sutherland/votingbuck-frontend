@@ -146,10 +146,10 @@ export default function Main() {
         <div className="-m-5 flex flex-row flex-wrap justify-center space-x-32">
           <BsBuilding size="16em" />
           <div className="flex flex-col space-y-4 w-1/3">
-            <p className="text-lg font-medium">Highlighted Corporates</p>
+            <p className="text-lg font-medium">Highlighted Corporations</p>
             {highlights.corporates.map(function (entry, index) {
               return (
-                <Link key={index} to={"corporates/" + entry.id}>
+                <Link key={index} to={"corporations/" + entry.id}>
                   <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
                     <div>
                       <p>{entry.name}</p>
@@ -210,7 +210,7 @@ export default function Main() {
               src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?ixlib=rb-1.2.1&w=400"
             ></img>
             <div className="py-8 flex flex-col space-y-3">
-              <p className="text-lg font-medium">Corporates</p>
+              <p className="text-lg font-medium">Corporations</p>
               <p className="font-light">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Voluptatibus quia, nulla! Maiores et perferendis eaque,
@@ -218,7 +218,7 @@ export default function Main() {
               </p>
               <Link
                 className="text-blue500 font-normal text-center w-full"
-                to="corporates"
+                to="corporations"
               >
                 Explore
               </Link>

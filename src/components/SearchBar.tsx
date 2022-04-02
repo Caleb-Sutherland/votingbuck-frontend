@@ -62,7 +62,7 @@ export function SearchBar() {
       <input
         type="text"
         onChange={handleChange}
-        placeholder="corporates, universities or politicians"
+        placeholder="corporations, universities or politicians"
         className="w-72 px-3 py-3 placeholder-blueGray300 text-blueGray600 relative bg-white bg-white text-sm border border-blueGray300 outline-none focus:outline-none focus:ring shadow-lg rounded-lg"
       />
       {queryResults ? (
@@ -83,12 +83,12 @@ export function SearchBar() {
           })}
           {queryResults.corporates.length > 0 ? (
             <div>
-              <p className="px-3">CORPORATES</p>
+              <p className="px-3">CORPORATIONS</p>
             </div>
           ) : null}
           {queryResults.corporates.map((item: any, index: number) => {
             return (
-              <Link key={index} to={"/corporates/" + item.value.id}>
+              <Link key={index} to={"/corporations/" + item.value.id}>
                 <div className="pl-8 pr-3 py-1 hover:bg-lightGray transition-colors">
                   <p>{item.value.name}</p>
                 </div>

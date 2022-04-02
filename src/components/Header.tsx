@@ -8,8 +8,8 @@ export default function Header() {
       <div className="w-full text-white flex items-center content-center justify-content-center flex-col lg:pl-12 lg:items-center lg:flex-row lg:items-start">
         <div className="w-full flex flex-col items-center lg:flex-row lg:items-center">
           <Link className="text-3xl font-semibold" to="/">votingbuck</Link>
-          <Link className="lg:ml-24 text-xl font-normal text-opacity-75" to="/corporates">
-            corporates
+          <Link className="lg:ml-24 text-xl font-normal text-opacity-75" to="/corporations">
+            corporations
           </Link>
           <Link className="lg:ml-12 text-xl font-normal text-opacity-75" to="/universities">
             universities

@@ -31,7 +31,7 @@ export default function PowerInfo(props: any) {
   }
   
   return (
-    <div className="w-full pl-8 pr-8 lg:pt-8 lg:pl-20 lg:pr-20 overflow-y-auto">
+    <div className="w-full pl-8 pr-8 lg:pt-8 2xl:pl-20 2xl:pr-20 overflow-y-auto">
       <div className="flex justify-center mb-2 text-lg lg:text-xl font-light">POWER</div>
       <div className="flex justify-between">
         <div>

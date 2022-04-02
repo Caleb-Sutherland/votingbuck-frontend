@@ -23,30 +23,30 @@ export default function UniversityInfo(props: any) {
   if (uni.uni_enrollment_low && uni.uni_enrollment_high) {
     enrollment = (
       <div className="flex items-center">
-        <span className={tailwindBoldValue + "mr-1"}>
+        <div className={tailwindBoldValue + "mr-1"}>
           {uni.uni_enrollment_low + "-" + uni.uni_enrollment_high}
-        </span>
-        <span className={tailwindValueLabel}> Enrollment</span>
+        </div>
+        <div className={tailwindValueLabel}> Enrollment</div>
       </div>
     );
   } else if (uni.uni_enrollment_low) {
     enrollment = (
       <div className="flex items-center">
         <MdArrowDropUp size={30} />
-        <span className={tailwindBoldValue + "mr-1"}>
+        <div className={tailwindBoldValue + "mr-1"}>
           {uni.uni_enrollment_low}
-        </span>
-        <span className={tailwindValueLabel}> Enrollment</span>
+        </div>
+        <div className={tailwindValueLabel}> Enrollment</div>
       </div>
     );
   } else {
     enrollment = (
       <div className="flex items-center">
         <MdArrowDropDown size={30} />
-        <span className={tailwindBoldValue + "mr-1"}>
+        <div className={tailwindBoldValue + "mr-1"}>
           {uni.uni_enrollment_high}
-        </span>
-        <span className={tailwindValueLabel}> Enrollment</span>
+        </div>
+        <div className={tailwindValueLabel}> Enrollment</div>
       </div>
     );
   }
@@ -65,7 +65,7 @@ export default function UniversityInfo(props: any) {
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center w-full lg:flex lg:flex-row lg:space-x-10 lg:content-center mb-0.5 mt-0.5 lg:mb-2 lg:mt-2">
+      <div className="flex flex-col items-center w-full lg:flex lg:flex-row lg:space-x-5 2xl:space-x-10 lg:content-center mb-0.5 mt-0.5 lg:mb-2 lg:mt-2">
         <div>
           <span className={tailwindBoldValue}>{uni.uni_founded}</span>
           <span className={tailwindValueLabel}> Founded</span>
@@ -76,9 +76,9 @@ export default function UniversityInfo(props: any) {
           <span className={tailwindValueLabel}> Ranking</span>
         </div>
       </div>
-      <div className="text-lg h-1/2 w-auto mt-2">
+      <div className="h-fit lg:h-1/2 w-auto mt-2">
         {/* <div className="h-2/3 overflow-y-auto mb-4 text-gray-600">{uni.description}</div> */}
-        <div className="overflow-y-auto mb-1 text-sm lg:text-lg text-gray-600">
+        <div className="h-fit mb-1 text-sm lg:text-lg text-gray-600">
           {temp}
         </div>
         {uni.website ? (

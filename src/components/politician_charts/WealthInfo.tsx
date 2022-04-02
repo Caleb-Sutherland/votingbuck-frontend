@@ -22,7 +22,6 @@ export default function WealthInfo(props: any) {
     const startYear = start.getFullYear();
     const endYear = end.getFullYear();
 
-    console.log(startYear);
     if (poli.timeInCongress[i].position.toLowerCase() === "house") {
       timeInHouse = startYear + " - " + endYear;
     } else if (poli.timeInCongress[i].position.toLowerCase() === "senate") {

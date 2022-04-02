@@ -1,5 +1,4 @@
 import React, { Dispatch, useEffect } from "react";
-import { GiPublicSpeaker } from "react-icons/gi";
 import { useSelector } from "react-redux";
 import { DataState } from "../../interfaces/global.interface";
 import { Politician } from "../../interfaces/politician.interface";
@@ -22,7 +21,6 @@ export default function PowerInfo(props: any) {
     const startYear = start.getFullYear();
     const endYear = end.getFullYear();
 
-    console.log(startYear);
     if (poli.timeInCongress[i].position.toLowerCase() === "house") {
       timeInHouse = startYear + " - " + endYear;
     } else if (poli.timeInCongress[i].position.toLowerCase() === "senate") {

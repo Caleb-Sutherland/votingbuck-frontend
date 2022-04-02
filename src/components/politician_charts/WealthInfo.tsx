@@ -32,19 +32,19 @@ export default function WealthInfo(props: any) {
 
   return (
     <div className="w-full lg:pt-8 pl-8 pr-8">
-      <div className="flex justify-center mb-4 text-xl font-light">WEALTH</div>
+      <div className="flex justify-center mb-4 text-lg lg:text-xl font-light">WEALTH</div>
       <div className="space-y-8">
         <div>
-          <div className="text-xl font-semibold">N/A</div>
-          <div className="text-lg font-light leading-none">Net Worth</div>
+          <div className="text-lg lg:text-xl font-semibold">TBA</div>
+          <div className="text-base lg:text-lg font-light leading-none">Net Worth</div>
         </div>
         <div>
-          <div className="text-xl font-semibold">N/A</div>
-          <div className="text-lg font-light leading-none">Increase</div>
+          <div className="text-lg lg:text-xl font-semibold">TBA</div>
+          <div className="text-base lg:text-lg font-light leading-none">Increase</div>
         </div>
         <div>
-          <div className="text-xl font-semibold">N/A</div>
-          <div className="text-lg font-light leading-none">
+          <div className="text-lg lg:text-xl font-semibold">TBA</div>
+          <div className="text-base lg:text-lg font-light leading-none">
             Rank Among 523 Politicians
           </div>
         </div>

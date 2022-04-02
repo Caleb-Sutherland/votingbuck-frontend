@@ -21,6 +21,7 @@ export default function TileSelectBox(props: any) {
   };
   return (
     <Select
+      className="text-xs lg:text-base"
       onChange={(e) => {
         if (e) {
           changeFunction(e.value);

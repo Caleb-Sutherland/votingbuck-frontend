@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   votingbuck-frontend:
-    image: 549369157589.dkr.ecr.us-east-2.amazonaws.com/votingbuck-frontend_server
+    image: votingbuck-frontend_server
     build:
       context: .
     ports:
@@ -10,5 +10,4 @@ services:
       - 443:443
     volumes:
       - ./.env:/.env
-      - /home/ec2-user/.votingbuck/certs/:/home/ec2-user/.votingbuck/certs/
       - /etc/letsencrypt/:/etc/letsencrypt/

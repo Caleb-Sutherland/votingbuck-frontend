@@ -12,14 +12,10 @@ import {
   ReferenceLine,
   Label,
 } from "recharts";
-import TileSelectBox from "../TileSelectBox";
 import { addPoliticianPeriod } from "../../store/actions/politicianActionCreators";
 import TileLoading from "../TileLoading";
 import { DataState } from "../../interfaces/global.interface";
-import {
-  Politician,
-  IdeologyCount,
-} from "../../interfaces/politician.interface";
+import { Politician } from "../../interfaces/politician.interface";
 import TileTitle from "../TileTitle";
 
 export default function IdeologyDistribution(props: any) {
@@ -123,7 +119,11 @@ export default function IdeologyDistribution(props: any) {
 
     return (
       <div className="h-full w-full">
-        <TileTitle title="Ideology Distribution" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
+        <TileTitle
+          title="Ideology Distribution"
+          selectFunction={setLocalPeriod}
+          localPeriod={localPeriod}
+        />
         <ResponsiveContainer width="100%">
           <LineChart
             width={730}
@@ -172,7 +172,11 @@ export default function IdeologyDistribution(props: any) {
   } else {
     return (
       <div className="h-full w-full">
-        <TileTitle title="Ideology Distribution" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
+        <TileTitle
+          title="Ideology Distribution"
+          selectFunction={setLocalPeriod}
+          localPeriod={localPeriod}
+        />
         <div className="h-full flex content-center justify-center items-center">
           {localPeriod in politicians[props.poliId].periods ? (
             <div>No data for this period...</div>

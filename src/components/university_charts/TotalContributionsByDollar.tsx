@@ -10,10 +10,7 @@ import {
   Line,
 } from "recharts";
 import * as format from "../../helper/formatting";
-import {
-  TotalContributionsDollar,
-  University,
-} from "../../interfaces/university.interface";
+import { University } from "../../interfaces/university.interface";
 import { DataState } from "../../interfaces/global.interface";
 import TileTitle from "../TileTitle";
 
@@ -90,7 +87,7 @@ export default function TotalContributionsByDollar(props: any) {
 
   return (
     <div className="h-full w-full">
-      <TileTitle title="Total Contributions (# of Donations)"/>
+      <TileTitle title="Total Contributions (# of Donations)" />
       <ResponsiveContainer width="100%">
         <LineChart
           width={730}

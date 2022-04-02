@@ -16,7 +16,6 @@ import {
 import { DataState } from "../../interfaces/global.interface";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
 import TileLoading from "../TileLoading";
-import TileSelectBox from "../TileSelectBox";
 import TileTitle from "../TileTitle";
 
 export default function RegisteredVoters(props: any) {
@@ -149,7 +148,11 @@ export default function RegisteredVoters(props: any) {
 
     return (
       <div className="h-full w-full pb-4">
-        <TileTitle title="Registered Voters" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
+        <TileTitle
+          title="Registered Voters"
+          selectFunction={setLocalPeriod}
+          localPeriod={localPeriod}
+        />
         <ResponsiveContainer width="100%" height="100%">
           <PieChart width={500} height={500}>
             <Pie
@@ -172,7 +175,11 @@ export default function RegisteredVoters(props: any) {
   } else {
     return (
       <div className="h-full w-full">
-        <TileTitle title="Registered Voters" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
+        <TileTitle
+          title="Registered Voters"
+          selectFunction={setLocalPeriod}
+          localPeriod={localPeriod}
+        />
         <div className="h-full flex content-center justify-center items-center">
           {localPeriod in corporation[props.corpId].periods ? (
             <div>No data for this period...</div>

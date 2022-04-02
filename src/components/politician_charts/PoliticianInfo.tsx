@@ -1,4 +1,4 @@
-import React, { Dispatch, useEffect } from "react";
+import React from "react";
 import { GiPublicSpeaker } from "react-icons/gi";
 import { useSelector } from "react-redux";
 import { DataState } from "../../interfaces/global.interface";

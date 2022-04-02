@@ -1,4 +1,4 @@
-import React, { Dispatch, useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { DataState } from "../../interfaces/global.interface";
 import { Politician } from "../../interfaces/politician.interface";

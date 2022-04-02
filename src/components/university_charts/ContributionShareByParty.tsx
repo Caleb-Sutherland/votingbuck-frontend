@@ -16,7 +16,6 @@ import {
 } from "../../interfaces/university.interface";
 import { addUniversityPeriod } from "../../store/actions/universityActionCreators";
 import TileLoading from "../TileLoading";
-import TileSelectBox from "../TileSelectBox";
 import TileTitle from "../TileTitle";
 
 export default function ContributionShareByParty(props: any) {

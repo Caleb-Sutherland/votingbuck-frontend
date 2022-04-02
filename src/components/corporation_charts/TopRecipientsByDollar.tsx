@@ -12,7 +12,6 @@ import {
   Rectangle,
 } from "recharts";
 import { graph_colors } from "../../constants/graph_colors";
-import TileSelectBox from "../TileSelectBox";
 import { addCorporationPeriod } from "../../store/actions/corporationActionCreators";
 import * as format from "../../helper/formatting";
 import TileLoading from "../TileLoading";

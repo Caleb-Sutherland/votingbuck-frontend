@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { FaSpinner } from "react-icons/fa";
 
 export default function TileLoading() {

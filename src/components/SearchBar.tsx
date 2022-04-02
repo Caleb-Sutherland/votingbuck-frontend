@@ -63,7 +63,7 @@ export function SearchBar() {
         type="text"
         onChange={handleChange}
         placeholder="corporations, universities or politicians"
-        className="w-72 px-3 py-3 placeholder-blueGray300 text-blueGray600 relative bg-white bg-white text-sm border border-blueGray300 outline-none focus:outline-none focus:ring shadow-lg rounded-lg"
+        className="mb-2 mt-2 lg:mb-0 lg:mb-0 w-72 px-3 py-3 placeholder-blueGray300 text-blueGray600 relative bg-white bg-white text-sm border border-blueGray300 outline-none focus:outline-none focus:ring shadow-lg rounded-lg"
       />
       {queryResults ? (
         <div className="absolute top-12 w-72 px-0 py-3 text-blueGray600 bg-white bg-white text-sm outline-none shadow-lg rounded-lg">

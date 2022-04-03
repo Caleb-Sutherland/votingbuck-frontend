@@ -69,12 +69,11 @@ export default function Main() {
         <div className="absolute flex flex-col space-y-24 py-48 px-20 inset-y-0 left-0 w-full">
           <div className="flex flex-col space-y-5 max-w-5xl m-auto">
             <p className="text-4xl sm:text-5xl font-medium text-center text-white">
-              View political donation information for organizations and
-              political figures.
+              Politicians, corporations, and universities are connected.
             </p>
             <p className="text-2xl sm:text-3xl font-light text-center text-white">
-              Research and discover political associations through donation
-              information.
+              Check out the web of ideology, money, revolving doors, personal
+              wealth, and power.
             </p>
             <div className="flex flex-row space-x-2 justify-center">
               <SearchBar />
@@ -100,7 +99,7 @@ export default function Main() {
                         dangerouslySetInnerHTML={{
                           __html: entry.statistic.replace(
                             /\*([^*]*)\*/g,
-                            "<span class=\"font-medium\">$1</span>"
+                            '<span class="font-medium">$1</span>'
                           ),
                         }}
                       ></p>
@@ -115,8 +114,38 @@ export default function Main() {
         <div className="-m-5 flex flex-row flex-wrap justify-center space-x-32">
           <div className="flex flex-col space-y-4 w-1/3">
             <p className="text-lg font-medium text-right">
-              Highlighted Politicians
+              Highlighted Corporations
             </p>
+            {highlights.corporations.map(function (entry, index) {
+              return (
+                <Link key={index} to={"corporations/" + entry.id}>
+                  <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
+                    <div>
+                      <p>{entry.name}</p>
+                    </div>
+                    <div className="flex flex-row items-center space-x-2">
+                      <p
+                        className="text-right"
+                        dangerouslySetInnerHTML={{
+                          __html: entry.statistic.replace(
+                            /\*([^*]*)\*/g,
+                            '<span class="font-medium">$1</span>'
+                          ),
+                        }}
+                      ></p>
+                      <FiExternalLink size="1.1em" />
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+          <BsBuilding size="16em" />
+        </div>
+        <div className="-m-5 flex flex-row flex-wrap justify-center space-x-32">
+          <GiPublicSpeaker size="16em" />
+          <div className="flex flex-col space-y-4 w-1/3">
+            <p className="text-lg font-medium">Highlighted Politicians</p>
             {highlights.politicians.map(function (entry, index) {
               return (
                 <Link key={index} to={"politicians/" + entry.id}>
@@ -130,37 +159,7 @@ export default function Main() {
                         dangerouslySetInnerHTML={{
                           __html: entry.statistic.replace(
                             /\*([^*]*)\*/g,
-                            "<span class=\"font-medium\">$1</span>"
-                          ),
-                        }}
-                      ></p>
-                      <FiExternalLink size="1.1em" />
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-          <GiPublicSpeaker size="16em" />
-        </div>
-        <div className="-m-5 flex flex-row flex-wrap justify-center space-x-32">
-          <BsBuilding size="16em" />
-          <div className="flex flex-col space-y-4 w-1/3">
-            <p className="text-lg font-medium">Highlighted Corporations</p>
-            {highlights.corporates.map(function (entry, index) {
-              return (
-                <Link key={index} to={"corporations/" + entry.id}>
-                  <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
-                    <div>
-                      <p>{entry.name}</p>
-                    </div>
-                    <div className="flex flex-row items-center space-x-2">
-                      <p
-                        className="text-right"
-                        dangerouslySetInnerHTML={{
-                          __html: entry.statistic.replace(
-                            /\*([^*]*)\*/g,
-                            "<span class=\"font-medium\">$1</span>"
+                            '<span class="font-medium">$1</span>'
                           ),
                         }}
                       ></p>
@@ -177,10 +176,15 @@ export default function Main() {
             About votingbuck
           </p>
           <p className="text-2xl sm:text-3xl font-light text-center leading-10">
-            Voting Buck&apos;s mission is to make political data available to
-            everyone. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Voluptatibus quia, nulla! Maiores et perferendis eaque,
-            exercitationem praesentium nihil.
+            Is a politician’s voting record aligned with their public
+            statements? Who do the employees of big corporations donate to?
+            Which politicians are the biggest campaign contribution earners, and
+            whose personal wealth has increased the most while in office? On
+            this site, you can find information on everything you’ve ever wanted
+            to know about money, ideology and politics. Information is separated
+            into the three centers of political power in America (politicians,
+            corporations and universities), and easily accessible in a
+            dashboard-style format.
           </p>
         </div>
         <div className="-m-5 flex flex-row flex-wrap justify-center">
@@ -192,9 +196,10 @@ export default function Main() {
             <div className="py-8 flex flex-col space-y-3">
               <p className="text-lg font-medium">Politicians</p>
               <p className="font-light">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Voluptatibus quia, nulla! Maiores et perferendis eaque,
-                exercitationem praesentium nihil.
+                votingbuck has data on the president and VP, the 535 current
+                congressmen and women (435 members in the House, and 100
+                senators), and the roughly 800 who failed to win re-election, or
+                passed through the revolving door in the last two decades.
               </p>
               <Link
                 className="text-blue500 font-normal text-center w-full"
@@ -212,9 +217,9 @@ export default function Main() {
             <div className="py-8 flex flex-col space-y-3">
               <p className="text-lg font-medium">Corporations</p>
               <p className="font-light">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Voluptatibus quia, nulla! Maiores et perferendis eaque,
-                exercitationem praesentium nihil.
+                votingbuck has data on more than 3,000 stock-listed companies,
+                representing over 120 industries, from Airlines (Delta), to tech
+                firms (Apple) to big-agriculture (Monsanto).
               </p>
               <Link
                 className="text-blue500 font-normal text-center w-full"
@@ -232,9 +237,9 @@ export default function Main() {
             <div className="py-8 flex flex-col space-y-3">
               <p className="text-lg font-medium">Universities</p>
               <p className="font-light">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Voluptatibus quia, nulla! Maiores et perferendis eaque,
-                exercitationem praesentium nihil.
+                votingbuck has data on the top-ranked 600 universities in the
+                country, from the Ivy League, to liberal arts colleges, to
+                community colleges, to big state schools.
               </p>
               <Link
                 className="text-blue500 font-normal text-center w-full"

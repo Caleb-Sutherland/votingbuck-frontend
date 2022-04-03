@@ -1,53 +1,53 @@
 {
     "universities": [
         {
-            "id":1,
-            "name":"Harvard University",
-            "statistic":"Donated *$1,254,332,20* in 2021"
+            "id":"5",
+            "name":"UC Berkeley",
+            "statistic":"Donated *$124,321* in 2021-22"
         },
         {
-            "id":2,
-            "name":"Massachusetts Institute of Technology",
-            "statistic":"Employed *124* Political Contributors"
+            "id":"188",
+            "name":"Wesleyan",
+            "statistic":"Imputed left-right ideology: *-0.421* (range: -1, +1)"
         },
         {
-            "id":3,
-            "name":"New York University",
-            "statistic":"Made *1,424* Donations in 2021"
+            "id":"3",
+            "name":"Harvard",
+            "statistic":"*10 to 1* ratio of registered Dem vs Rep among faculty"
         }
     ],
     "politicians": [
         {
-            "id":1,
-            "name":"Joe Biden",
-            "statistic":"Received *$1,254,332,20* in 2021"
+            "id":"1151",
+            "name":"Nancy Pelosi",
+            "statistic":"Received *$12,081,173* in 2021-22"
         },
         {
-            "id":2,
-            "name":"Donald Trump",
-            "statistic":"Received *1,424* Donations in 2021"
+            "id":"173",
+            "name":"Chuck Schumer",
+            "statistic":"Most contributions from the *Securities & Investment* industry"
         },
         {
-            "id":3,
-            "name":"Kamala Harris",
-            "statistic":"Received From *1,545* Contributors"
+            "id":"10154",
+            "name":"Liz Cheney",
+            "statistic":"Voting ideology of *+0.534* (range: -1,+1)"
         }
     ],
-    "corporates": [
+    "corporations": [
         {
-            "id":4,
+            "id":"037833100",
             "name":"Apple",
             "statistic":"Donated *$1,254,332,20* in 2021"
         },
         {
-            "id":5,
+            "id":"060505104",
             "name":"Bank of America",
             "statistic":"Employed *124* Political Contributors"
         },
         {
-            "id":6,
+            "id":"539830109",
             "name":"Lockheed Martin",
-            "statistic":"Made *1,424* Donations in 2021"
+            "statistic":"Imputed ideology: *+0.213* (range: -1,+1)"
         }
     ]
 }

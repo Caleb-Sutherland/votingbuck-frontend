@@ -1,11 +1,157 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FiExternalLink } from "react-icons/fi";
 import { MultipleDropDown } from "../components/MultipleDropDown";
 import { DropDown } from "../components/DropDown";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import { OrderedList } from "../components/OrderedList";
 
 export default function CorporationMain() {
+  const sortItems = [
+    "Alphabet, Ascending",
+    "Alphabet, Descending"
+  ];
+  const filterItems = [
+    "Paper Products",
+    "Industrial Conglomerates",
+    "Health Care Facilities",
+    "Electric Utilities",
+    "Electronic Components",
+    "Environmental & Facilities Services",
+    "Diversified REITs",
+    "Communications Equipment",
+    "Life Sciences Tools & Services",
+    "Oil & Gas Drilling",
+    "Agricultural & Farm Machinery",
+    "Tires & Rubber",
+    "Education Services",
+    "Electronic Equipment & Instruments",
+    "Application Software",
+    "IT Consulting & Other Services",
+    "Asset Management & Custody Banks",
+    "Housewares & Specialties",
+    "Casinos & Gaming",
+    "Diversified Support Services",
+    "Health Care Distributors",
+    "Diversified Commercial & Professional Services --",
+    "Broadcasting",
+    "Brewers",
+    "Air Freight & Logistics",
+    "Soft Drinks",
+    "Internet & Direct Marketing Retail",
+    "Office Services & Supplies",
+    "Household Products",
+    "Forest Products",
+    "Automobile Manufacturers",
+    "Distillers & Vintners",
+    "Specialized Consumer Services",
+    "Diversified Banks",
+    "Commodity Chemicals",
+    "Distributors",
+    "Wireless Telecommunication Services",
+    "Construction Materials",
+    "Real Estate Development",
+    "Auto Parts & Equipment",
+    "Agricultural Products",
+    "Footwear",
+    "Gas Utilities",
+    "Specialty Chemicals",
+    "Publishing",
+    "Leisure Products",
+    "Railroads",
+    "Leisure Facilities",
+    "Managed Health Care",
+    "Integrated Telecommunication Services",
+    "Packaged Foods & Meats",
+    "Personal Products",
+    "Regional Banks",
+    "Automotive Retail",
+    "Other Diversified Financial Services",
+    "General Merchandise Stores",
+    "Photographic Products -- Discontinued effective 02",
+    "Real Estate Services",
+    "Computer Storage & Peripherals - Discontinued effe",
+    "Consumer Finance",
+    "Industrial Machinery",
+    "Not Assigned",
+    "Department Stores",
+    "Human Resource & Employment Services",
+    "Coal & Consumable Fuels",
+    "Pharmaceuticals",
+    "Commercial Printing",
+    "Movies & Entertainment",
+    "Metal & Glass Containers",
+    "Oil & Gas Storage & Transportation",
+    "Fertilizers & Agricultural Chemicals",
+    "Financial Exchanges & Data",
+    "Property & Casualty Insurance",
+    "Textiles",
+    "Internet Software & Services",
+    "Computer & Electronics Retail",
+    "Health Care Supplies",
+    "Steel",
+    "Health Care Services",
+    "Health Care Equipment",
+    "Oil & Gas Exploration & Production",
+    "Security & Alarm Services",
+    "Apparel Retail",
+    "Restaurants",
+    "Semiconductor Equipment",
+    "Food Distributors",
+    "Home Furnishings",
+    "Construction & Engineering",
+    "Technology Hardware, Storage & Peripherals",
+    "Independent Power Producers & Energy Traders",
+    "Airlines",
+    "Life & Health Insurance",
+    "Insurance Brokers",
+    "Trucking",
+    "Homebuilding",
+    "Alternative Carriers",
+    "Biotechnology",
+    "Technology Distributors",
+    "Building Products",
+    "Oil & Gas Refining & Marketing",
+    "Home Improvement Retail",
+    "Thrifts & Mortgage Finance",
+    "Data Processing & Outsourced Services",
+    "Trading Companies & Distributors",
+    "Gold",
+    "Copper",
+    "Retail REITs",
+    "Tobacco",
+    "Diversified Metals & Mining",
+    "Advertising",
+    "Specialty Stores",
+    "Consumer Electronics",
+    "Oil & Gas Equipment & Services",
+    "Investment Banking & Brokerage",
+    "Food Retail",
+    "Aerospace & Defense",
+    "Drug Retail",
+    "Hypermarkets & Super Centers",
+    "Computer Hardware - Discontinued effective 02/28/2",
+    "Hotels, Resorts & Cruise Lines",
+    "Household Appliances",
+    "Aluminum",
+    "Apparel, Accessories & Luxury Goods",
+    "Construction Machinery & Heavy Trucks",
+    "Cable & Satellite",
+    "Precious Metals & Minerals",
+    "Electrical Components & Equipment",
+    "Homefurnishing Retail",
+    "Water Utilities",
+    "Semiconductors",
+    "Specialized Finance",
+    "Paper Packaging",
+    "Electronic Manufacturing Services",
+  ];
+
+  const [sort, setSort] = useState<string>(sortItems[0]);
+  const [filters, setFilters] = useState<string[]>([]);
+  const [results, setResults] = useState<any>({ test: "test" });
+
   return (
     <div>
       <Header />
@@ -14,10 +160,26 @@ export default function CorporationMain() {
         <div className="flex flex-col lg:flex-row-reverse items-center">
           <div className="flex flex-row items-center">
             <p className="px-5">Sort:</p>
-            <DropDown />
+            <DropDown items={sortItems} defaultItem={0} setItem={setSort} />
             <p className="px-5">Filters:</p>
-            <MultipleDropDown />
+            <MultipleDropDown items={filterItems} setItems={setFilters} />
           </div>
+        </div>
+        <div className="flex flex-col space-y-2">
+          <OrderedList sort={sort} filters={filters} />
+          {/*results.map(function (entry: any, index: number) {
+          <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
+            <div>
+              <p>{"Test"}</p>
+            </div>
+            <div className="flex flex-row items-center space-x-2">
+              <p
+                className="text-right"
+              ></p>
+              <FiExternalLink size="1.1em" />
+            </div>
+          </div>
+        })*/}
         </div>
       </div>
       <Footer />

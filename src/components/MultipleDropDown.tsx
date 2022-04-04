@@ -2,34 +2,13 @@ import React, { useState } from "react";
 import { GrDown } from "react-icons/gr";
 import { Link } from "react-router-dom";
 
-export function MultipleDropDown() {
-  const [isOpen, SetIsOpen] = useState<boolean>(false);
-  const [appliedItems, SetAppliedItems] = useState<string[]>([]);
-  const items: string[] = [
-    "test",
-    "test2",
-    "test3",
-    "test4",
-    "test5",
-    "test6",
-    "test7",
-    "test8",
-    "test9",
-    "test10",
-    "test11",
-    "test12",
-    "test13",
-    "test14",
-    "test15",
-    "test16",
-    "test17",
-    "test18",
-    "test19",
-    "test20",
-  ];
+export function MultipleDropDown(props: any) {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [appliedItems, setAppliedItems] = useState<string[]>([]);
+  const items: string[] = [...props.items];
 
   const handleClick = () => {
-    SetIsOpen(!isOpen);
+    setIsOpen(!isOpen);
   };
 
   const handleItemClick = (item: string) => {
@@ -40,12 +19,17 @@ export function MultipleDropDown() {
           newAppliedItems.push(element);
         }
       });
-      SetAppliedItems(newAppliedItems);
+      updateItems(newAppliedItems);
     } else {
       const newAppliedItems: string[] = [...appliedItems];
       newAppliedItems.push(item);
-      SetAppliedItems(newAppliedItems);
+      updateItems(newAppliedItems);
     }
+  };
+
+  const updateItems = (updatedItems: string[]) => {
+    setAppliedItems(updatedItems);
+    if (props.setItems) { props.setItems(updatedItems); }
   };
 
   return (
@@ -54,7 +38,7 @@ export function MultipleDropDown() {
         onClick={handleClick}
         className="my-2 lg:my-0 w-52 p-3 text-blueGray600 relative bg-white text-sm border border-blueGray300 outline-none shadow-lg rounded-lg flex flex-row items-center justify-between"
       >
-        <p className="text-left">
+        <p className="text-left whitespace-nowrap w-40 overflow-hidden text-ellipsis">
           {appliedItems.length > 0
             ? appliedItems.length > 1
               ? "Multiple (" + appliedItems.length + ")"
@@ -64,7 +48,7 @@ export function MultipleDropDown() {
         <GrDown />
       </button>
       {isOpen ? (
-        <div className="absolute top-12 w-52 px-0 py-3 text-blueGray600 bg-white bg-white text-sm outline-none shadow-lg rounded-lg max-h-96 overflow-y-auto z-50">
+        <div className="absolute top-12 w-52 px-0 py-3 text-blueGray600 bg-white bg-white text-sm outline-none shadow-lg rounded-lg max-h-96 overflow-y-auto z-40">
           {items.map((item: string, index: number) => {
             return (
               <div key={index}>

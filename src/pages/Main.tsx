@@ -67,7 +67,7 @@ export default function Main() {
           }}
         />
         <div className="absolute flex flex-col space-y-24 py-48 px-10 lg:px-20 inset-y-0 left-0 w-full">
-          <div className="flex flex-col space-y-5 max-w-5xl m-auto">
+          <div className="flex flex-col space-y-5 max-w-7xl m-auto">
             <p className="text-4xl sm:text-5xl font-medium text-center text-white">
               Politicians, corporations, and universities are connected.
             </p>

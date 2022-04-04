@@ -8,10 +8,7 @@ import Header from "../components/Header";
 import { OrderedList } from "../components/OrderedList";
 
 export default function CorporationMain() {
-  const sortItems = [
-    "Alphabet, Ascending",
-    "Alphabet, Descending"
-  ];
+  const sortItems = ["Alphabet, Ascending", "Alphabet, Descending"];
   const filterItems = [
     "Paper Products",
     "Industrial Conglomerates",
@@ -155,14 +152,18 @@ export default function CorporationMain() {
   return (
     <div>
       <Header />
-      <div className="h-screen m-20 flex flex-col space-y-5">
-        <p className="text-xl lg:text-4xl font-bold">Corporations</p>
+      <div className="h-screen m-10 lg:m-20 flex flex-col space-y-5">
+        <p className="w-fill text-xl lg:text-4xl font-bold text-center sm:text-left">Corporations</p>
         <div className="flex flex-col lg:flex-row-reverse items-center">
-          <div className="flex flex-row items-center">
-            <p className="px-5">Sort:</p>
-            <DropDown items={sortItems} defaultItem={0} setItem={setSort} />
-            <p className="px-5">Filters:</p>
-            <MultipleDropDown items={filterItems} setItems={setFilters} />
+          <div className="flex flex-row flex-wrap items-center ml-auto">
+            <div className="flex flex-row items-center ml-auto">
+              <p className="px-5">Sort:</p>
+              <DropDown items={sortItems} defaultItem={0} setItem={setSort} />
+            </div>
+            <div className="flex flex-row items-center ml-auto">
+              <p className="px-5">Filters:</p>
+              <MultipleDropDown items={filterItems} setItems={setFilters} />
+            </div>
           </div>
         </div>
         <div className="flex flex-col space-y-2">

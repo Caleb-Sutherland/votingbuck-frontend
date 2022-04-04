@@ -21,7 +21,7 @@ module.exports = {
         blueGray600: "#546e7a",
         blue500: "#2196f3",
         footerBackground: "#3F3F46",
-        footerText: "white",
+        footerText: "#d4d4d4",
         tooltipBack: "#e6f7f4",
       }
     }

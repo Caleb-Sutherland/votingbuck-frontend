@@ -81,7 +81,7 @@ export default function UniversityMain() {
     <div>
       <Header />
       <div className="m-20 flex flex-col space-y-5">
-        <p className="text-xl lg:text-4xl font-bold">Corporations</p>
+        <p className="text-xl lg:text-4xl font-bold">Universities</p>
         <div className="flex flex-col lg:flex-row-reverse items-center">
           <div className="flex flex-row items-center">
             <p className="px-5">Sort:</p>
@@ -92,19 +92,6 @@ export default function UniversityMain() {
         </div>
         <div className="flex flex-col space-y-2">
           <OrderedList sort={sort} filters={filters} />
-          {/*results.map(function (entry: any, index: number) {
-          <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
-            <div>
-              <p>{"Test"}</p>
-            </div>
-            <div className="flex flex-row items-center space-x-2">
-              <p
-                className="text-right"
-              ></p>
-              <FiExternalLink size="1.1em" />
-            </div>
-          </div>
-        })*/}
         </div>
       </div>
       <Footer />

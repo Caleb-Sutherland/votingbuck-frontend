@@ -66,8 +66,8 @@ export default function Main() {
             detectRetina: true,
           }}
         />
-        <div className="absolute flex flex-col space-y-24 py-48 px-20 inset-y-0 left-0 w-full">
-          <div className="flex flex-col space-y-5 max-w-5xl m-auto">
+        <div className="absolute flex flex-col space-y-24 py-48 px-10 lg:px-20 inset-y-0 left-0 w-full">
+          <div className="flex flex-col space-y-5 max-w-7xl m-auto">
             <p className="text-4xl sm:text-5xl font-medium text-center text-white">
               Politicians, corporations, and universities are connected.
             </p>
@@ -81,10 +81,12 @@ export default function Main() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col space-y-32 py-32 px-20">
-        <div className="-m-5 flex flex-row flex-wrap justify-center space-x-32">
-          <FaUniversity size="16em" />
-          <div className="flex flex-col space-y-4 w-1/3">
+      <div className="flex flex-col space-y-32 py-32 px-10 lg:px-20">
+        <div className="lg:-m-5 flex flex-col lg:flex-row flex-wrap justify-center">
+          <div className="mx-auto lg:mx-0">
+            <FaUniversity size="16em" />
+          </div>
+          <div className="flex flex-col space-y-4 lg:w-1/2 2xl:w-1/3 mt-10 lg:mt-0 lg:ml-32">
             <p className="text-lg font-medium">Highlighted Universities</p>
             {highlights.universities.map(function (entry, index) {
               return (
@@ -111,9 +113,12 @@ export default function Main() {
             })}
           </div>
         </div>
-        <div className="-m-5 flex flex-row flex-wrap justify-center space-x-32">
-          <div className="flex flex-col space-y-4 w-1/3">
-            <p className="text-lg font-medium text-right">
+        <div className="lg:-m-5 flex flex-col lg:flex-row lg:flex-row-reverse flex-wrap justify-center">
+          <div className="mx-auto lg:mx-0">
+            <BsBuilding size="16em" />
+          </div>
+          <div className="flex flex-col space-y-4 lg:w-1/2 2xl:w-1/3 mt-10 lg:mt-0 lg:mr-32">
+            <p className="text-lg font-medium lg:text-right">
               Highlighted Corporations
             </p>
             {highlights.corporations.map(function (entry, index) {
@@ -140,11 +145,12 @@ export default function Main() {
               );
             })}
           </div>
-          <BsBuilding size="16em" />
         </div>
-        <div className="-m-5 flex flex-row flex-wrap justify-center space-x-32">
-          <GiPublicSpeaker size="16em" />
-          <div className="flex flex-col space-y-4 w-1/3">
+        <div className="lg:-m-5 flex flex-col lg:flex-row flex-wrap justify-center">
+          <div className="mx-auto lg:mx-0">
+            <GiPublicSpeaker size="16em" />
+          </div>
+          <div className="flex flex-col space-y-4 lg:w-1/2 2xl:w-1/3 mt-10 lg:mt-0 lg:ml-32">
             <p className="text-lg font-medium">Highlighted Politicians</p>
             {highlights.politicians.map(function (entry, index) {
               return (

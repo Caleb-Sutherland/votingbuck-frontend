@@ -99,7 +99,7 @@ export default function Main() {
                         dangerouslySetInnerHTML={{
                           __html: entry.statistic.replace(
                             /\*([^*]*)\*/g,
-                            '<span class="font-medium">$1</span>'
+                            "<span class='font-medium'>$1</span>"
                           ),
                         }}
                       ></p>
@@ -129,7 +129,7 @@ export default function Main() {
                         dangerouslySetInnerHTML={{
                           __html: entry.statistic.replace(
                             /\*([^*]*)\*/g,
-                            '<span class="font-medium">$1</span>'
+                            "<span class='font-medium'>$1</span>"
                           ),
                         }}
                       ></p>
@@ -159,7 +159,7 @@ export default function Main() {
                         dangerouslySetInnerHTML={{
                           __html: entry.statistic.replace(
                             /\*([^*]*)\*/g,
-                            '<span class="font-medium">$1</span>'
+                            "<span class='font-medium'>$1</span>"
                           ),
                         }}
                       ></p>

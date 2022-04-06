@@ -3,9 +3,9 @@ import * as actionTypes from "../actions/actionTypes";
 import { Corporation, CorporationAction } from "../../interfaces/corporation.interface";
 
 const corporationReducer = (
-  state: Record<number, Corporation> = initialState.corporations,
+  state: Record<string, Corporation> = initialState.corporations,
   action: CorporationAction
-): Record<number, Corporation> => {
+): Record<string, Corporation> => {
   switch (action.type) {
     case actionTypes.ADD_CORPORATION_PERIOD:
       // If the organization already exists, just add the period

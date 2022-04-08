@@ -3,6 +3,7 @@ import { BsBuilding } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { Corporation } from "../../interfaces/corporation.interface";
 import { DataState } from "../../interfaces/global.interface";
+import { formatDollarValueToString } from "../../helper/formatting";
 
 export default function CompanyInfo(props: any) {
   // Access the redux store
@@ -36,7 +37,7 @@ export default function CompanyInfo(props: any) {
           <span className="text-base lg:text-xl font-light"> Revolvers</span>
         </div>
         <div>
-          <span className="text-base lg:text-xl font-semibold">$1.7Bln</span>
+          <span className="text-base lg:text-xl font-semibold">${formatDollarValueToString(corp.corp_lobby)}</span>
           <span className="text-base lg:text-xl font-light"> Lobbying Expenditure</span>
         </div>
       </div>

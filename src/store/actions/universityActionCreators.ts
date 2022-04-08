@@ -5,7 +5,7 @@ import * as actionTypes from "./actionTypes";
 /* Period action creators */
 // Add a period to the store
 export function addUniversityPeriod(
-  university_id: number,
+  university_id: string,
   period_id: string
 ) {
   // Must retrieve the organization/period data from the database
@@ -14,7 +14,7 @@ export function addUniversityPeriod(
 
 // Helper function to retrieve organization/period data from the backend
 export function getUniversityPeriod(
-  university_id: number,
+  university_id: string,
   period_id: string
 ) {
   return async (dispatch: DispatchType) => {

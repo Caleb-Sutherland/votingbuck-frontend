@@ -44,7 +44,7 @@ export default function Corporation() {
   if (!url_params.corpId) {
     return <div>Corporation not specified!</div>;
   }
-  const corp_id: number = parseInt(url_params.corpId);
+  const corp_id: string = url_params.corpId;
 
   // Setup the redux store
   const dispatch: Dispatch<any> = useDispatch();
@@ -55,7 +55,7 @@ export default function Corporation() {
   }, [dispatch, current_period]);
 
   // Access the redux store
-  const corporations: Record<number, ICorporation> = useSelector(
+  const corporations: Record<string, ICorporation> = useSelector(
     (state: DataState) => state.corporations
   );
 

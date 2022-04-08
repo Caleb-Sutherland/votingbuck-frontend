@@ -4,13 +4,13 @@ import * as actionTypes from "./actionTypes";
 
 /* Period action creators */
 // Add a period to the store
-export function addPoliticianPeriod(politician_id: number, period_id: string) {
+export function addPoliticianPeriod(politician_id: string, period_id: string) {
   // Must retrieve the organization/period data from the database
   return getPoliticianPeriod(politician_id, period_id);
 }
 
 // Helper function to retrieve organization/period data from the backend
-export function getPoliticianPeriod(politician_id: number, period_id: string) {
+export function getPoliticianPeriod(politician_id: string, period_id: string) {
   return async (dispatch: DispatchType) => {
     // Get the correct range of years from the period_id
     const period_dates: string[] = period_id.split("-");

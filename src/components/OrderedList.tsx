@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { FaSpinner } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
-import { GrDown } from "react-icons/gr";
 import { Link } from "react-router-dom";
 
 export function OrderedList(props: any) {
@@ -11,29 +11,27 @@ export function OrderedList(props: any) {
   const getResult = async () => {
     let url = `${process.env.REACT_APP_API_BASE_URL}/${props.page}/list?sortField=${props.sort.field}&order=${props.sort.order}`;
     if (props.filters.length > 0) {
-      if (props.page == "organizations") {
+      if (props.page === "organizations") {
         url =
           url + `&industries=${props.filters.join(",").replace(/&/g, "%26")}`;
-      } else if (props.page == "universities") {
+      } else if (props.page === "universities") {
         url = url + `&states=${props.filters.join(",")}`;
-      } else if (props.page == "recipients") {
+      } else if (props.page === "recipients") {
         url = url + `&states=${props.filters.join(",")}`;
       }
     }
     const res = await fetch(url);
-    console.log(res);
     const data = await res.json();
     setResults(data[props.page]);
   };
 
   useEffect(() => {
     if (
-      results[0] == "empty" ||
-      sort != props.sort ||
-      filters != props.filters
+      results[0] === "empty" ||
+      sort !== props.sort ||
+      filters !== props.filters
     ) {
       setSort(props.sort);
-      console.log(sort);
       setFilters(props.filters);
       getResult();
     }
@@ -109,14 +107,21 @@ export function OrderedList(props: any) {
     }
   };
 
-  return (
-    <div className="relative">
-      {listHeader()}
-      <div className="flex flex-col space-y-4">
-        {results.map((entry: any, index: number) => {
-          return listEntry(entry, index);
-        })}
+  if (results[0] !== "empty") {
+    return (
+      <div className="relative">
+        {listHeader()}
+        <div className="flex flex-col space-y-4">
+          {results.map((entry: any, index: number) => {
+            return listEntry(entry, index);
+          })}
+        </div>
       </div>
+    );
+  }
+  return (
+    <div className="h-screen flex justify-center content-center items-center justify-items-center">
+      <FaSpinner size={50} className="animate-spin mb-16" />
     </div>
   );
 }

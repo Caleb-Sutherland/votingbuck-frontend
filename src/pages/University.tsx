@@ -43,7 +43,7 @@ export default function University() {
   if (!url_params.uniId) {
     return <div>University not specified!</div>;
   }
-  const uni_id: number = parseInt(url_params.uniId);
+  const uni_id: string = url_params.uniId;
 
   // Setup the redux store
   const dispatch: Dispatch<any> = useDispatch();
@@ -54,7 +54,7 @@ export default function University() {
   }, [dispatch, current_period]);
 
   // Access the redux store
-  const universities: Record<number, IUniversity> = useSelector(
+  const universities: Record<string, IUniversity> = useSelector(
     (state: DataState) => state.universities
   );
 

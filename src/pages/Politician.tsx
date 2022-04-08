@@ -43,7 +43,7 @@ export default function Politician() {
   if (!url_params.poliId) {
     return <div>Politician not specified!</div>;
   }
-  const poli_id: number = parseInt(url_params.poliId);
+  const poli_id: string = url_params.poliId;
 
   // Setup the redux store
   const dispatch: Dispatch<any> = useDispatch();
@@ -54,7 +54,7 @@ export default function Politician() {
   }, [dispatch, current_period]);
 
   // Access the redux store
-  const politicians: Record<number, IPolitician> = useSelector(
+  const politicians: Record<string, IPolitician> = useSelector(
     (state: DataState) => state.politicians
   );
 

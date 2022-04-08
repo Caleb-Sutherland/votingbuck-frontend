@@ -1,5 +1,5 @@
 export const corpData = {
-  orgInfo: { id: 1, name: "Exxon Mobil", industry: "school" },
+  orgInfo: { id: "1", name: "Exxon Mobil", industry: "school" },
   donationsByMonth: [
     { month_start_date: "2010-01-01T00:00:00.000Z", amount_donated: 364728.89 },
     { month_start_date: "2010-02-01T00:00:00.000Z", amount_donated: 168931.33 },
@@ -175,31 +175,31 @@ export const corpData = {
   ],
   topRecipients: [
     {
-      id: 1,
+      id: "1",
       name: "Saundas",
       party: "democratic",
       amount_received: 4024.5,
     },
     {
-      id: 2,
+      id: "2",
       name: "Biden",
       party: "democratic",
       amount_received: 500.5,
     },
     {
-      id: 3,
+      id: "3",
       name: "Cortee",
       party: "republican",
       amount_received: 4024.5,
     },
     {
-      id: 4,
+      id: "4",
       name: "Coelho",
       party: "individual",
       amount_received: 3000.5,
     },
     {
-      id: 5,
+      id: "5",
       name: "Hillier",
       party: "republican",
       amount_received: 5000.5,
@@ -209,7 +209,7 @@ export const corpData = {
 
 export const poliData = {
   recInfo: {
-    id: 1,
+    id: "1",
     name: "Aaron Fraser",
     ideology: -0.64,
     party: "Democratic Party",

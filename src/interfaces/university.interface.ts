@@ -62,7 +62,7 @@ export interface UniversityPeriod {
 }
 
 export interface University{
-  id: number;
+  id: string;
   name: string;
   industry: string;
   uni_acronym: string;

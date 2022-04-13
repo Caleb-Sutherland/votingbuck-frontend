@@ -30,7 +30,7 @@ export function SearchBar() {
       );
     } else if (e.key === "Enter") {
       e.preventDefault();
-      if (cursorLinkPath != "") {
+      if (cursor > -1) {
         window.open(cursorLinkPath, "_self");
       }
     }

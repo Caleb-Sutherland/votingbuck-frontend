@@ -114,6 +114,7 @@ export default function TopRecipientsByDollar(props: any) {
           title="Top Recipients ($)"
           selectFunction={setLocalPeriod}
           localPeriod={localPeriod}
+          fakeData
         />
         <ResponsiveContainer width="100%" height="85%">
           <BarChart
@@ -144,6 +145,7 @@ export default function TopRecipientsByDollar(props: any) {
           title="Top Recipients ($)"
           selectFunction={setLocalPeriod}
           localPeriod={localPeriod}
+          fakeData
         />
         <div className="h-full flex content-center justify-center items-center">
           {localPeriod in corporation[props.corpId].periods ? (

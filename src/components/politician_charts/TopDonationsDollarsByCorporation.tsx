@@ -89,6 +89,7 @@ export default function TopDonationsDollarsByCorporation(props: any) {
           title="Top Corporation Receipts"
           selectFunction={setLocalPeriod}
           localPeriod={localPeriod}
+          fakeData
         />
         <ResponsiveContainer
           width="100%"
@@ -123,6 +124,7 @@ export default function TopDonationsDollarsByCorporation(props: any) {
           title="Top Corporation Receipts"
           selectFunction={setLocalPeriod}
           localPeriod={localPeriod}
+          fakeData
         />
         <div className="h-full flex content-center justify-center items-center">
           {localPeriod in politicians[props.poliId].periods ? (

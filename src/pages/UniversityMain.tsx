@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { DropDown } from "../components/DropDown";
 import Footer from "../components/Footer";
 import { Header } from "../components/Header";
@@ -75,7 +74,6 @@ export default function UniversityMain() {
 
   const [sort, setSort] = useState<any>(sortItems[0]);
   const [filters, setFilters] = useState<string[]>([]);
-  const [results, setResults] = useState<any>({ test: "test" });
 
   return (
     <div>

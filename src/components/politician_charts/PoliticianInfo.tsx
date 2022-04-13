@@ -24,7 +24,6 @@ export default function PoliticianInfo(props: any) {
   };
 
   const poli = politicians[props.poliId];
-  console.log(poli);
 
   // Compute politicians time in congress
   let timeInCongress = 0;

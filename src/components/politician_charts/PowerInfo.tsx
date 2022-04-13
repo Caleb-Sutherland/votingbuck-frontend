@@ -55,7 +55,7 @@ export default function PowerInfo(props: any) {
             </div>
           );
         })}
-        <div className="font-light">Committees</div>
+        {poli.committee.length > 0 ? <div className="font-light">Committees</div> : null}
       </div>
     </div>
   );

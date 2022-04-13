@@ -12,7 +12,7 @@ import PoliticianInfo from "../components/politician_charts/PoliticianInfo";
 import TileSelectBox from "../components/TileSelectBox";
 import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
+import { Header } from "../components/Header";
 import LoadingScreen from "../components/LoadingScreen";
 import { DataState } from "../interfaces/global.interface";
 import { Politician as IPolitician } from "../interfaces/politician.interface";

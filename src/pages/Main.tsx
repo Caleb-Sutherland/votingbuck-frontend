@@ -5,7 +5,7 @@ import { BsBuilding } from "react-icons/bs";
 import { FiExternalLink } from "react-icons/fi";
 import Particles from "react-tsparticles";
 import { Link } from "react-router-dom";
-import HeaderMain from "../components/HeaderMain";
+import { HeaderMain } from "../components/HeaderMain";
 import Footer from "../components/Footer";
 import { SearchBar } from "../components/SearchBar";
 
@@ -29,7 +29,7 @@ export default function Main() {
               },
               links: {
                 color: "#ffffff",
-                distance: 100,
+                distance: 200,
                 enable: true,
                 opacity: 0.3,
                 width: 0.3,

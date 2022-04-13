@@ -11,7 +11,6 @@ import {
   ResponsiveContainer,
   Rectangle,
 } from "recharts";
-import TileSelectBox from "../TileSelectBox";
 import { addPoliticianPeriod } from "../../store/actions/politicianActionCreators";
 import * as format from "../../helper/formatting";
 import { extra_colors } from "../../constants/graph_colors";

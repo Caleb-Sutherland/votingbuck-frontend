@@ -21,7 +21,6 @@ import {
   UniversityDonation,
 } from "../../interfaces/politician.interface";
 import TileTitle from "../TileTitle";
-import { Link } from "react-router-dom";
 
 export default function TopDonationsDollarsByUniversity(props: any) {
   const [localPeriod, setLocalPeriod] = useState(props.globalPeriod);

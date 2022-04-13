@@ -4,7 +4,7 @@ import { FiExternalLink } from "react-icons/fi";
 import { MultipleDropDown } from "../components/MultipleDropDown";
 import { DropDown } from "../components/DropDown";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
+import { Header } from "../components/Header";
 import { OrderedList } from "../components/OrderedList";
 
 export default function CorporationMain() {

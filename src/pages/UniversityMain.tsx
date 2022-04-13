@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { DropDown } from "../components/DropDown";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
+import { Header } from "../components/Header";
 import { MultipleDropDown } from "../components/MultipleDropDown";
 import { OrderedList } from "../components/OrderedList";
 

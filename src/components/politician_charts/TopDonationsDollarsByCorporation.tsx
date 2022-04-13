@@ -86,17 +86,30 @@ export default function TopDonationsDollarsByCorporation(props: any) {
 
     return (
       <div className="h-full w-full">
-        <TileTitle title="Top Corporation Receipts" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
-        <ResponsiveContainer width="100%" height="85%">
+        <TileTitle
+          title="Top Corporation Receipts"
+          selectFunction={setLocalPeriod}
+          localPeriod={localPeriod}
+        />
+        <ResponsiveContainer
+          width="100%"
+          height="85%"
+          className="text-xs lg:text-base"
+        >
           <BarChart
             data={data}
             layout="vertical"
             barCategoryGap={0}
             barSize={40}
-            margin={{ top: 0, right: 25, left: 25, bottom: 0 }}
+            margin={{ top: 5, right: 30, left: 10, bottom: -10 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis type="number" hide />
+            <XAxis
+              type="number"
+              tickFormatter={(value) => {
+                return "$" + value;
+              }}
+            />
             <YAxis type="category" width={150} dataKey="corporation" />
             <Tooltip content={CustomTooltip} />
             <Bar dataKey="dollars_donated" shape={CustomBar} />
@@ -107,7 +120,11 @@ export default function TopDonationsDollarsByCorporation(props: any) {
   } else {
     return (
       <div className="h-full w-full">
-        <TileTitle title="Top Corporation Receipts" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
+        <TileTitle
+          title="Top Corporation Receipts"
+          selectFunction={setLocalPeriod}
+          localPeriod={localPeriod}
+        />
         <div className="h-full flex content-center justify-center items-center">
           {localPeriod in politicians[props.poliId].periods ? (
             <div>No data for this period...</div>

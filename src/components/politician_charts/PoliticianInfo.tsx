@@ -23,6 +23,7 @@ export default function PoliticianInfo(props: any) {
   };
 
   const poli = politicians[props.poliId];
+  console.log(poli);
   const temp =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
   return (
@@ -67,12 +68,14 @@ export default function PoliticianInfo(props: any) {
           </span>
           <span className="text-base lg:text-xl font-light"> Ideology</span>
         </div>
-        <div>
-          <span className="text-base lg:text-xl font-semibold">
-            {poli.state.toUpperCase()}
-          </span>
-          <span className="text-base lg:text-xl font-light"> State</span>
-        </div>
+        {poli.state ? (
+          <div>
+            <span className="text-base lg:text-xl font-semibold">
+              {poli.state.toUpperCase()}
+            </span>
+            <span className="text-base lg:text-xl font-light"> State</span>
+          </div>
+        ) : null}
       </div>
       <div className="mt-2 lg:mb-2 lg:mt-4 text-sm lg:text-lg text-gray-600">
         {temp}

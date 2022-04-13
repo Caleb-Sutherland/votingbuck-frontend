@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { DataState } from "../../interfaces/global.interface";
 import { Politician } from "../../interfaces/politician.interface";
 import { ordinalSuffixOf } from "../../helper/formatting";
+import RealDataTooltip from "../RealDataTooltip";
 
 export default function PowerInfo(props: any) {
   // Access the redux store
@@ -31,7 +32,7 @@ export default function PowerInfo(props: any) {
   return (
     <div className="w-full pl-8 pr-8 lg:pt-8 2xl:pl-20 2xl:pr-20 overflow-y-auto">
       <div className="flex justify-center mb-2 text-lg lg:text-xl font-light">
-        POWER
+        <span>POWER</span><RealDataTooltip/>
       </div>
       <div className="flex justify-between">
         <div>

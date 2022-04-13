@@ -1,6 +1,5 @@
 import React from "react";
 import TileSelectBox from "./TileSelectBox";
-import { AiOutlineCheckCircle } from "react-icons/ai";
 import RealDataTooltip from "./RealDataTooltip";
 
 export default function TileTitle(props: any) {

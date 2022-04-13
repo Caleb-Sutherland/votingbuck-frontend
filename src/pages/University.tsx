@@ -15,7 +15,7 @@ import RegisteredVoters from "../components/university_charts/RegisteredVoters";
 import TileSelectBox from "../components/TileSelectBox";
 import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
+import { Header } from "../components/Header";
 import LoadingScreen from "../components/LoadingScreen";
 import { DataState } from "../interfaces/global.interface";
 import { University as IUniversity } from "../interfaces/university.interface";

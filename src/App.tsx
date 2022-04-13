@@ -5,7 +5,7 @@ import Main from "./pages/Main";
 import CorporationMain from "./pages/CorporationMain";
 import PoliticianMain from "./pages/PoliticianMain";
 import UniversityMain from "./pages/UniversityMain";
-import Header from "./components/Header";
+import { Header } from "./components/Header";
 import Corporation from "./pages/Corporation";
 import Politician from "./pages/Politician";
 import University from "./pages/University";

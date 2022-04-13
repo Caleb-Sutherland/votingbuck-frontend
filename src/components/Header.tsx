@@ -43,9 +43,9 @@ export function Header() {
           </div>
           <button
             onClick={handleClick}
-            className="lg:hidden p-3 text-blueGray600 bg-white text-sm border border-blueGray300 outline-none shadow-lg rounded-lg"
+            className="lg:hidden h-10 px-6 text-blueGray600 bg-white text-sm border border-blueGray300 outline-none shadow-lg rounded-lg"
           >
-            <GiHamburgerMenu />
+            <GiHamburgerMenu size="1.25em" />
           </button>
         </div>
       </div>

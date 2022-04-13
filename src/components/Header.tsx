@@ -43,28 +43,28 @@ export function Header() {
           </div>
           <button
             onClick={handleClick}
-            className="lg:hidden h-10 px-6 text-blueGray600 bg-white text-sm border border-blueGray300 outline-none shadow-lg rounded-lg"
+            className="lg:hidden h-10 -mr-5 px-5"
           >
-            <GiHamburgerMenu size="1.25em" />
+            <GiHamburgerMenu size="1.5em" color="white" />
           </button>
         </div>
       </div>
       {menuOpen ? (
-        <div className="lg:hidden absolute top-20 bg-gradient-to-r from-red to-blue w-full -mt-1 text-white flex flex-col pb-5 z-50">
+        <div className="lg:hidden absolute top-20 bg-gradient-to-r from-red to-blue w-full items-center -mt-1 text-white flex flex-col pb-5 z-50">
           <Link
-            className="ml-5 text-xl font-normal text-opacity-75"
+            className="text-xl font-normal text-opacity-75"
             to="/corporations"
           >
             corporations
           </Link>
           <Link
-            className="ml-5 text-xl font-normal text-opacity-75"
+            className="text-xl font-normal text-opacity-75"
             to="/universities"
           >
             universities
           </Link>
           <Link
-            className="ml-5 text-xl font-normal text-opacity-75"
+            className="text-xl font-normal text-opacity-75"
             to="/politicians"
           >
             politicians

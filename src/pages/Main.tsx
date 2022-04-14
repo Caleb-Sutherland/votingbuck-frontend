@@ -48,9 +48,9 @@ export default function Main() {
               number: {
                 density: {
                   enable: true,
-                  area: 800,
+                  area: 1000,
                 },
-                value: 200,
+                value: 100,
               },
               opacity: {
                 value: 0.3,
@@ -73,7 +73,7 @@ export default function Main() {
             </p>
             <p className="text-2xl sm:text-3xl font-light text-center text-white">
               Check out the web of ideology, money, revolving doors, personal
-              wealth, and power
+              wealth, and power.
             </p>
             <div className="flex flex-row space-x-2 justify-center">
               <SearchBar />

@@ -7,7 +7,6 @@ export function HeaderMain() {
 
   const handleClick = () => {
     setMenuOpen(!menuOpen);
-    console.log(menuOpen);
   };
 
   return (

@@ -8,7 +8,6 @@ export function Header() {
 
   const handleClick = () => {
     setMenuOpen(!menuOpen);
-    console.log(menuOpen);
   };
 
   return (

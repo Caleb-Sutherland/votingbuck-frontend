@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { FiExternalLink } from "react-icons/fi";
 import { MultipleDropDown } from "../components/MultipleDropDown";
 import { DropDown } from "../components/DropDown";
 import Footer from "../components/Footer";

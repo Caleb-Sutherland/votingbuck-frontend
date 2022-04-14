@@ -88,7 +88,7 @@ export default function TotalContributionsByDollar(props: any) {
 
   return (
     <div className="h-full w-full">
-      <TileTitle title="Total Donations ($)"/>
+      <TileTitle title="Total Donations ($)" fakeData />
       <ResponsiveContainer width="100%">
         <LineChart
           width={730}

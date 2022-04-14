@@ -91,13 +91,11 @@ export default function Main() {
             {highlights.universities.map(function (entry, index) {
               return (
                 <Link key={index} to={"universities/" + entry.id}>
-                  <div className="flex flex-row justify-between bg-white border rounded-lg px-4 py-2">
-                    <div>
+                  <div className="flex flex-row items-center bg-white border rounded-lg px-4 py-2 space-x-2">
+                    <div className="w-full flex flex-col md:flex-row md:justify-between md:items-center">
                       <p>{entry.name}</p>
-                    </div>
-                    <div className="flex flex-row items-center space-x-2">
                       <p
-                        className="text-right"
+                        className="text-sm md:text-base"
                         dangerouslySetInnerHTML={{
                           __html: entry.statistic.replace(
                             /\*([^*]*)\*/g,
@@ -105,6 +103,8 @@ export default function Main() {
                           ),
                         }}
                       ></p>
+                    </div>
+                    <div>
                       <FiExternalLink size="1.1em" />
                     </div>
                   </div>
@@ -124,13 +124,11 @@ export default function Main() {
             {highlights.corporations.map(function (entry, index) {
               return (
                 <Link key={index} to={"corporations/" + entry.id}>
-                  <div className="flex flex-row justify-between bg-white border rounded-lg px-4 py-2">
-                    <div>
+                  <div className="flex flex-row items-center bg-white border rounded-lg px-4 py-2 space-x-2">
+                    <div className="w-full flex flex-col md:flex-row md:justify-between md:items-center">
                       <p>{entry.name}</p>
-                    </div>
-                    <div className="flex flex-row items-center space-x-2">
                       <p
-                        className="text-right"
+                        className="text-sm md:text-base"
                         dangerouslySetInnerHTML={{
                           __html: entry.statistic.replace(
                             /\*([^*]*)\*/g,
@@ -138,6 +136,8 @@ export default function Main() {
                           ),
                         }}
                       ></p>
+                    </div>
+                    <div>
                       <FiExternalLink size="1.1em" />
                     </div>
                   </div>
@@ -155,13 +155,11 @@ export default function Main() {
             {highlights.politicians.map(function (entry, index) {
               return (
                 <Link key={index} to={"politicians/" + entry.id}>
-                  <div className="flex flex-row justify-between bg-white border rounded-lg px-4 py-2">
-                    <div>
+                  <div className="flex flex-row items-center bg-white border rounded-lg px-4 py-2 space-x-2">
+                    <div className="w-full flex flex-col md:flex-row md:justify-between md:items-center">
                       <p>{entry.name}</p>
-                    </div>
-                    <div className="flex flex-row items-center space-x-2">
                       <p
-                        className="text-right"
+                        className="text-sm md:text-base"
                         dangerouslySetInnerHTML={{
                           __html: entry.statistic.replace(
                             /\*([^*]*)\*/g,
@@ -169,6 +167,8 @@ export default function Main() {
                           ),
                         }}
                       ></p>
+                    </div>
+                    <div>
                       <FiExternalLink size="1.1em" />
                     </div>
                   </div>

@@ -51,7 +51,7 @@ export default function University() {
   useEffect(() => {
     // Enter the periods data into the redux store
     dispatch(addUniversityPeriod(uni_id, current_period));
-  }, [dispatch, current_period]);
+  }, [dispatch, current_period, uni_id]);
 
   // Access the redux store
   const universities: Record<string, IUniversity> = useSelector(

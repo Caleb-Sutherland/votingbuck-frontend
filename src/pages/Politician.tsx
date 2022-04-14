@@ -51,7 +51,7 @@ export default function Politician() {
   useEffect(() => {
     // Enter the periods data into the redux store
     dispatch(addPoliticianPeriod(poli_id, current_period));
-  }, [dispatch, current_period]);
+  }, [dispatch, current_period, poli_id]);
 
   // Access the redux store
   const politicians: Record<string, IPolitician> = useSelector(

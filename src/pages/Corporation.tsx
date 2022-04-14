@@ -52,7 +52,7 @@ export default function Corporation() {
   useEffect(() => {
     // Enter the periods data into the redux store
     dispatch(addCorporationPeriod(corp_id, current_period));
-  }, [dispatch, current_period]);
+  }, [dispatch, current_period, corp_id]);
 
   // Access the redux store
   const corporations: Record<string, ICorporation> = useSelector(

@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { FiExternalLink } from "react-icons/fi";
 import { MultipleDropDown } from "../components/MultipleDropDown";
 import { DropDown } from "../components/DropDown";
 import Footer from "../components/Footer";
@@ -150,7 +148,6 @@ export default function CorporationMain() {
 
   const [sort, setSort] = useState<any>(sortItems[0]);
   const [filters, setFilters] = useState<string[]>([]);
-  const [results, setResults] = useState<any>({ test: "test" });
 
   return (
     <div>

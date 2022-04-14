@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { MdSearch } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 export function SearchBar() {
@@ -59,12 +60,16 @@ export function SearchBar() {
 
   return (
     <div className="relative">
-      <input
-        type="text"
-        onChange={handleChange}
-        placeholder="corporations, universities or politicians"
-        className="w-72 px-3 py-3 placeholder-blueGray300 text-blueGray600 relative bg-white bg-white text-sm border border-blueGray300 outline-none focus:outline-none focus:ring shadow-lg rounded-lg"
-      />
+      <div className="placeholder-blueGray300 text-blueGray600 relative bg-white bg-white text-sm shadow-lg rounded-lg flex items-center">
+        <MdSearch size={16} className="text-gray-700 ml-4" />
+        <input
+          type="text"
+          onChange={handleChange}
+          onFocus={handleChange}
+          placeholder="Corporations, universities or politicians"
+          className="w-72 px-3 py-3 rounded-lg border-blueGray300 outline-none focus:outline-none"
+        />
+      </div>
       {queryResults ? (
         <div className="absolute top-12 w-72 px-0 py-3 text-blueGray600 bg-white bg-white text-sm outline-none shadow-lg rounded-lg z-50">
           {queryResults.politicians.length > 0 ? (

@@ -91,7 +91,7 @@ export default function Main() {
             {highlights.universities.map(function (entry, index) {
               return (
                 <Link key={index} to={"universities/" + entry.id}>
-                  <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
+                  <div className="flex flex-row justify-between bg-white border rounded-lg px-4 py-2">
                     <div>
                       <p>{entry.name}</p>
                     </div>
@@ -124,7 +124,7 @@ export default function Main() {
             {highlights.corporations.map(function (entry, index) {
               return (
                 <Link key={index} to={"corporations/" + entry.id}>
-                  <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
+                  <div className="flex flex-row justify-between bg-white border rounded-lg px-4 py-2">
                     <div>
                       <p>{entry.name}</p>
                     </div>
@@ -155,7 +155,7 @@ export default function Main() {
             {highlights.politicians.map(function (entry, index) {
               return (
                 <Link key={index} to={"politicians/" + entry.id}>
-                  <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
+                  <div className="flex flex-row justify-between bg-white border rounded-lg px-4 py-2">
                     <div>
                       <p>{entry.name}</p>
                     </div>

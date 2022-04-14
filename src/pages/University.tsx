@@ -15,7 +15,7 @@ import RegisteredVoters from "../components/university_charts/RegisteredVoters";
 import TileSelectBox from "../components/TileSelectBox";
 import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
+import { Header } from "../components/Header";
 import LoadingScreen from "../components/LoadingScreen";
 import { DataState } from "../interfaces/global.interface";
 import { University as IUniversity } from "../interfaces/university.interface";
@@ -43,7 +43,7 @@ export default function University() {
   if (!url_params.uniId) {
     return <div>University not specified!</div>;
   }
-  const uni_id: number = parseInt(url_params.uniId);
+  const uni_id: string = url_params.uniId;
 
   // Setup the redux store
   const dispatch: Dispatch<any> = useDispatch();
@@ -51,10 +51,10 @@ export default function University() {
   useEffect(() => {
     // Enter the periods data into the redux store
     dispatch(addUniversityPeriod(uni_id, current_period));
-  }, [dispatch, current_period]);
+  }, [dispatch, current_period, uni_id]);
 
   // Access the redux store
-  const universities: Record<number, IUniversity> = useSelector(
+  const universities: Record<string, IUniversity> = useSelector(
     (state: DataState) => state.universities
   );
 
@@ -66,7 +66,7 @@ export default function University() {
       "flex flex-col w-full h-screen mb-12 lg:mb-0 lg:h-80 2xl:h-96 lg:overflow-auto lg:grid lg:grid-cols-12 lg:gap-x-8 lg:pb-4 lg:pt-4 lg:pt-1" +
       " ";
     const tailwindTileStyles =
-      "pl-3 pr-3 pt-2 pb-6 mb-4 h-1/3 flex justify-content-center content-center rounded lg:overflow-hidden shadow-lg lg:mb-0 lg:pt-2 lg:pb-6 lg:pl-2 lg:pr-2 lg:h-full" +
+      "pl-3 pr-3 pt-2 pb-6 mb-4 h-1/3 flex justify-content-center content-center rounded lg:overflow-hidden border border-gray-150 shadow-md lg:mb-0 lg:pt-4 lg:pb-6 lg:pl-4 lg:pr-2 lg:h-full" +
       " ";
     return (
       <div>

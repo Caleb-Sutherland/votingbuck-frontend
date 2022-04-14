@@ -67,12 +67,13 @@ export interface CorporationPeriod {
 
 // Organization that stores a set of Records (key: period, value: period_data)
 export interface Corporation {
-  id: number;
+  id: string;
   name: string;
   industry: string;
   location: string;
   totalContributionsDollar: TotalContributionsDollar[];
   corp_revolvers: number;
+  corp_lobby: number;
   periods: Record<string, CorporationPeriod>;
 }
 

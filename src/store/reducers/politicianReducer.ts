@@ -3,9 +3,9 @@ import * as actionTypes from "../actions/actionTypes";
 import { Politician, PoliticianAction } from "../../interfaces/politician.interface";
 
 const politicianReducer = (
-  state: Record<number, Politician> = initialState.politicians,
+  state: Record<string, Politician> = initialState.politicians,
   action: PoliticianAction
-): Record<number, Politician> => {
+): Record<string, Politician> => {
   switch (action.type) {
     case actionTypes.ADD_POLITICIAN_PERIOD:
       // If the politician already exists, just add the period

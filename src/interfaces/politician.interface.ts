@@ -65,7 +65,7 @@ export interface SchoolInfo {
 
 // Politician that stores set of Records (key: period, value: period_data)
 export interface Politician {
-  id: number;
+  id: string;
   name: string;
   ideology: string;
   party: string;

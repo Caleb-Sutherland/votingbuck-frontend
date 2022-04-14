@@ -111,7 +111,12 @@ export default function TopRecipientsByDonation(props: any) {
 
     return (
       <div className="h-full w-full">
-        <TileTitle title="Top Recipients (# of Donations)" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
+        <TileTitle
+          title="Top Recipients (# of Donations)"
+          selectFunction={setLocalPeriod}
+          localPeriod={localPeriod}
+          fakeData
+        />
         <ResponsiveContainer width="100%" height="85%">
           <BarChart
             data={data}
@@ -132,7 +137,12 @@ export default function TopRecipientsByDonation(props: any) {
   } else {
     return (
       <div className="h-full w-full">
-        <TileTitle title="Top Recipients (# of Donations)" selectFunction={setLocalPeriod} localPeriod={localPeriod}/>
+        <TileTitle
+          title="Top Recipients (# of Donations)"
+          selectFunction={setLocalPeriod}
+          localPeriod={localPeriod}
+          fakeData
+        />
         <div className="h-full flex content-center justify-center items-center">
           {localPeriod in corporation[props.corpId].periods ? (
             <div>No data for this period...</div>

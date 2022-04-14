@@ -5,7 +5,7 @@ import { BsBuilding } from "react-icons/bs";
 import { FiExternalLink } from "react-icons/fi";
 import Particles from "react-tsparticles";
 import { Link } from "react-router-dom";
-import HeaderMain from "../components/HeaderMain";
+import { HeaderMain } from "../components/HeaderMain";
 import Footer from "../components/Footer";
 import { SearchBar } from "../components/SearchBar";
 
@@ -29,7 +29,7 @@ export default function Main() {
               },
               links: {
                 color: "#ffffff",
-                distance: 100,
+                distance: 200,
                 enable: true,
                 opacity: 0.3,
                 width: 0.3,
@@ -48,9 +48,9 @@ export default function Main() {
               number: {
                 density: {
                   enable: true,
-                  area: 800,
+                  area: 1000,
                 },
-                value: 200,
+                value: 100,
               },
               opacity: {
                 value: 0.3,
@@ -69,7 +69,7 @@ export default function Main() {
         <div className="absolute flex flex-col space-y-24 py-48 px-10 lg:px-20 inset-y-0 left-0 w-full">
           <div className="flex flex-col space-y-5 max-w-7xl m-auto">
             <p className="text-4xl sm:text-5xl font-medium text-center text-white">
-              Politicians, corporations, and universities are connected.
+              Politicians, corporations, and universities are connected
             </p>
             <p className="text-2xl sm:text-3xl font-light text-center text-white">
               Check out the web of ideology, money, revolving doors, personal
@@ -81,10 +81,10 @@ export default function Main() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col space-y-32 py-32 px-10 lg:px-20">
+      <div className="flex flex-col space-y-20 md:space-y-32 py-20 md:py-32 px-10 lg:px-20">
         <div className="lg:-m-5 flex flex-col lg:flex-row flex-wrap justify-center">
           <div className="mx-auto lg:mx-0">
-            <FaUniversity size="16em" />
+            <FaUniversity className="w-32 h-32 md:w-56 md:h-56" />
           </div>
           <div className="flex flex-col space-y-4 lg:w-1/2 2xl:w-1/3 mt-10 lg:mt-0 lg:ml-32">
             <p className="text-lg font-medium">Highlighted Universities</p>
@@ -101,7 +101,7 @@ export default function Main() {
                         dangerouslySetInnerHTML={{
                           __html: entry.statistic.replace(
                             /\*([^*]*)\*/g,
-                            '<span class="font-medium">$1</span>'
+                            "<span class='font-medium'>$1</span>"
                           ),
                         }}
                       ></p>
@@ -115,7 +115,7 @@ export default function Main() {
         </div>
         <div className="lg:-m-5 flex flex-col lg:flex-row lg:flex-row-reverse flex-wrap justify-center">
           <div className="mx-auto lg:mx-0">
-            <BsBuilding size="16em" />
+            <BsBuilding className="w-32 h-32 md:w-56 md:h-56" />
           </div>
           <div className="flex flex-col space-y-4 lg:w-1/2 2xl:w-1/3 mt-10 lg:mt-0 lg:mr-32">
             <p className="text-lg font-medium lg:text-right">
@@ -134,7 +134,7 @@ export default function Main() {
                         dangerouslySetInnerHTML={{
                           __html: entry.statistic.replace(
                             /\*([^*]*)\*/g,
-                            '<span class="font-medium">$1</span>'
+                            "<span class='font-medium'>$1</span>"
                           ),
                         }}
                       ></p>
@@ -148,7 +148,7 @@ export default function Main() {
         </div>
         <div className="lg:-m-5 flex flex-col lg:flex-row flex-wrap justify-center">
           <div className="mx-auto lg:mx-0">
-            <GiPublicSpeaker size="16em" />
+            <GiPublicSpeaker className="w-32 h-32 md:w-56 md:h-56" />
           </div>
           <div className="flex flex-col space-y-4 lg:w-1/2 2xl:w-1/3 mt-10 lg:mt-0 lg:ml-32">
             <p className="text-lg font-medium">Highlighted Politicians</p>
@@ -165,7 +165,7 @@ export default function Main() {
                         dangerouslySetInnerHTML={{
                           __html: entry.statistic.replace(
                             /\*([^*]*)\*/g,
-                            '<span class="font-medium">$1</span>'
+                            "<span class='font-medium'>$1</span>"
                           ),
                         }}
                       ></p>
@@ -181,7 +181,7 @@ export default function Main() {
           <p className="text-4xl sm:text-5xl font-medium text-center">
             About votingbuck
           </p>
-          <p className="text-2xl sm:text-3xl font-light text-center leading-10">
+          <p className="text-lg sm:text-2xl font-light text-center leading-10">
             Is a politician’s voting record aligned with their public
             statements? Who do the employees of big corporations donate to?
             Which politicians are the biggest campaign contribution earners, and
@@ -189,7 +189,7 @@ export default function Main() {
             this site, you can find information on everything you’ve ever wanted
             to know about money, ideology and politics. Information is separated
             into the three centers of political power in America (politicians,
-            corporations and universities), and easily accessible in a
+            corporations, and universities), and easily accessible in a
             dashboard-style format.
           </p>
         </div>

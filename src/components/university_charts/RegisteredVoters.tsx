@@ -150,8 +150,6 @@ export default function RegisteredVoters(props: any) {
       <div className="h-full w-full pb-4">
         <TileTitle
           title="Registered Voters"
-          selectFunction={setLocalPeriod}
-          localPeriod={localPeriod}
         />
         <ResponsiveContainer width="100%" height="100%">
           <PieChart width={500} height={500}>
@@ -177,12 +175,10 @@ export default function RegisteredVoters(props: any) {
       <div className="h-full w-full">
         <TileTitle
           title="Registered Voters"
-          selectFunction={setLocalPeriod}
-          localPeriod={localPeriod}
         />
         <div className="h-full flex content-center justify-center items-center">
           {localPeriod in universities[props.uniId].periods ? (
-            <div>No data for this period...</div>
+            <div>No data</div>
           ) : (
             <TileLoading />
           )}

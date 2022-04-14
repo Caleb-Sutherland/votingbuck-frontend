@@ -8,7 +8,7 @@ export type actionTypes = CorporationAction | PoliticianAction | UniversityActio
 
 // State type to use in the redux store, stores a hashmap (indexed by a period id and points to a Period)
 export type DataState = {
-  corporations: Record<number, Corporation>;
+  corporations: Record<string, Corporation>;
   politicians: Record<string, Politician>;
   universities: Record<string, University>;
 };

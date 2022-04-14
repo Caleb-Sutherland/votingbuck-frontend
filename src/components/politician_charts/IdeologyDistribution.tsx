@@ -129,7 +129,7 @@ export default function IdeologyDistribution(props: any) {
             width={730}
             height={250}
             data={smoothed_data}
-            margin={{ top: 5, right: 25, left: 25, bottom: 30 }}
+            margin={{ top: 5, right: 25, left: 5, bottom: 30 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis

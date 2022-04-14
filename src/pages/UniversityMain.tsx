@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { DropDown } from "../components/DropDown";
 import Footer from "../components/Footer";
 import { Header } from "../components/Header";
 import { MultipleDropDown } from "../components/MultipleDropDown";
 import { OrderedList } from "../components/OrderedList";
+import Select from "react-select";
 
 export default function UniversityMain() {
   const sortItems = [
@@ -75,7 +75,23 @@ export default function UniversityMain() {
 
   const [sort, setSort] = useState<any>(sortItems[0]);
   const [filters, setFilters] = useState<string[]>([]);
-  const [results, setResults] = useState<any>({ test: "test" });
+
+  const customStyles = {
+    valueContainer: (base: any) => ({
+      ...base,
+      flexWrap: "nowrap",
+    }),
+    control: (base: any) => ({
+      ...base,
+      minWidth: "200px",
+      maxWidth: "500px",
+    }),
+    container: (base: any) => ({
+      ...base,
+      minWidth: "200px",
+      maxWidth: "100%",
+    }),
+  };
 
   return (
     <div>
@@ -84,15 +100,46 @@ export default function UniversityMain() {
         <p className="w-fill text-xl lg:text-4xl font-bold text-center sm:text-left">
           Universities
         </p>
-        <div className="flex flex-col lg:flex-row-reverse items-center">
-          <div className="flex flex-row flex-wrap items-center ml-auto">
-            <div className="flex flex-row items-center ml-auto">
+        <div className="flex flex-col lg:flex-row-reverse items-end">
+          <div className="flex flex-row flex-wrap items-center max-w-full">
+            <div className="flex flex-row items-center ml-auto lg:ml-0 my-2 max-w-full">
               <p className="px-5">Sort:</p>
-              <DropDown items={sortItems} defaultItem={0} setItem={setSort} />
+              <Select
+                className="text-xs lg:text-base"
+                onChange={(e) => {
+                  if (e) {
+                    setSort(e.value);
+                  }
+                }}
+                defaultValue={{
+                  value: sortItems[0],
+                  label: sortItems[0].display,
+                }}
+                options={sortItems.map((item) => {
+                  return { value: item, label: item.display };
+                })}
+                isSearchable={false}
+                styles={customStyles}
+              />
             </div>
-            <div className="flex flex-row items-center ml-auto">
+            <div className="flex flex-row items-center ml-auto lg:ml-0 my-2 max-w-full">
               <p className="px-5">Filters:</p>
-              <MultipleDropDown items={filterItems} setItems={setFilters} />
+              <Select
+                className="text-xs lg:text-base max-w-min"
+                isMulti
+                onChange={(e) => {
+                  if (e) {
+                    setFilters(
+                      Array.from(e.values()).map((item) => item.value)
+                    );
+                  }
+                }}
+                options={filterItems.map((item) => {
+                  return { value: item, label: item };
+                })}
+                isSearchable={true}
+                styles={customStyles}
+              />
             </div>
           </div>
         </div>

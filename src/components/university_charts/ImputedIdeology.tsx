@@ -127,6 +127,7 @@ export default function ImputedIdeology(props: any) {
           title="Imputed Ideology"
           selectFunction={setLocalPeriod}
           localPeriod={localPeriod}
+          fakeData
         />
         <ResponsiveContainer width="100%">
           <LineChart
@@ -164,6 +165,7 @@ export default function ImputedIdeology(props: any) {
           title="Imputed Ideology"
           selectFunction={setLocalPeriod}
           localPeriod={localPeriod}
+          fakeData
         />
         <div className="h-full flex content-center justify-center items-center">
           {localPeriod in universities[props.uniId].periods ? (

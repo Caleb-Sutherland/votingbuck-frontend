@@ -70,10 +70,10 @@ export function OrderedList(props: any) {
     if (props.page == "organizations") {
       return (
         <Link key={index} to={"/corporations/" + entry.id}>
-          <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
+          <div className="flex flex-row justify-between bg-white border rounded-lg px-4 py-2">
             <p className="grow-1 basis-1/3">{entry.name}</p>
-            <p className="grow-1 basis-1/3">{entry.industry}</p>
-            <div className="flex flex-row-reverse grow-1 basis-1/3">
+            <p className="grow-1 basis-1/3 text-gray-700">{entry.industry}</p>
+            <div className="flex flex-row-reverse grow-1 basis-1/3 items-center">
               <FiExternalLink size="1.1em" />
             </div>
           </div>
@@ -82,11 +82,11 @@ export function OrderedList(props: any) {
     } else if (props.page == "universities") {
       return (
         <Link key={index} to={"/universities/" + entry.id}>
-          <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
+          <div className="flex flex-row justify-between bg-white border rounded-lg px-4 py-2">
             <p className="grow-1 basis-1/4">{entry.name}</p>
             <p className="grow-1 basis-1/4">#{entry.id}</p>
-            <p className="grow-1 basis-1/4">{entry.location}</p>
-            <div className="flex flex-row-reverse grow-1 basis-1/4">
+            <p className="grow-1 basis-1/4 text-gray-700">{entry.location}</p>
+            <div className="flex flex-row-reverse grow-1 basis-1/4 items-center">
               <FiExternalLink size="1.1em" />
             </div>
           </div>
@@ -95,10 +95,10 @@ export function OrderedList(props: any) {
     } else if (props.page == "recipients") {
       return (
         <Link key={index} to={"/politicians/" + entry.id}>
-          <div className="flex flex-row justify-between bg-white shadow-lg rounded-lg p-4">
+          <div className="flex flex-row justify-between bg-white border rounded-lg px-4 py-2">
             <p className="grow-1 basis-1/3">{entry.name}</p>
-            <p className="grow-1 basis-1/3">{entry.state}</p>
-            <div className="flex flex-row-reverse grow-1 basis-1/3">
+            <p className="grow-1 basis-1/3 text-gray-700">{entry.state}</p>
+            <div className="flex flex-row-reverse grow-1 basis-1/3 items-center">
               <FiExternalLink size="1.1em" />
             </div>
           </div>
@@ -111,7 +111,7 @@ export function OrderedList(props: any) {
     return (
       <div className="relative">
         {listHeader()}
-        <div className="flex flex-col space-y-4">
+        <div className="flex flex-col space-y-2">
           {results.map((entry: any, index: number) => {
             return listEntry(entry, index);
           })}

@@ -11,38 +11,35 @@ export function SearchBar() {
       `${process.env.REACT_APP_API_BASE_URL}/search/${event.target.value}`
     );
     const data = await res.json();
-    if (event.target.value == "") {
-      setQueryResults(null);
-    } else {
-      let remainingSpaces = 6;
-      let pIndex = 0;
-      let cIndex = 0;
-      let uIndex = 0;
-      const finalPoliticians: any = [];
-      const finalCorporates: any = [];
-      const finalUniversities: any = [];
 
-      while (
-        remainingSpaces > 0 &&
-        (data.politicians[pIndex] ||
-          data.corporates[cIndex] ||
-          data.universities[uIndex])
-      ) {
-        if (data.politicians[pIndex]) {
-          finalPoliticians.push(data.politicians[pIndex]);
-          remainingSpaces--;
-          pIndex++;
-        }
-        if (remainingSpaces > 0 && data.corporates[cIndex]) {
-          finalCorporates.push(data.corporates[cIndex]);
-          remainingSpaces--;
-          cIndex++;
-        }
-        if (remainingSpaces > 0 && data.universities[uIndex]) {
-          finalUniversities.push(data.universities[uIndex]);
-          remainingSpaces--;
-          uIndex++;
-        }
+    let remainingSpaces = 6;
+    let pIndex = 0;
+    let cIndex = 0;
+    let uIndex = 0;
+    const finalPoliticians: any = [];
+    const finalCorporates: any = [];
+    const finalUniversities: any = [];
+
+    while (
+      remainingSpaces > 0 &&
+      (data.politicians[pIndex] ||
+        data.corporates[cIndex] ||
+        data.universities[uIndex])
+    ) {
+      if (data.politicians[pIndex]) {
+        finalPoliticians.push(data.politicians[pIndex]);
+        remainingSpaces--;
+        pIndex++;
+      }
+      if (remainingSpaces > 0 && data.corporates[cIndex]) {
+        finalCorporates.push(data.corporates[cIndex]);
+        remainingSpaces--;
+        cIndex++;
+      }
+      if (remainingSpaces > 0 && data.universities[uIndex]) {
+        finalUniversities.push(data.universities[uIndex]);
+        remainingSpaces--;
+        uIndex++;
       }
 
       const finalData = {

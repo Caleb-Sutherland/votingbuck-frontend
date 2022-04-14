@@ -66,7 +66,7 @@ export default function Politician() {
       "flex flex-col w-full h-screen mb-12 lg:mb-0 lg:h-80 2xl:h-96 lg:overflow-auto lg:grid lg:grid-cols-12 lg:gap-x-8 lg:pb-4 lg:pt-4 lg:pt-1" +
       " ";
     const tailwindTileStyles =
-      "pl-3 pr-3 pt-2 pb-6 mb-4 h-1/3 flex justify-content-center content-center rounded overflow-hidden shadow-lg lg:mb-0 lg:pt-2 lg:pb-6 lg:pl-2 lg:pr-2 lg:h-full" +
+      "pl-3 pr-3 pt-2 pb-6 mb-4 h-1/3 flex justify-content-center content-center rounded lg:overflow-hidden border border-gray-150 shadow-md lg:mb-0 lg:pt-4 lg:pb-6 lg:pl-4 lg:pr-2 lg:h-full" +
       " ";
     return (
       <div>

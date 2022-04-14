@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { MdSearch } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 export function SearchBar() {
@@ -10,38 +11,35 @@ export function SearchBar() {
       `${process.env.REACT_APP_API_BASE_URL}/search/${event.target.value}`
     );
     const data = await res.json();
-    if (event.target.value == "") {
-      setQueryResults(null);
-    } else {
-      let remainingSpaces = 6;
-      let pIndex = 0;
-      let cIndex = 0;
-      let uIndex = 0;
-      const finalPoliticians: any = [];
-      const finalCorporates: any = [];
-      const finalUniversities: any = [];
 
-      while (
-        remainingSpaces > 0 &&
-        (data.politicians[pIndex] ||
-          data.corporates[cIndex] ||
-          data.universities[uIndex])
-      ) {
-        if (data.politicians[pIndex]) {
-          finalPoliticians.push(data.politicians[pIndex]);
-          remainingSpaces--;
-          pIndex++;
-        }
-        if (remainingSpaces > 0 && data.corporates[cIndex]) {
-          finalCorporates.push(data.corporates[cIndex]);
-          remainingSpaces--;
-          cIndex++;
-        }
-        if (remainingSpaces > 0 && data.universities[uIndex]) {
-          finalUniversities.push(data.universities[uIndex]);
-          remainingSpaces--;
-          uIndex++;
-        }
+    let remainingSpaces = 6;
+    let pIndex = 0;
+    let cIndex = 0;
+    let uIndex = 0;
+    const finalPoliticians: any = [];
+    const finalCorporates: any = [];
+    const finalUniversities: any = [];
+
+    while (
+      remainingSpaces > 0 &&
+      (data.politicians[pIndex] ||
+        data.corporates[cIndex] ||
+        data.universities[uIndex])
+    ) {
+      if (data.politicians[pIndex]) {
+        finalPoliticians.push(data.politicians[pIndex]);
+        remainingSpaces--;
+        pIndex++;
+      }
+      if (remainingSpaces > 0 && data.corporates[cIndex]) {
+        finalCorporates.push(data.corporates[cIndex]);
+        remainingSpaces--;
+        cIndex++;
+      }
+      if (remainingSpaces > 0 && data.universities[uIndex]) {
+        finalUniversities.push(data.universities[uIndex]);
+        remainingSpaces--;
+        uIndex++;
       }
 
       const finalData = {
@@ -59,12 +57,16 @@ export function SearchBar() {
 
   return (
     <div className="relative">
-      <input
-        type="text"
-        onChange={handleChange}
-        placeholder="corporations, universities or politicians"
-        className="w-72 px-3 py-3 placeholder-blueGray300 text-blueGray600 relative bg-white bg-white text-sm border border-blueGray300 outline-none focus:outline-none focus:ring shadow-lg rounded-lg"
-      />
+      <div className="placeholder-blueGray300 text-blueGray600 relative bg-white bg-white text-sm shadow-lg rounded-lg flex items-center">
+        <MdSearch size={16} className="text-gray-700 ml-4" />
+        <input
+          type="text"
+          onChange={handleChange}
+          onFocus={handleChange}
+          placeholder="Corporations, universities or politicians"
+          className="w-72 px-3 py-3 rounded-lg border-blueGray300 outline-none focus:outline-none"
+        />
+      </div>
       {queryResults ? (
         <div className="absolute top-12 w-72 px-0 py-3 text-blueGray600 bg-white bg-white text-sm outline-none shadow-lg rounded-lg z-50">
           {queryResults.politicians.length > 0 ? (

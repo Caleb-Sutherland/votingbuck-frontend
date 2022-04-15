@@ -131,8 +131,8 @@ export function SearchBar() {
                 onMouseDown={(e) => e.preventDefault()}
                 onMouseUp={() => goToPage("/politicians/" + item.value.id)}
                 className={
-                  "cursor-pointer pl-8 pr-3 py-1 transition-colors " +
-                  (cursor == index ? "bg-neutral-300" : "")
+                  "cursor-pointer pl-8 pr-3 py-1 " +
+                  (cursor == index ? "bg-searchHover" : "")
                 }
                 onMouseEnter={() => setCursor(index)}
                 onMouseLeave={() => setCursor(-1)}
@@ -159,9 +159,9 @@ export function SearchBar() {
                 onMouseDown={(e) => e.preventDefault()}
                 onMouseUp={() => goToPage("/corporations/" + item.value.id)}
                 className={
-                  "cursor-pointer pl-8 pr-3 py-1 transition-colors " +
+                  "cursor-pointer pl-8 pr-3 py-1 " +
                   (cursor == queryResults.politicians.length + index
-                    ? "bg-neutral-300"
+                    ? "bg-searchHover"
                     : "")
                 }
                 onMouseEnter={() =>
@@ -194,12 +194,12 @@ export function SearchBar() {
                 onMouseDown={(e) => e.preventDefault()}
                 onMouseUp={() => goToPage("/politicians/" + item.value.id)}
                 className={
-                  "cursor-pointer pl-8 pr-3 py-1 transition-colors " +
+                  "cursor-pointer pl-8 pr-3 py-1 " +
                   (cursor ==
                   queryResults.politicians.length +
                     queryResults.corporates.length +
                     index
-                    ? "bg-neutral-300"
+                    ? "bg-searchHover"
                     : "")
                 }
                 onMouseEnter={() =>

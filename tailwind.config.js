@@ -23,6 +23,7 @@ module.exports = {
         footerBackground: "#3F3F46",
         footerText: "#d4d4d4",
         tooltipBack: "#e6f7f4",
+        searchHover: "#deebff",
       }
     }
   },

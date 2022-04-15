@@ -135,6 +135,7 @@ export function SearchBar() {
                   (cursor == index ? "bg-neutral-300" : "")
                 }
                 onMouseEnter={() => setCursor(index)}
+                onMouseLeave={() => setCursor(-1)}
               >
                 <p>{item.value.name}</p>
               </div>
@@ -166,6 +167,7 @@ export function SearchBar() {
                   onMouseEnter={() =>
                     setCursor(queryResults.politicians.length + index)
                   }
+                  onMouseLeave={() => setCursor(-1)}
                 >
                   <p>{item.value.name}</p>
                 </div>
@@ -208,6 +210,7 @@ export function SearchBar() {
                         index
                     )
                   }
+                  onMouseLeave={() => setCursor(-1)}
                 >
                   <p>{item.value.name}</p>
                 </div>

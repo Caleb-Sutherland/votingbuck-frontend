@@ -91,7 +91,7 @@ export function SearchBar() {
 
   return (
     <div className="relative">
-      <div className="placeholder-blueGray300 text-blueGray600 relative bg-white bg-white text-sm shadow-lg rounded-lg flex items-center">
+      <div className="w-72 placeholder-blueGray300 text-blueGray600 relative bg-white bg-white text-xs shadow-lg rounded-lg flex items-center">
         <MdSearch size={16} className="text-gray-700 ml-4" />
         <input
           type="text"
@@ -100,7 +100,7 @@ export function SearchBar() {
           onKeyDown={handleKeyDown}
           onClick={() => setCursor(-1)}
           placeholder="Corporations, universities or politicians"
-          className="w-72 px-3 py-3 rounded-lg border-blueGray300 outline-none focus:outline-none"
+          className="w-full px-3 py-3 rounded-lg border-blueGray300 outline-none focus:outline-none"
         />
       </div>
       {queryResults ? (

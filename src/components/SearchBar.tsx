@@ -32,9 +32,13 @@ export function SearchBar() {
     } else if (e.key === "Enter") {
       e.preventDefault();
       if (cursor > -1) {
-        window.open(cursorLinkPath, "_self");
+        goToPage(cursorLinkPath);
       }
     }
+  };
+
+  const goToPage = (path: string) => {
+    window.open(path, "_self");
   };
 
   const handleChange = async (event: any) => {
@@ -98,6 +102,10 @@ export function SearchBar() {
           onChange={handleChange}
           onFocus={handleChange}
           onKeyDown={handleKeyDown}
+          onBlur={() => {
+            setCursor(-1);
+            setQueryResults(null);
+          }}
           onClick={() => setCursor(-1)}
           placeholder="Corporations, universities or politicians"
           className="w-full px-3 py-3 rounded-lg border-blueGray300 outline-none focus:outline-none"
@@ -118,17 +126,18 @@ export function SearchBar() {
               setCursorLinkPath("/politicians/" + item.value.id);
             }
             return (
-              <Link key={index} to={"/politicians/" + item.value.id}>
-                <div
-                  className={
-                    "pl-8 pr-3 py-1 transition-colors " +
-                    (cursor == index ? "bg-neutral-300" : "")
-                  }
-                  onMouseEnter={() => setCursor(index)}
-                >
-                  <p>{item.value.name}</p>
-                </div>
-              </Link>
+              <div
+                key={index}
+                onMouseDown={(e) => e.preventDefault()}
+                onMouseUp={() => goToPage("/politicians/" + item.value.id)}
+                className={
+                  "cursor-pointer pl-8 pr-3 py-1 transition-colors " +
+                  (cursor == index ? "bg-neutral-300" : "")
+                }
+                onMouseEnter={() => setCursor(index)}
+              >
+                <p>{item.value.name}</p>
+              </div>
             );
           })}
           {queryResults.corporates.length > 0 ? (
@@ -146,8 +155,10 @@ export function SearchBar() {
             return (
               <Link key={index} to={"/corporations/" + item.value.id}>
                 <div
+                  onMouseDown={(e) => e.preventDefault()}
+                  onMouseUp={() => goToPage("/corporations/" + item.value.id)}
                   className={
-                    "pl-8 pr-3 py-1 transition-colors " +
+                    "cursor-pointer pl-8 pr-3 py-1 transition-colors " +
                     (cursor == queryResults.politicians.length + index
                       ? "bg-neutral-300"
                       : "")
@@ -179,8 +190,10 @@ export function SearchBar() {
             return (
               <Link key={index} to={"/universities/" + item.value.id}>
                 <div
+                  onMouseDown={(e) => e.preventDefault()}
+                  onMouseUp={() => goToPage("/politicians/" + item.value.id)}
                   className={
-                    "pl-8 pr-3 py-1 transition-colors " +
+                    "cursor-pointer pl-8 pr-3 py-1 transition-colors " +
                     (cursor ==
                     queryResults.politicians.length +
                       queryResults.corporates.length +

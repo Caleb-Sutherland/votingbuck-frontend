@@ -102,6 +102,10 @@ export function SearchBar() {
           onChange={handleChange}
           onFocus={handleChange}
           onKeyDown={handleKeyDown}
+          onBlur={() => {
+            setCursor(-1);
+            setQueryResults(null);
+          }}
           onClick={() => setCursor(-1)}
           placeholder="Corporations, universities or politicians"
           className="w-full px-3 py-3 rounded-lg border-blueGray300 outline-none focus:outline-none"

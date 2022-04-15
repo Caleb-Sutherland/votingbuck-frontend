@@ -32,9 +32,13 @@ export function SearchBar() {
     } else if (e.key === "Enter") {
       e.preventDefault();
       if (cursor > -1) {
-        window.open(cursorLinkPath, "_self");
+        goToPage(cursorLinkPath);
       }
     }
+  };
+
+  const goToPage = (path: string) => {
+    window.open(path, "_self");
   };
 
   const handleChange = async (event: any) => {
@@ -118,17 +122,19 @@ export function SearchBar() {
               setCursorLinkPath("/politicians/" + item.value.id);
             }
             return (
-              <Link key={index} to={"/politicians/" + item.value.id}>
-                <div
-                  className={
-                    "pl-8 pr-3 py-1 transition-colors " +
-                    (cursor == index ? "bg-neutral-300" : "")
-                  }
-                  onMouseEnter={() => setCursor(index)}
-                >
-                  <p>{item.value.name}</p>
-                </div>
-              </Link>
+              <div
+                key={index}
+                onMouseDown={(e) => e.preventDefault()}
+                onMouseUp={() => goToPage("/politicians/" + item.value.id)}
+                className={
+                  "cursor-pointer pl-8 pr-3 py-1 transition-colors " +
+                  (cursor == index ? "bg-neutral-300" : "")
+                }
+                onMouseEnter={() => setCursor(index)}
+                onMouseLeave={() => setCursor(-1)}
+              >
+                <p>{item.value.name}</p>
+              </div>
             );
           })}
           {queryResults.corporates.length > 0 ? (
@@ -144,21 +150,23 @@ export function SearchBar() {
               setCursorLinkPath("/corporations/" + item.value.id);
             }
             return (
-              <Link key={index} to={"/corporations/" + item.value.id}>
-                <div
-                  className={
-                    "pl-8 pr-3 py-1 transition-colors " +
-                    (cursor == queryResults.politicians.length + index
-                      ? "bg-neutral-300"
-                      : "")
-                  }
-                  onMouseEnter={() =>
-                    setCursor(queryResults.politicians.length + index)
-                  }
-                >
-                  <p>{item.value.name}</p>
-                </div>
-              </Link>
+              <div
+                key={index}
+                onMouseDown={(e) => e.preventDefault()}
+                onMouseUp={() => goToPage("/corporations/" + item.value.id)}
+                className={
+                  "cursor-pointer pl-8 pr-3 py-1 transition-colors " +
+                  (cursor == queryResults.politicians.length + index
+                    ? "bg-neutral-300"
+                    : "")
+                }
+                onMouseEnter={() =>
+                  setCursor(queryResults.politicians.length + index)
+                }
+                onMouseLeave={() => setCursor(-1)}
+              >
+                <p>{item.value.name}</p>
+              </div>
             );
           })}
           {queryResults.universities.length > 0 ? (
@@ -177,28 +185,30 @@ export function SearchBar() {
               setCursorLinkPath("/universities/" + item.value.id);
             }
             return (
-              <Link key={index} to={"/universities/" + item.value.id}>
-                <div
-                  className={
-                    "pl-8 pr-3 py-1 transition-colors " +
-                    (cursor ==
+              <div
+                key={index}
+                onMouseDown={(e) => e.preventDefault()}
+                onMouseUp={() => goToPage("/politicians/" + item.value.id)}
+                className={
+                  "cursor-pointer pl-8 pr-3 py-1 transition-colors " +
+                  (cursor ==
+                  queryResults.politicians.length +
+                    queryResults.corporates.length +
+                    index
+                    ? "bg-neutral-300"
+                    : "")
+                }
+                onMouseEnter={() =>
+                  setCursor(
                     queryResults.politicians.length +
                       queryResults.corporates.length +
                       index
-                      ? "bg-neutral-300"
-                      : "")
-                  }
-                  onMouseEnter={() =>
-                    setCursor(
-                      queryResults.politicians.length +
-                        queryResults.corporates.length +
-                        index
-                    )
-                  }
-                >
-                  <p>{item.value.name}</p>
-                </div>
-              </Link>
+                  )
+                }
+                onMouseLeave={() => setCursor(-1)}
+              >
+                <p>{item.value.name}</p>
+              </div>
             );
           })}
         </div>

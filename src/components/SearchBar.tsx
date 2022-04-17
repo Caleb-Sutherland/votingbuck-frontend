@@ -192,7 +192,7 @@ export function SearchBar() {
               <div
                 key={index}
                 onMouseDown={(e) => e.preventDefault()}
-                onMouseUp={() => goToPage("/politicians/" + item.value.id)}
+                onMouseUp={() => goToPage("/universities/" + item.value.id)}
                 className={
                   "cursor-pointer pl-8 pr-3 py-1 " +
                   (cursor ==

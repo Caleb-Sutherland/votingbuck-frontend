@@ -69,11 +69,10 @@ export default function Main() {
         <div className="absolute flex flex-col space-y-24 py-48 px-10 lg:px-20 inset-y-0 left-0 w-full">
           <div className="flex flex-col space-y-5 max-w-7xl m-auto">
             <p className="text-4xl sm:text-5xl font-medium text-center text-white">
-              Politicians, corporations, and universities are connected
+              Politicians, corporations, and universities
             </p>
             <p className="text-2xl sm:text-3xl font-light text-center text-white">
-              Check out the web of ideology, money, revolving doors, personal
-              wealth, and power.
+              Check out their dynamic networks
             </p>
             <div className="flex flex-row space-x-2 justify-center">
               <SearchBar />

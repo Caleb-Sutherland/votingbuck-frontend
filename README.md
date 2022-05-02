@@ -8,6 +8,12 @@ To run the votingbuck frontend in devlopment you must install the correct packag
 * Redux Thunk
 * Tailwind CSS
 
+You will also need to create a .env file and place it in the root of the project. The file should contain one line: 
+
+REACT_APP_API_BASE_URL=https://api.votingbuck.com
+
+This is used to make requests to the backend.
+
 Once this is complete, you can run "npm start" to start the development server.
 
 ## Deployment and Production
